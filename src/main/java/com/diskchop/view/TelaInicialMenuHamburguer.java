@@ -43,7 +43,7 @@ public class TelaInicialMenuHamburguer extends JFrame {
             }
         });
 
-        JLabel titulo = new JLabel("Sistema de Gestão", SwingConstants.CENTER);
+        JLabel titulo = new JLabel("DISK CHOPP SUZANO", SwingConstants.CENTER);
         titulo.setFont(new Font("Arial", Font.BOLD, 20));
         titulo.setForeground(Color.WHITE);
 
@@ -53,23 +53,48 @@ public class TelaInicialMenuHamburguer extends JFrame {
         // ** MENU LATERAL DESLIZANTE **
         menuLateral = new JPanel();
         menuLateral.setBackground(new Color(245, 245, 245)); // Cinza claro
-        menuLateral.setPreferredSize(new Dimension(120, getHeight()));
+        menuLateral.setPreferredSize(new Dimension(180, getHeight()));
         menuLateral.setLayout(new BoxLayout(menuLateral, BoxLayout.Y_AXIS)); // Itens em coluna
         menuLateral.setVisible(false); // Oculto inicialmente
 
         // Criar submenus
-        String[] opcoesCadastro = {"Cadastrar Cliente", "Cadastrar Produto", "Cadastrar Barril"};
+
         ImageIcon[] iconesCadastro = {
-                new ImageIcon("/icones/menu.png"),
-                new ImageIcon("/icones/cadastro.png")
+                new ImageIcon(getClass().getResource("/icones/cadastroUsuario.png")),
+                new ImageIcon(getClass().getResource("/icones/cadastroProduto.png"))
         };
+        String[] opcoesCadastro = {"Cadastrar Cliente", "Cadastrar Produto"};
+        painelSubmenuCadastro = criarSubmenu("Cadastro", opcoesCadastro, iconesCadastro);
+
+        ImageIcon[] iconesEstoque = {
+                new ImageIcon(getClass().getResource("/icones/estoqueBarril.png")),
+                new ImageIcon(getClass().getResource("/icones/choppeira.png")),
+                new ImageIcon(getClass().getResource("/icones/estoqueCilindro.png"))
+        };
+        String[] opcoesEstoque = {"Estoque Barris", "Estoque Choppeiras", "Estoque Cilindros"};
+        painelSubmenuEstoque = criarSubmenu("Estoque", opcoesEstoque, iconesEstoque);
+
+        ImageIcon[] iconesPedido = {
+                new ImageIcon(getClass().getResource("/icones/registrarPedido.png")),
+                new ImageIcon(getClass().getResource("/icones/consultarPedido.png"))
+        };
+        String[] opcoesPedido = {"Registrar Pedido", "Consultar Pedido"};
+        painelSubmenuPedido = criarSubmenu("Pedido", opcoesPedido, iconesPedido);
+
+        ImageIcon[] iconesFinanceiro = {
+                new ImageIcon(getClass().getResource("/icones/entradaSaida2.png")),
+                new ImageIcon(getClass().getResource("/icones/relatorio.png"))
+        };
+        String[] opcoesFinanceiro = {"Entrada e Saídas", "Resumo"};
+        painelSubmenuFinanceiro = criarSubmenu("Financeiro", opcoesFinanceiro, iconesFinanceiro);
 
 
+        /*
         painelSubmenuCadastro = criarSubmenu("Cadastro", new String[]{"Clientes", "Produtos"});
         painelSubmenuEstoque = criarSubmenu("Estoque", new String[]{"Barris", "Máquinas", "Cilindros"});
         painelSubmenuPedido = criarSubmenu("Pedido", new String[]{"Registrar Pedido", "Consultar Pedido"});
         painelSubmenuFinanceiro = criarSubmenu("Financeiro", new String[]{"Entrada e Saídas", "Relatórios Financeiros"});
-
+        */
         // ** Ícones e Botões principais do menu lateral **
 
         //Botão Cadastro
@@ -141,7 +166,7 @@ public class TelaInicialMenuHamburguer extends JFrame {
         botao.setFont(new Font("Arial", Font.PLAIN, 14));
         botao.setFocusPainted(false);
         botao.setForeground(new Color(34, 139, 34)); // Verde no texto
-        botao.setMaximumSize(new Dimension(120, 60)); // Botão pequeno
+        botao.setMaximumSize(new Dimension(180, 60)); // Botão pequeno
         botao.setAlignmentX(Component.CENTER_ALIGNMENT);
         botao.setMargin(new Insets(5, 5, 5, 5));// Centraliza no painel
 
@@ -160,6 +185,37 @@ public class TelaInicialMenuHamburguer extends JFrame {
     }
 
 
+    private JPanel criarSubmenu(String titulo, String[] opcoes, ImageIcon[] icones) {
+        JPanel painel = new JPanel();
+        painel.setLayout(new BoxLayout(painel, BoxLayout.Y_AXIS));
+        painel.setBackground(new Color(245, 245, 245));
+        painel.setVisible(false); // Submenu inicialmente oculto
+
+        for (int i = 0; i < opcoes.length; i++) {
+            JButton item = new JButton(opcoes[i]);
+
+            // Definir ícone para o botão, se houver
+            if (icones != null && icones.length > i) {
+                item.setIcon(icones[i]);
+                item.setHorizontalTextPosition(SwingConstants.RIGHT); // Ícone à esquerda do texto
+                item.setIconTextGap(2); // Distância entre ícone e texto
+            }
+
+            item.setBackground(Color.WHITE);
+            item.setFont(new Font("Arial", Font.BOLD, 12));
+            item.setForeground(new Color(34, 139, 34));
+            item.setMaximumSize(new Dimension(180, 40)); // Botões com altura maior
+            item.setAlignmentX(Component.CENTER_ALIGNMENT); // Centralização horizontal
+            item.setFocusPainted(false); // Remove a borda ao clicar
+
+            // Adiciona espaçamento entre os botões
+            painel.add(Box.createVerticalStrut(5));
+            painel.add(item);
+        }
+        return painel;
+    }
+
+    /*
     // Função para criar os submenus
     private JPanel criarSubmenu(String titulo, String[] opcoes) {
         JPanel painel = new JPanel();
@@ -178,7 +234,7 @@ public class TelaInicialMenuHamburguer extends JFrame {
             painel.add(item);
         }
         return painel;
-    }
+    }*/
 
     // Alterna o estado do menu lateral
     private void toggleMenu() {
