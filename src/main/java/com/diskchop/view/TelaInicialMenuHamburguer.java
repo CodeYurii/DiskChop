@@ -17,11 +17,13 @@ public class TelaInicialMenuHamburguer extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
 
+
         // ** CABEÇALHO SUPERIOR **
         JPanel cabecalho = new JPanel();
-        cabecalho.setBackground(new Color(34, 139, 34)); // Verde escuro agradável
+        cabecalho.setBackground(new Color(173, 216, 170)); // Verde escuro agradável
         cabecalho.setPreferredSize(new Dimension(getWidth(), 60));
         cabecalho.setLayout(new BorderLayout());
+
 
         // Botão do menu "hambúrguer"
         ImageIcon iconMenu = new ImageIcon(getClass().getResource("/icones/menu.png"));
@@ -33,7 +35,7 @@ public class TelaInicialMenuHamburguer extends JFrame {
         btnMenu.setFont(new Font("Arial", Font.BOLD, 20));
         btnMenu.setFocusPainted(false);
         btnMenu.setBorderPainted(false);
-        btnMenu.setBackground(new Color(34, 139, 34));
+        btnMenu.setBackground(new Color(173, 216, 170));
         btnMenu.setForeground(Color.WHITE);
 
         btnMenu.addActionListener(new ActionListener() {
@@ -44,7 +46,7 @@ public class TelaInicialMenuHamburguer extends JFrame {
         });
 
         JLabel titulo = new JLabel("DISK CHOPP SUZANO", SwingConstants.CENTER);
-        titulo.setFont(new Font("Arial", Font.BOLD, 20));
+        titulo.setFont(new Font("Arial", Font.BOLD, 36));
         titulo.setForeground(Color.WHITE);
 
         cabecalho.add(btnMenu, BorderLayout.WEST); // Ícone do menu à esquerda
@@ -52,7 +54,7 @@ public class TelaInicialMenuHamburguer extends JFrame {
 
         // ** MENU LATERAL DESLIZANTE **
         menuLateral = new JPanel();
-        menuLateral.setBackground(new Color(245, 245, 245)); // Cinza claro
+        menuLateral.setBackground(new Color(173, 216, 170)); // Cinza claro
         menuLateral.setPreferredSize(new Dimension(180, getHeight()));
         menuLateral.setLayout(new BoxLayout(menuLateral, BoxLayout.Y_AXIS)); // Itens em coluna
         menuLateral.setVisible(false); // Oculto inicialmente
@@ -142,13 +144,20 @@ public class TelaInicialMenuHamburguer extends JFrame {
 
 
         // ** ÁREA PRINCIPAL **
-        JPanel painelPrincipal = new JPanel();
-        painelPrincipal.setBackground(Color.WHITE);
+        /*JPanel painelPrincipal = new JPanel();
+        painelPrincipal.setBackground(new Color(250, 250, 250));
+        painelPrincipal.setLayout(new BorderLayout());*/
+        JPanel painelPrincipal = new JPanel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                // Carrega e desenha a imagem de fundo
+                Image imagemFundo = new ImageIcon(getClass().getResource("/icones/12.png")).getImage();
+                g.drawImage(imagemFundo, 0, 0, getWidth(), getHeight(), this);
+            }
+        };
         painelPrincipal.setLayout(new BorderLayout());
 
-        JLabel labelBoasVindas = new JLabel("Bem-vindo ao Sistema de Gestão!", SwingConstants.CENTER);
-        labelBoasVindas.setFont(new Font("Arial", Font.BOLD, 24));
-        painelPrincipal.add(labelBoasVindas, BorderLayout.CENTER);
 
         // Adiciona os painéis ao JFrame
         add(cabecalho, BorderLayout.NORTH); // Cabeçalho superior
@@ -162,7 +171,7 @@ public class TelaInicialMenuHamburguer extends JFrame {
     // Função para criar botões menores com ícones e associar submenu
     private JButton criarBotaoMenu(ImageIcon icone, JPanel submenu) {
         JButton botao = new JButton(icone);
-        botao.setBackground(Color.WHITE);
+        botao.setBackground(new Color(250,250,250));
         botao.setFont(new Font("Arial", Font.PLAIN, 14));
         botao.setFocusPainted(false);
         botao.setForeground(new Color(34, 139, 34)); // Verde no texto
@@ -188,7 +197,7 @@ public class TelaInicialMenuHamburguer extends JFrame {
     private JPanel criarSubmenu(String titulo, String[] opcoes, ImageIcon[] icones) {
         JPanel painel = new JPanel();
         painel.setLayout(new BoxLayout(painel, BoxLayout.Y_AXIS));
-        painel.setBackground(new Color(245, 245, 245));
+        painel.setBackground(new Color(173, 216, 170));
         painel.setVisible(false); // Submenu inicialmente oculto
 
         for (int i = 0; i < opcoes.length; i++) {
@@ -209,7 +218,7 @@ public class TelaInicialMenuHamburguer extends JFrame {
             item.setFocusPainted(false); // Remove a borda ao clicar
 
             // Adiciona espaçamento entre os botões
-            painel.add(Box.createVerticalStrut(5));
+            painel.add(Box.createVerticalStrut(2));
             painel.add(item);
         }
         return painel;
@@ -235,6 +244,8 @@ public class TelaInicialMenuHamburguer extends JFrame {
         }
         return painel;
     }*/
+
+
 
     // Alterna o estado do menu lateral
     private void toggleMenu() {
