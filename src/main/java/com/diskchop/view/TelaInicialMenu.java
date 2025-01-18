@@ -1,10 +1,10 @@
 package com.diskchop.view;
+import com.diskchop.controller.CarregadorIcones;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.List;
 
 public class TelaInicialMenu extends JFrame {
 
@@ -12,22 +12,30 @@ public class TelaInicialMenu extends JFrame {
     private JPanel menuLateral; // Painel do menu lateral
     private boolean menuAberto = false; // Estado do menu (aberto ou fechado)
     private JPanel painelSubmenuCadastro, painelSubmenuEstoque, painelSubmenuPedido, painelSubmenuFinanceiro;
-    private List<JPanel> submenusAbertos = new ArrayList<>();
-
+    JPanel submenuAberto = null;
+    JButton btnCadastro;
+    JButton btnPedido;
+    JButton btnMenu;
+    JButton btnEstoque;
+    JButton btnFinanceiro;
+    JButton btnAjuda;
+    JButton btnSair;
 
     public TelaInicialMenu() {
         // Configurações da janela principal
         setTitle("Software");
-        setExtendedState(JFrame.MAXIMIZED_BOTH); // Janela em tela cheia
+        setLayout(new BorderLayout()); // Ou outro layout que se adeque melhor ao seu design
+        setExtendedState(JFrame.MAXIMIZED_BOTH); // Maximiza a janela na inicialização
+        setUndecorated(true); // Se não quiser a barra de título, use setUndecorated(true)
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setLayout(new BorderLayout());
+        setLocationRelativeTo(null); // Centraliza a janela na tela (opcional)
+        setVisible(true); // Torna a janela visível
+
+
 
 
         // Botão do menu
-        ImageIcon iconMenu = new ImageIcon(getClass().getResource("/icones/menu2.png"));
-        Image imageMenu = iconMenu.getImage().getScaledInstance(32, 32, Image.SCALE_SMOOTH);
-        ImageIcon iconRedimensionadoMenu = new ImageIcon(imageMenu);
-        JButton btnMenu = new JButton(iconRedimensionadoMenu);
+        btnMenu = new JButton(CarregadorIcones.loadIcon("/icones/menu2.png",32,32));
         btnMenu.setMargin(new Insets(5, 5, 5, 5));
         btnMenu.setFocusPainted(false);
         btnMenu.setBorderPainted(false);
@@ -60,41 +68,108 @@ public class TelaInicialMenu extends JFrame {
         menuLateral.setVisible(false);
 
         //Botões Menu
-        ImageIcon iconCadastro = new ImageIcon(getClass().getResource("/icones/cadastro2.png"));
-        Image imageCadastro = iconCadastro.getImage().getScaledInstance(32, 32, Image.SCALE_SMOOTH);
-        ImageIcon iconRedimensionadoCadastro = new ImageIcon(imageCadastro);
-        JButton btnCadastro = criarBotaoMenu(iconRedimensionadoCadastro, painelSubmenuCadastro);
+        btnCadastro = criarBotaoMenu(CarregadorIcones.loadIcon("/icones/cadastro2.png",32, 32), painelSubmenuPedido);
         btnCadastro.setText("Cadastro");
+        btnCadastro.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (submenuAberto != painelSubmenuCadastro) {
+                    if (submenuAberto != null) {
+                        submenuAberto.setVisible(false); // Fecha o submenu aberto
+                    }
+                    painelSubmenuCadastro.setVisible(true); // Abre o submenu de Cadastro
+                    submenuAberto = painelSubmenuCadastro; // Atualiza o submenu aberto
+                } else {
+                    painelSubmenuCadastro.setVisible(false); // Fecha o submenu de Cadastro
+                    submenuAberto = null; // Nenhum submenu está aberto
+                }
+            }
+        });
 
-        ImageIcon iconPedido = new ImageIcon(getClass().getResource("/icones/pedido2.png"));
-        Image imagePedido = iconPedido.getImage().getScaledInstance(32, 32, Image.SCALE_SMOOTH);
-        ImageIcon iconRedimensionadoPedido = new ImageIcon(imagePedido);
-        JButton btnPedido = criarBotaoMenu(iconRedimensionadoPedido, painelSubmenuPedido);
-        btnPedido.setText("Pedidos");
+        btnPedido = criarBotaoMenu(CarregadorIcones.loadIcon("/icones/pedido2.png",32, 32), painelSubmenuPedido);
+        btnPedido.setText("Pedido");
+        btnPedido.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (submenuAberto != painelSubmenuPedido) {
+                    if (submenuAberto != null) {
+                        submenuAberto.setVisible(false); // Fecha o submenu aberto
+                    }
+                    painelSubmenuPedido.setVisible(true); // Abre o submenu de Pedido
+                    submenuAberto = painelSubmenuPedido; // Atualiza o submenu aberto
+                } else {
+                    painelSubmenuPedido.setVisible(false); // Fecha o submenu de Pedido
+                    submenuAberto = null; // Nenhum submenu está aberto
+                }
+            }
+        });
 
-        ImageIcon iconEstoque = new ImageIcon(getClass().getResource("/icones/estoqueBarril2.png"));
-        Image imageEstoque = iconEstoque.getImage().getScaledInstance(32, 32, Image.SCALE_SMOOTH);
-        ImageIcon iconRedimensionadoEstoque = new ImageIcon(imageEstoque);
-        JButton btnEstoque = criarBotaoMenu(iconRedimensionadoEstoque, painelSubmenuEstoque);
+        btnEstoque = criarBotaoMenu(CarregadorIcones.loadIcon("/icones/estoqueBarril2.png",32,32), painelSubmenuEstoque);
         btnEstoque.setText("Estoque");
+        btnEstoque.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (submenuAberto != painelSubmenuEstoque) {
+                    if (submenuAberto != null) {
+                        submenuAberto.setVisible(false); // Fecha o submenu aberto
+                    }
+                    painelSubmenuEstoque.setVisible(true); // Abre o submenu de Pedido
+                    submenuAberto = painelSubmenuEstoque; // Atualiza o submenu aberto
+                } else {
+                    painelSubmenuEstoque.setVisible(false); // Fecha o submenu de Pedido
+                    submenuAberto = null; // Nenhum submenu está aberto
+                }
+            }
+        });
 
-        ImageIcon iconFinanceiro = new ImageIcon(getClass().getResource("/icones/financeiro2.png"));
-        Image imageFinanceiro = iconFinanceiro.getImage().getScaledInstance(32, 32, Image.SCALE_SMOOTH);
-        ImageIcon iconRedimensionadoFinanceiro = new ImageIcon(imageFinanceiro);
-        JButton btnFinanceiro = criarBotaoMenu(iconRedimensionadoFinanceiro, painelSubmenuFinanceiro);
+        btnFinanceiro = criarBotaoMenu(CarregadorIcones.loadIcon("/icones/financeiro2.png",32,32), painelSubmenuFinanceiro);
         btnFinanceiro.setText("Financeiro");
+        btnFinanceiro.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (submenuAberto != painelSubmenuFinanceiro) {
+                    if (submenuAberto != null) {
+                        submenuAberto.setVisible(false); // Fecha o submenu aberto
+                    }
+                    painelSubmenuFinanceiro.setVisible(true); // Abre o submenu de Pedido
+                    submenuAberto = painelSubmenuFinanceiro; // Atualiza o submenu aberto
+                } else {
+                    painelSubmenuFinanceiro.setVisible(false); // Fecha o submenu de Pedido
+                    submenuAberto = null; // Nenhum submenu está aberto
+                }
+            }
+        });
 
-        ImageIcon iconAjuda = new ImageIcon(getClass().getResource("/icones/ajuda.png"));
-        Image imageAjuda = iconAjuda.getImage().getScaledInstance(32, 32, Image.SCALE_SMOOTH);
-        ImageIcon iconRedimensionadoAjuda = new ImageIcon(imageAjuda);
-        JButton btnAjuda = criarBotaoMenu(iconRedimensionadoAjuda, null);
+        btnAjuda = criarBotaoMenu(CarregadorIcones.loadIcon("/icones/ajuda.png",32,32), null);
         btnAjuda.setText("Ajuda");
-
-        ImageIcon iconSair = new ImageIcon(getClass().getResource("/icones/sair2.png"));
-        Image imageSair = iconSair.getImage().getScaledInstance(32, 32, Image.SCALE_SMOOTH);
-        ImageIcon iconRedimensionadoSair = new ImageIcon(imageSair);
-        JButton btnSair = criarBotaoMenu(iconRedimensionadoSair, null);
+        btnAjuda.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Fechar todos os submenus abertos
+                if (submenuAberto != null) {
+                    submenuAberto.setVisible(false); // Fecha o submenu aberto
+                    submenuAberto = null; // Nenhum submenu está aberto
+                }
+            }
+        });
+        
+        btnSair = criarBotaoMenu(CarregadorIcones.loadIcon("/icones/sair2.png",32,32), null);
         btnSair.setText("Sair");
+        btnSair.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int resposta = JOptionPane.showConfirmDialog(null,
+                        "Deseja sair?",
+                        "Confirmar Saída",
+                        JOptionPane.YES_NO_OPTION,
+                        JOptionPane.QUESTION_MESSAGE);
+
+                // Se o usuário clicar em "Sim", fecha o programa
+                if (resposta == JOptionPane.YES_OPTION) {
+                    System.exit(0); // Fecha o programa
+                }
+            }
+        });
 
         // Criar submenus
         ImageIcon[] iconesCadastro = {
@@ -158,31 +233,21 @@ public class TelaInicialMenu extends JFrame {
         setVisible(true);
     }
 
+
+
     // Função para criar botões
     private JButton criarBotaoMenu(ImageIcon icone, JPanel submenu) {
         JButton botao = new JButton(icone);
         botao.setBackground(new Color(250,250,250));
         botao.setFont(new Font("Roboto", Font.BOLD, 16));
         botao.setFocusPainted(false);
-        botao.setForeground(new Color(34, 139, 34)); // Verde no texto
+        botao.setForeground(new Color(34, 139, 34));
         botao.setMaximumSize(new Dimension(180, 60));
-        botao.setHorizontalAlignment(SwingConstants.LEFT); // Conteúdo do botão à esquerda
-        botao.setHorizontalTextPosition(SwingConstants.RIGHT); // Texto à direita do ícone
+        botao.setHorizontalAlignment(SwingConstants.LEFT);
+        botao.setHorizontalTextPosition(SwingConstants.RIGHT);
         botao.setMargin(new Insets(0, 10, 0, 5));
         botao.setIconTextGap(10);
         botao.setAlignmentX(Component.CENTER_ALIGNMENT);
-
-        // Exibe/oculta o submenu quando o botão é clicado
-        if (submenu != null) {
-            botao.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    submenu.setVisible(!submenu.isVisible());
-                    menuLateral.revalidate(); // Atualiza o layout do painel lateral
-                    menuLateral.repaint(); // Alterna a visibilidade do submenu
-                }
-            });
-        }
         return botao;
     }
 
@@ -191,7 +256,7 @@ public class TelaInicialMenu extends JFrame {
         JPanel painel = new JPanel();
         painel.setLayout(new BoxLayout(painel, BoxLayout.Y_AXIS));
         painel.setBackground(new Color(173, 216, 170));
-        painel.setVisible(false); // Submenu inicialmente oculto
+        painel.setVisible(false);
 
         for (int i = 0; i < opcoes.length; i++) {
             JButton item = new JButton(opcoes[i]);
@@ -218,10 +283,64 @@ public class TelaInicialMenu extends JFrame {
         return painel;
     }
 
+
+    public void controlarSubmenu(JPanel submenu) {
+        if (submenuAberto != submenu) {
+            if (submenuAberto != null) {
+                submenuAberto.setVisible(false); // Fecha o submenu aberto
+            }
+            submenu.setVisible(true); // Abre o submenu clicado
+            submenuAberto = submenu; // Atualiza o submenu aberto
+        } else {
+            submenu.setVisible(false); // Fecha o submenu se ele já estiver aberto
+            submenuAberto = null; // Nenhum submenu está aberto
+        }
+    }
+
     // Alterna o estado do menu lateral
     private void toggleMenu() {
         menuAberto = !menuAberto;
         menuLateral.setVisible(menuAberto); // Mostra ou oculta o menu
+    }
+
+    public JPanel getMenuLateral() {
+        return menuLateral;
+    }
+
+    public void setMenuLateral(JPanel menuLateral) {
+        this.menuLateral = menuLateral;
+    }
+
+    public JPanel getPainelSubmenuCadastro() {
+        return painelSubmenuCadastro;
+    }
+
+    public void setPainelSubmenuCadastro(JPanel painelSubmenuCadastro) {
+        this.painelSubmenuCadastro = painelSubmenuCadastro;
+    }
+
+    public JPanel getPainelSubmenuEstoque() {
+        return painelSubmenuEstoque;
+    }
+
+    public void setPainelSubmenuEstoque(JPanel painelSubmenuEstoque) {
+        this.painelSubmenuEstoque = painelSubmenuEstoque;
+    }
+
+    public JPanel getPainelSubmenuPedido() {
+        return painelSubmenuPedido;
+    }
+
+    public void setPainelSubmenuPedido(JPanel painelSubmenuPedido) {
+        this.painelSubmenuPedido = painelSubmenuPedido;
+    }
+
+    public JPanel getPainelSubmenuFinanceiro() {
+        return painelSubmenuFinanceiro;
+    }
+
+    public void setPainelSubmenuFinanceiro(JPanel painelSubmenuFinanceiro) {
+        this.painelSubmenuFinanceiro = painelSubmenuFinanceiro;
     }
 
     public static void main(String[] args) {
