@@ -5,31 +5,45 @@ import com.diskchop.view.TelaInicialMenu;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class MainController {
-
     private TelaInicialMenu telaInicialMenu;
 
     public MainController() {
-        initViews();
+    }
+
+    public MainController(TelaInicialMenu telaInicialMenu) {
+        this.telaInicialMenu = telaInicialMenu;
+       // configureActions();
+    }
+
+    public void toggleMenu() {
+        boolean menuAberto = telaInicialMenu.isMenuAberto();
+        menuAberto = !menuAberto;
+        telaInicialMenu.setMenuAberto(menuAberto);
+        telaInicialMenu.getMenuLateral().setVisible(menuAberto);
+        telaInicialMenu.getMenuLateral().revalidate();
+        telaInicialMenu.getMenuLateral().repaint();
+
+        System.out.println("Menu aberto: " + menuAberto);
+        System.out.println("Menu visível: " + telaInicialMenu.getMenuLateral().isVisible());
+
     }
 
     private void initViews() {
         // Inicializa a tela inicial
-        telaInicialMenu = new TelaInicialMenu();
+        //telaInicialMenu = new TelaInicialMenu();
 
         // Configura as ações dos botões principais
         configureActions();
     }
 
-    private void configureActions() {
+    public void configureActions() {
         // Configura o botão de cadastro de clientes
-
-
+        telaInicialMenu.getBtnMenu().addActionListener(e -> toggleMenu());
         //telaInicial.addCadastroButtonListener(e -> openCadastroClientes());
 
-        // Configura outros botões aqui...
-        // Exemplo: telaInicial.addEstoqueButtonListener(e -> openEstoqueView());
     }
 
     private void openCadastroClientes() {
@@ -38,17 +52,12 @@ public class MainController {
         cadastroClientes.setVisible(true);
     }
 
-    public void abreFechaMenu() {
-        boolean isMenuVisible = telaInicialMenu.getMenuLateral().isVisible();
-        telaInicialMenu.getMenuLateral().setVisible(!isMenuVisible);
-    }
+
 
 
     public void abreFechaSubMenu(JMenu submenu) {
 
     }
 
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(MainController::new);
-    }
+
 }

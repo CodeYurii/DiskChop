@@ -1,5 +1,6 @@
 package com.diskchop.view;
 import com.diskchop.controller.CarregadorIcones;
+import com.diskchop.controller.MainController;
 
 import javax.swing.*;
 import java.awt.*;
@@ -7,7 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class TelaInicialMenu extends JFrame {
-
+    private MainController controller;
     //Variáveis globais
     private JPanel menuLateral; // Painel do menu lateral
     private boolean menuAberto = false; // Estado do menu (aberto ou fechado)
@@ -21,7 +22,15 @@ public class TelaInicialMenu extends JFrame {
     JButton btnAjuda;
     JButton btnSair;
 
+    /*public TelaInicialMenu(MainController controller) {
+        this.controller = controller;
+        inicializarComponentes();
+    }*/
     public TelaInicialMenu() {
+        inicializarComponentes();
+    }
+
+    private void inicializarComponentes() {
         // Configurações da janela principal
         setTitle("Software");
         setLayout(new BorderLayout()); // Ou outro layout que se adeque melhor ao seu design
@@ -41,12 +50,8 @@ public class TelaInicialMenu extends JFrame {
         btnMenu.setBorderPainted(false);
         btnMenu.setBackground(new Color(248, 248, 248));
         btnMenu.setForeground(Color.WHITE);
-        btnMenu.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                toggleMenu(); // Alterna o estado do menu
-            }
-        });
+        //btnMenu.addActionListener(e -> controller.toggleMenu());
+
 
         // Cabeçalho Superior
         JPanel cabecalho = new JPanel();
@@ -73,16 +78,7 @@ public class TelaInicialMenu extends JFrame {
         btnCadastro.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (submenuAberto != painelSubmenuCadastro) {
-                    if (submenuAberto != null) {
-                        submenuAberto.setVisible(false); // Fecha o submenu aberto
-                    }
-                    painelSubmenuCadastro.setVisible(true); // Abre o submenu de Cadastro
-                    submenuAberto = painelSubmenuCadastro; // Atualiza o submenu aberto
-                } else {
-                    painelSubmenuCadastro.setVisible(false); // Fecha o submenu de Cadastro
-                    submenuAberto = null; // Nenhum submenu está aberto
-                }
+                controlarSubmenu(painelSubmenuCadastro);
             }
         });
 
@@ -91,16 +87,7 @@ public class TelaInicialMenu extends JFrame {
         btnPedido.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (submenuAberto != painelSubmenuPedido) {
-                    if (submenuAberto != null) {
-                        submenuAberto.setVisible(false); // Fecha o submenu aberto
-                    }
-                    painelSubmenuPedido.setVisible(true); // Abre o submenu de Pedido
-                    submenuAberto = painelSubmenuPedido; // Atualiza o submenu aberto
-                } else {
-                    painelSubmenuPedido.setVisible(false); // Fecha o submenu de Pedido
-                    submenuAberto = null; // Nenhum submenu está aberto
-                }
+                controlarSubmenu(painelSubmenuPedido);
             }
         });
 
@@ -109,16 +96,7 @@ public class TelaInicialMenu extends JFrame {
         btnEstoque.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (submenuAberto != painelSubmenuEstoque) {
-                    if (submenuAberto != null) {
-                        submenuAberto.setVisible(false); // Fecha o submenu aberto
-                    }
-                    painelSubmenuEstoque.setVisible(true); // Abre o submenu de Pedido
-                    submenuAberto = painelSubmenuEstoque; // Atualiza o submenu aberto
-                } else {
-                    painelSubmenuEstoque.setVisible(false); // Fecha o submenu de Pedido
-                    submenuAberto = null; // Nenhum submenu está aberto
-                }
+                controlarSubmenu(painelSubmenuEstoque);
             }
         });
 
@@ -127,16 +105,7 @@ public class TelaInicialMenu extends JFrame {
         btnFinanceiro.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (submenuAberto != painelSubmenuFinanceiro) {
-                    if (submenuAberto != null) {
-                        submenuAberto.setVisible(false); // Fecha o submenu aberto
-                    }
-                    painelSubmenuFinanceiro.setVisible(true); // Abre o submenu de Pedido
-                    submenuAberto = painelSubmenuFinanceiro; // Atualiza o submenu aberto
-                } else {
-                    painelSubmenuFinanceiro.setVisible(false); // Fecha o submenu de Pedido
-                    submenuAberto = null; // Nenhum submenu está aberto
-                }
+                controlarSubmenu(painelSubmenuFinanceiro);
             }
         });
 
@@ -152,7 +121,7 @@ public class TelaInicialMenu extends JFrame {
                 }
             }
         });
-        
+
         btnSair = criarBotaoMenu(CarregadorIcones.loadIcon("/icones/sair2.png",32,32), null);
         btnSair.setText("Sair");
         btnSair.addActionListener(new ActionListener() {
@@ -233,7 +202,13 @@ public class TelaInicialMenu extends JFrame {
         setVisible(true);
     }
 
+    public MainController getController() {
+        return controller;
+    }
 
+    public void setController(MainController controller) {
+        this.controller = controller;
+    }
 
     // Função para criar botões
     private JButton criarBotaoMenu(ImageIcon icone, JPanel submenu) {
@@ -297,11 +272,6 @@ public class TelaInicialMenu extends JFrame {
         }
     }
 
-    // Alterna o estado do menu lateral
-    private void toggleMenu() {
-        menuAberto = !menuAberto;
-        menuLateral.setVisible(menuAberto); // Mostra ou oculta o menu
-    }
 
     public JPanel getMenuLateral() {
         return menuLateral;
@@ -343,7 +313,79 @@ public class TelaInicialMenu extends JFrame {
         this.painelSubmenuFinanceiro = painelSubmenuFinanceiro;
     }
 
+    public boolean isMenuAberto() {
+        return menuAberto;
+    }
+
+    public void setMenuAberto(boolean menuAberto) {
+        this.menuAberto = menuAberto;
+    }
+
+    public JPanel getSubmenuAberto() {
+        return submenuAberto;
+    }
+
+    public void setSubmenuAberto(JPanel submenuAberto) {
+        this.submenuAberto = submenuAberto;
+    }
+
+    public JButton getBtnSair() {
+        return btnSair;
+    }
+
+    public void setBtnSair(JButton btnSair) {
+        this.btnSair = btnSair;
+    }
+
+    public JButton getBtnAjuda() {
+        return btnAjuda;
+    }
+
+    public void setBtnAjuda(JButton btnAjuda) {
+        this.btnAjuda = btnAjuda;
+    }
+
+    public JButton getBtnFinanceiro() {
+        return btnFinanceiro;
+    }
+
+    public void setBtnFinanceiro(JButton btnFinanceiro) {
+        this.btnFinanceiro = btnFinanceiro;
+    }
+
+    public JButton getBtnEstoque() {
+        return btnEstoque;
+    }
+
+    public void setBtnEstoque(JButton btnEstoque) {
+        this.btnEstoque = btnEstoque;
+    }
+
+    public JButton getBtnMenu() {
+        return btnMenu;
+    }
+
+    public void setBtnMenu(JButton btnMenu) {
+        this.btnMenu = btnMenu;
+    }
+
+    public JButton getBtnPedido() {
+        return btnPedido;
+    }
+
+    public void setBtnPedido(JButton btnPedido) {
+        this.btnPedido = btnPedido;
+    }
+
+    public JButton getBtnCadastro() {
+        return btnCadastro;
+    }
+
+    public void setBtnCadastro(JButton btnCadastro) {
+        this.btnCadastro = btnCadastro;
+    }
+
     public static void main(String[] args) {
-        new TelaInicialMenu();
+
     }
 }
