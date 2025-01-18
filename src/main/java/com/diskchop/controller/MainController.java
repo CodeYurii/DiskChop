@@ -31,6 +31,19 @@ public class MainController {
 
     }
 
+    public void toggleSubMenu(JPanel subMenu){
+        if (telaInicialMenu.getSubmenuAberto() != subMenu) {
+            if (telaInicialMenu.getSubmenuAberto() != null) {
+                telaInicialMenu.getSubmenuAberto().setVisible(false); // Fecha o submenu aberto
+            }
+            subMenu.setVisible(true); // Abre o submenu clicado
+            telaInicialMenu.setSubmenuAberto(subMenu); // Atualiza o submenu aberto
+        } else {
+            subMenu.setVisible(false); // Fecha o submenu se ele já estiver aberto
+            telaInicialMenu.setSubmenuAberto(subMenu); // Nenhum submenu está aberto
+        }
+    }
+
     private void initViews() {
         // Inicializa a tela inicial
         //telaInicialMenu = new TelaInicialMenu();
@@ -43,6 +56,8 @@ public class MainController {
         // Configura o botão de cadastro de clientes
         telaInicialMenu.getBtnMenu().addActionListener(e -> toggleMenu());
         //telaInicial.addCadastroButtonListener(e -> openCadastroClientes());
+        JPanel painelSubmenuCadastro = telaInicialMenu.getPainelSubmenuCadastro();
+        telaInicialMenu.getBtnCadastro().addActionListener(e -> toggleSubMenu(painelSubmenuCadastro));
 
     }
 

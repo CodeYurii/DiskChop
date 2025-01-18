@@ -75,12 +75,6 @@ public class TelaInicialMenu extends JFrame {
         //Botões Menu
         btnCadastro = criarBotaoMenu(CarregadorIcones.loadIcon("/icones/cadastro2.png",32, 32), painelSubmenuPedido);
         btnCadastro.setText("Cadastro");
-        btnCadastro.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                controlarSubmenu(painelSubmenuCadastro);
-            }
-        });
 
         btnPedido = criarBotaoMenu(CarregadorIcones.loadIcon("/icones/pedido2.png",32, 32), painelSubmenuPedido);
         btnPedido.setText("Pedido");
@@ -195,6 +189,8 @@ public class TelaInicialMenu extends JFrame {
         painelPrincipal.setLayout(new BorderLayout());
         painelPrincipal.setBackground(new Color(0, 77, 64));
 
+        double MinhaContaBancaria = 0;
+
         // Adiciona os painéis ao JFrame
         add(cabecalho, BorderLayout.NORTH); // Cabeçalho superior
         add(menuLateral, BorderLayout.WEST); // Menu lateral
@@ -202,13 +198,6 @@ public class TelaInicialMenu extends JFrame {
         setVisible(true);
     }
 
-    public MainController getController() {
-        return controller;
-    }
-
-    public void setController(MainController controller) {
-        this.controller = controller;
-    }
 
     // Função para criar botões
     private JButton criarBotaoMenu(ImageIcon icone, JPanel submenu) {
