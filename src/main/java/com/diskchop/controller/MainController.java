@@ -15,7 +15,6 @@ public class MainController {
 
     public MainController(TelaInicialMenu telaInicialMenu) {
         this.telaInicialMenu = telaInicialMenu;
-       // configureActions();
     }
 
     public void toggleMenu() {
@@ -25,23 +24,15 @@ public class MainController {
         telaInicialMenu.getMenuLateral().setVisible(menuAberto);
         telaInicialMenu.getMenuLateral().revalidate();
         telaInicialMenu.getMenuLateral().repaint();
-
-        System.out.println("Menu aberto: " + menuAberto);
-        System.out.println("Menu visível: " + telaInicialMenu.getMenuLateral().isVisible());
-
     }
 
     public void toggleSubMenu(JPanel subMenu){
-        if (telaInicialMenu.getSubmenuAberto() != subMenu) {
-            if (telaInicialMenu.getSubmenuAberto() != null) {
-                telaInicialMenu.getSubmenuAberto().setVisible(false); // Fecha o submenu aberto
-            }
-            subMenu.setVisible(true); // Abre o submenu clicado
-            telaInicialMenu.setSubmenuAberto(subMenu); // Atualiza o submenu aberto
-        } else {
-            subMenu.setVisible(false); // Fecha o submenu se ele já estiver aberto
-            telaInicialMenu.setSubmenuAberto(subMenu); // Nenhum submenu está aberto
-        }
+        JPanel aberto = telaInicialMenu.getSubmenuAberto();
+        if (aberto != null) aberto.setVisible(false);
+        // Verifica se o submenu clicado é o que já está aberto
+        boolean isSameSubMenu = aberto == subMenu;
+        subMenu.setVisible(!isSameSubMenu); // Se for o mesmo, fecha, caso contrário, abre
+        telaInicialMenu.setSubmenuAberto(isSameSubMenu ? null : subMenu); // Atualiza o submenu aberto
     }
 
     private void initViews() {
@@ -56,8 +47,14 @@ public class MainController {
         // Configura o botão de cadastro de clientes
         telaInicialMenu.getBtnMenu().addActionListener(e -> toggleMenu());
         //telaInicial.addCadastroButtonListener(e -> openCadastroClientes());
-        JPanel painelSubmenuCadastro = telaInicialMenu.getPainelSubmenuCadastro();
-        telaInicialMenu.getBtnCadastro().addActionListener(e -> toggleSubMenu(painelSubmenuCadastro));
+        //JPanel painelSubmenuCadastro = telaInicialMenu.getPainelSubmenuCadastro();
+        telaInicialMenu.getBtnCadastro().addActionListener(e -> toggleSubMenu(telaInicialMenu.getPainelSubmenuCadastro()));
+        telaInicialMenu.getBtnEstoque().addActionListener(e -> toggleSubMenu(telaInicialMenu.getPainelSubmenuEstoque()));
+        telaInicialMenu.getBtnPedido().addActionListener(e -> toggleSubMenu(telaInicialMenu.getPainelSubmenuPedido()));
+        telaInicialMenu.getBtnFinanceiro().addActionListener(e -> toggleSubMenu(telaInicialMenu.getPainelSubmenuFinanceiro()));
+        telaInicialMenu.getBtnCadastroCliente().addActionListener(e -> {
+            openCadastroClientes();
+        });
 
     }
 
@@ -66,13 +63,5 @@ public class MainController {
         CadastroClientes cadastroClientes = new CadastroClientes(telaInicialMenu, true);
         cadastroClientes.setVisible(true);
     }
-
-
-
-
-    public void abreFechaSubMenu(JMenu submenu) {
-
-    }
-
 
 }
