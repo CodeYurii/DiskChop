@@ -1,14 +1,10 @@
 package com.diskchop.view;
 import com.diskchop.controller.CarregadorIcones;
-import com.diskchop.controller.MainController;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class TelaInicialMenu extends JFrame {
-    private MainController controller;
 
     private JPanel menuLateral; // Painel do menu lateral
     private boolean menuAberto = false; // Estado do menu (aberto ou fechado)
@@ -70,24 +66,24 @@ public class TelaInicialMenu extends JFrame {
         // Criar submenus
         btnCadastroCliente = criarBotaoSubMenu(CarregadorIcones.loadIcon("/icones/cadastroUsuario.png",32,32), "Cadastrar Cliente");
         btnCadastroProduto = criarBotaoSubMenu(CarregadorIcones.loadIcon("/icones/cadastroProduto.png",32,32), "Cadastrar Produto");
-        painelSubmenuCadastro = subMenu(btnCadastroCliente);
+        painelSubmenuCadastro = criarPainelSubMenu(btnCadastroCliente);
         painelSubmenuCadastro.add(btnCadastroProduto);
 
         btnEstoqueBarris = criarBotaoSubMenu(CarregadorIcones.loadIcon("/icones/estoqueBarril.png",32,32), "Estoque Barris");
         btnEstoqueChoppeiras = criarBotaoSubMenu(CarregadorIcones.loadIcon("/icones/choppeira.png",32,32), "Estoque Choppeiras");
         btnEstoqueCilindros = criarBotaoSubMenu(CarregadorIcones.loadIcon("/icones/estoqueCilindro.png",32,32), "Estoque Cilindros");
-        painelSubmenuEstoque = subMenu(btnEstoqueBarris);
+        painelSubmenuEstoque = criarPainelSubMenu(btnEstoqueBarris);
         painelSubmenuEstoque.add(btnEstoqueChoppeiras);
         painelSubmenuEstoque.add(btnEstoqueCilindros);
 
         btnPedidoRegistrar = criarBotaoSubMenu(CarregadorIcones.loadIcon("/icones/registrarPedido.png",32,32), "Registrar Pedido");
         btnPedidoConsultar = criarBotaoSubMenu(CarregadorIcones.loadIcon("/icones/consultarPedido.png",32,32), "Consultar Pedido");
-        painelSubmenuPedido = subMenu(btnPedidoRegistrar);
+        painelSubmenuPedido = criarPainelSubMenu(btnPedidoRegistrar);
         painelSubmenuPedido.add(btnPedidoConsultar);
 
         btnFinanceiroEntradas = criarBotaoSubMenu(CarregadorIcones.loadIcon("/icones/entradaSaida2.png",32,32), "Entrada e Saídas");
         btnFinanceiroResumo = criarBotaoSubMenu(CarregadorIcones.loadIcon("/icones/relatorio.png",32,32), "Resumo");
-        painelSubmenuFinanceiro = subMenu(btnFinanceiroEntradas);
+        painelSubmenuFinanceiro = criarPainelSubMenu(btnFinanceiroEntradas);
         painelSubmenuFinanceiro.add(btnFinanceiroResumo);
 
         // Adiciona os botões e submenus ao painel lateral
@@ -155,7 +151,7 @@ public class TelaInicialMenu extends JFrame {
         return botao;
      }
 
-     private JPanel subMenu(JButton botao){
+     private JPanel criarPainelSubMenu(JButton botao){
          JPanel painel = new JPanel();
          painel.setLayout(new BoxLayout(painel, BoxLayout.Y_AXIS));
          painel.setBackground(new Color(173, 216, 170));
