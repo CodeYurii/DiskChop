@@ -21,6 +21,16 @@ public class TelaInicialMenu extends JFrame {
     JButton btnFinanceiro;
     JButton btnAjuda;
     JButton btnSair;
+    JButton btnCadastroCliente;
+    JButton btnCadastroProduto;
+    JButton btnEstoqueBarris;
+    JButton btnEstoqueChoppeiras;
+    JButton btnEstoqueCilindros;
+    JButton btnPedidoRegistrar;
+    JButton btnPedidoConsultar;
+    JButton btnFinanceiroEntradas;
+    JButton btnFinanceiroResumo;
+
 
     /*public TelaInicialMenu(MainController controller) {
         this.controller = controller;
@@ -73,10 +83,10 @@ public class TelaInicialMenu extends JFrame {
         menuLateral.setVisible(false);
 
         //Botões Menu
-        btnCadastro = criarBotaoMenu(CarregadorIcones.loadIcon("/icones/cadastro2.png",32, 32), painelSubmenuPedido);
+        btnCadastro = criarBotaoMenu(CarregadorIcones.loadIcon("/icones/cadastro2.png",32, 32));
         btnCadastro.setText("Cadastro");
 
-        btnPedido = criarBotaoMenu(CarregadorIcones.loadIcon("/icones/pedido2.png",32, 32), painelSubmenuPedido);
+        btnPedido = criarBotaoMenu(CarregadorIcones.loadIcon("/icones/pedido2.png",32, 32));
         btnPedido.setText("Pedido");
         btnPedido.addActionListener(new ActionListener() {
             @Override
@@ -85,7 +95,7 @@ public class TelaInicialMenu extends JFrame {
             }
         });
 
-        btnEstoque = criarBotaoMenu(CarregadorIcones.loadIcon("/icones/estoqueBarril2.png",32,32), painelSubmenuEstoque);
+        btnEstoque = criarBotaoMenu(CarregadorIcones.loadIcon("/icones/estoqueBarril2.png",32,32));
         btnEstoque.setText("Estoque");
         btnEstoque.addActionListener(new ActionListener() {
             @Override
@@ -94,7 +104,7 @@ public class TelaInicialMenu extends JFrame {
             }
         });
 
-        btnFinanceiro = criarBotaoMenu(CarregadorIcones.loadIcon("/icones/financeiro2.png",32,32), painelSubmenuFinanceiro);
+        btnFinanceiro = criarBotaoMenu(CarregadorIcones.loadIcon("/icones/financeiro2.png",32,32));
         btnFinanceiro.setText("Financeiro");
         btnFinanceiro.addActionListener(new ActionListener() {
             @Override
@@ -103,7 +113,7 @@ public class TelaInicialMenu extends JFrame {
             }
         });
 
-        btnAjuda = criarBotaoMenu(CarregadorIcones.loadIcon("/icones/ajuda.png",32,32), null);
+        btnAjuda = criarBotaoMenu(CarregadorIcones.loadIcon("/icones/ajuda.png",32,32));
         btnAjuda.setText("Ajuda");
         btnAjuda.addActionListener(new ActionListener() {
             @Override
@@ -116,7 +126,7 @@ public class TelaInicialMenu extends JFrame {
             }
         });
 
-        btnSair = criarBotaoMenu(CarregadorIcones.loadIcon("/icones/sair2.png",32,32), null);
+        btnSair = criarBotaoMenu(CarregadorIcones.loadIcon("/icones/sair2.png",32,32));
         btnSair.setText("Sair");
         btnSair.addActionListener(new ActionListener() {
             @Override
@@ -135,34 +145,27 @@ public class TelaInicialMenu extends JFrame {
         });
 
         // Criar submenus
-        ImageIcon[] iconesCadastro = {
-                new ImageIcon(getClass().getResource("/icones/cadastroUsuario.png")),
-                new ImageIcon(getClass().getResource("/icones/cadastroProduto.png"))
-        };
-        String[] opcoesCadastro = {"Cadastrar Cliente", "Cadastrar Produto"};
-        painelSubmenuCadastro = criarSubmenu("Cadastro", opcoesCadastro, iconesCadastro);
+        btnCadastroCliente = criarBotaoSubMenu(CarregadorIcones.loadIcon("/icones/cadastroUsuario.png",32,32), "Cadastrar Cliente");
+        btnCadastroProduto = criarBotaoSubMenu(CarregadorIcones.loadIcon("/icones/cadastroProduto.png",32,32), "Cadastrar Produto");
+        painelSubmenuCadastro = subMenu("Cadastro", btnCadastroCliente);
+        painelSubmenuCadastro.add(btnCadastroProduto);
 
-        ImageIcon[] iconesEstoque = {
-                new ImageIcon(getClass().getResource("/icones/estoqueBarril.png")),
-                new ImageIcon(getClass().getResource("/icones/choppeira.png")),
-                new ImageIcon(getClass().getResource("/icones/estoqueCilindro.png"))
-        };
-        String[] opcoesEstoque = {"Estoque Barris", "Estoque Choppeiras", "Estoque Cilindros"};
-        painelSubmenuEstoque = criarSubmenu("Estoque", opcoesEstoque, iconesEstoque);
+        btnEstoqueBarris = criarBotaoSubMenu(CarregadorIcones.loadIcon("/icones/estoqueBarril.png",32,32), "Estoque Barris");
+        btnEstoqueChoppeiras = criarBotaoSubMenu(CarregadorIcones.loadIcon("/icones/choppeira.png",32,32), "Estoque Choppeiras");
+        btnEstoqueCilindros = criarBotaoSubMenu(CarregadorIcones.loadIcon("/icones/estoqueCilindro.png",32,32), "Estoque Cilindros");
+        painelSubmenuEstoque = subMenu("Estoque", btnEstoqueBarris);
+        painelSubmenuEstoque.add(btnEstoqueChoppeiras);
+        painelSubmenuEstoque.add(btnEstoqueCilindros);
 
-        ImageIcon[] iconesPedido = {
-                new ImageIcon(getClass().getResource("/icones/registrarPedido.png")),
-                new ImageIcon(getClass().getResource("/icones/consultarPedido.png"))
-        };
-        String[] opcoesPedido = {"Registrar Pedido", "Consultar Pedido"};
-        painelSubmenuPedido = criarSubmenu("Pedido", opcoesPedido, iconesPedido);
+        btnPedidoRegistrar = criarBotaoSubMenu(CarregadorIcones.loadIcon("/icones/registrarPedido.png",32,32), "Registrar Pedido");
+        btnPedidoConsultar = criarBotaoSubMenu(CarregadorIcones.loadIcon("/icones/consultarPedido.png",32,32), "Consultar Pedido");
+        painelSubmenuPedido = subMenu("Pedido", btnPedidoRegistrar);
+        painelSubmenuPedido.add(btnPedidoConsultar);
 
-        ImageIcon[] iconesFinanceiro = {
-                new ImageIcon(getClass().getResource("/icones/entradaSaida2.png")),
-                new ImageIcon(getClass().getResource("/icones/relatorio.png"))
-        };
-        String[] opcoesFinanceiro = {"Entrada e Saídas", "Resumo"};
-        painelSubmenuFinanceiro = criarSubmenu("Financeiro", opcoesFinanceiro, iconesFinanceiro);
+        btnFinanceiroEntradas = criarBotaoSubMenu(CarregadorIcones.loadIcon("/icones/entradaSaida2.png",32,32), "Entrada e Saídas");
+        btnFinanceiroResumo = criarBotaoSubMenu(CarregadorIcones.loadIcon("/icones/relatorio.png",32,32), "Resumo");
+        painelSubmenuFinanceiro = subMenu("Financeiro", btnFinanceiroEntradas);
+        painelSubmenuFinanceiro.add(btnFinanceiroResumo);
 
         // Adiciona os botões e submenus ao painel lateral
         menuLateral.add(btnCadastro);
@@ -200,7 +203,7 @@ public class TelaInicialMenu extends JFrame {
 
 
     // Função para criar botões
-    private JButton criarBotaoMenu(ImageIcon icone, JPanel submenu) {
+    private JButton criarBotaoMenu(ImageIcon icone) {
         JButton botao = new JButton(icone);
         botao.setBackground(new Color(250,250,250));
         botao.setFont(new Font("Roboto", Font.BOLD, 16));
@@ -215,7 +218,32 @@ public class TelaInicialMenu extends JFrame {
         return botao;
     }
 
+    private JButton criarBotaoSubMenu(ImageIcon icone, String descricao) {
+        JButton botao = new JButton(icone);
+        botao.setText(descricao);
+        botao.setBackground(Color.WHITE);
+        botao.setFont(new Font("Roboto", Font.ITALIC, 12));
+        botao.setForeground(new Color(34, 139, 34));
+        botao.setMaximumSize(new Dimension(180, 40));
+        botao.setHorizontalAlignment(SwingConstants.LEFT);
+        botao.setHorizontalTextPosition(SwingConstants.RIGHT);
+        botao.setMargin(new Insets(0, 10, 0, 5));
+        botao.setIconTextGap(10);
+        botao.setAlignmentX(Component.CENTER_ALIGNMENT);
+        botao.setFocusPainted(false);
+        return botao;
+     }
 
+     private JPanel subMenu(String titulo, JButton botao){
+         JPanel painel = new JPanel();
+         painel.setLayout(new BoxLayout(painel, BoxLayout.Y_AXIS));
+         painel.setBackground(new Color(173, 216, 170));
+         painel.setVisible(false);
+         painel.add(Box.createVerticalStrut(2));
+         painel.add(botao);
+         return painel;
+
+     }
     private JPanel criarSubmenu(String titulo, String[] opcoes, ImageIcon[] icones) {
         JPanel painel = new JPanel();
         painel.setLayout(new BoxLayout(painel, BoxLayout.Y_AXIS));
