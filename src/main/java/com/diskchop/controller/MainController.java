@@ -55,13 +55,34 @@ public class MainController {
         telaInicialMenu.getBtnCadastroCliente().addActionListener(e -> {
             openCadastroClientes();
         });
-
+        telaInicialMenu.getBtnAjuda().addActionListener(e -> fecharSubmenuAberto());
+        telaInicialMenu.getBtnSair().addActionListener(e -> confirmarSaida());
     }
 
     private void openCadastroClientes() {
         // Abre a tela de CadastroClientes como modal
         CadastroClientes cadastroClientes = new CadastroClientes(telaInicialMenu, true);
         cadastroClientes.setVisible(true);
+    }
+
+    public void fecharSubmenuAberto() {
+        if (telaInicialMenu.getSubmenuAberto() != null) {
+            telaInicialMenu.getSubmenuAberto().setVisible(false); // Fecha o submenu aberto
+            telaInicialMenu.setSubmenuAberto(null); // Nenhum submenu está aberto
+        }
+    }
+
+    public void confirmarSaida() {
+        int resposta = JOptionPane.showConfirmDialog(null,
+                "Deseja sair?",
+                "Confirmar Saída",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE);
+
+        // Se o usuário clicar em "Sim", fecha o programa
+        if (resposta == JOptionPane.YES_OPTION) {
+            System.exit(0); // Fecha o programa
+        }
     }
 
 }

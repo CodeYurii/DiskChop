@@ -13,23 +13,10 @@ public class TelaInicialMenu extends JFrame {
     private JPanel menuLateral; // Painel do menu lateral
     private boolean menuAberto = false; // Estado do menu (aberto ou fechado)
     private JPanel painelSubmenuCadastro, painelSubmenuEstoque, painelSubmenuPedido, painelSubmenuFinanceiro;
-    JPanel submenuAberto = null;
-    JButton btnCadastro;
-    JButton btnPedido;
-    JButton btnMenu;
-    JButton btnEstoque;
-    JButton btnFinanceiro;
-    JButton btnAjuda;
-    JButton btnSair;
-    JButton btnCadastroCliente;
-    JButton btnCadastroProduto;
-    JButton btnEstoqueBarris;
-    JButton btnEstoqueChoppeiras;
-    JButton btnEstoqueCilindros;
-    JButton btnPedidoRegistrar;
-    JButton btnPedidoConsultar;
-    JButton btnFinanceiroEntradas;
-    JButton btnFinanceiroResumo;
+    private JPanel submenuAberto = null;
+    private JButton btnCadastro, btnPedido, btnMenu, btnEstoque, btnFinanceiro, btnAjuda, btnSair, btnCadastroCliente,
+    btnCadastroProduto, btnEstoqueBarris, btnEstoqueChoppeiras, btnEstoqueCilindros, btnPedidoRegistrar, btnPedidoConsultar,
+    btnFinanceiroEntradas, btnFinanceiroResumo;
 
 
     public TelaInicialMenu() {
@@ -78,32 +65,7 @@ public class TelaInicialMenu extends JFrame {
         btnEstoque = criarBotaoMenu(CarregadorIcones.loadIcon("/icones/estoqueBarril2.png",32,32), "Estoque");
         btnFinanceiro = criarBotaoMenu(CarregadorIcones.loadIcon("/icones/financeiro2.png",32,32), "Financeiro");
         btnAjuda = criarBotaoMenu(CarregadorIcones.loadIcon("/icones/ajuda.png",32,32), "Ajuda");
-        btnAjuda.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // Fechar todos os submenus abertos
-                if (submenuAberto != null) {
-                    submenuAberto.setVisible(false); // Fecha o submenu aberto
-                    submenuAberto = null; // Nenhum submenu está aberto
-                }
-            }
-        });
         btnSair = criarBotaoMenu(CarregadorIcones.loadIcon("/icones/sair2.png",32,32), "Sair");
-        btnSair.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                int resposta = JOptionPane.showConfirmDialog(null,
-                        "Deseja sair?",
-                        "Confirmar Saída",
-                        JOptionPane.YES_NO_OPTION,
-                        JOptionPane.QUESTION_MESSAGE);
-
-                // Se o usuário clicar em "Sim", fecha o programa
-                if (resposta == JOptionPane.YES_OPTION) {
-                    System.exit(0); // Fecha o programa
-                }
-            }
-        });
 
         // Criar submenus
         btnCadastroCliente = criarBotaoSubMenu(CarregadorIcones.loadIcon("/icones/cadastroUsuario.png",32,32), "Cadastrar Cliente");
