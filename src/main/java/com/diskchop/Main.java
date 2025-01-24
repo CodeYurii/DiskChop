@@ -1,7 +1,6 @@
 package com.diskchop;
 
 import com.diskchop.controller.MainController;
-import com.diskchop.dao.ConexaoDB;
 import com.diskchop.view.TelaInicialMenu;
 
 import javax.swing.*;

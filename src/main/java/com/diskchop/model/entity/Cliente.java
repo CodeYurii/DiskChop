@@ -1,0 +1,72 @@
+package com.diskchop.model.entity;
+
+import jakarta.persistence.*;
+import lombok.Data;
+
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+
+@Data
+@Entity
+@Table(name = "tb_clientes")
+public class Cliente {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long idCliente;
+
+    @Column(name = "nome", nullable = false)
+    private String nome;
+
+    @Column(name = "cpf", nullable = false, unique = true)
+    private String cpf;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "regime", nullable = true)
+    private Regime regime;
+
+    @Column(name = "observacao")
+    private String observacao;
+
+    @Column(name = "data_cadastro_cliente", nullable = false, updatable = false)
+    private LocalDateTime dataCadastroCliente;
+
+    @Column(name = "status", nullable = false)
+    private boolean status;
+
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+    @OrderBy("dataCadastroEndereco DESC")
+    private List<Endereco> enderecos = new ArrayList<>();
+
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+    @OrderBy("dataCadastroTelefone DESC")
+    private List<Telefone> telefones = new ArrayList<>();
+
+    public Cliente() {
+    }
+
+    public Cliente(String nome, String cpf, Regime regime, String observacao) {
+        this.nome = nome;
+        this.cpf = cpf;
+        this.regime = regime;
+        this.observacao = observacao;
+        this.status = true;
+    }
+
+    public Cliente(Long idCliente, String nome, String cpf, Regime regime, String observacao,
+                   boolean status, List<Endereco> enderecos, List<Telefone> telefones) {
+        this.idCliente = idCliente;
+        this.nome = nome;
+        this.cpf = cpf;
+        this.regime = regime;
+        this.observacao = observacao;
+        this.status = status;
+        this.enderecos = enderecos;
+        this.telefones = telefones;
+    }
+
+public void setDataCadastroCliente() {
+        this.dataCadastroCliente = LocalDateTime.now();
+}
+
+}

@@ -4,6 +4,8 @@
  */
 package com.diskchop.view;
 
+import com.diskchop.model.entity.Regime;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -898,4 +900,131 @@ public class CadastroClientes extends javax.swing.JDialog {
     private javax.swing.JTextField textFieldCadTelefone;
     private javax.swing.JTextField textFieldCadUf;
     // End of variables declaration
+
+
+    public JButton getBotaoCadClienteAdicionar() {
+        return botaoCadClienteAdicionar;
+    }
+
+    public JButton getBotaoCadClienteDelete() {
+        return botaoCadClienteDelete;
+    }
+
+    public JToggleButton getBotaoCadClienteProcurar() {
+        return botaoCadClienteProcurar;
+    }
+
+    public JButton getBotaoCadClienteSalvar() {
+        return botaoCadClienteSalvar;
+    }
+
+    public JToggleButton getBotaoCadEnderecoAdicionar() {
+        return botaoCadEnderecoAdicionar;
+    }
+
+    public JToggleButton getBotaoCadEnderecoDelete() {
+        return botaoCadEnderecoDelete;
+    }
+
+    public JButton getBotaoCadEnderecoEditar() {
+        return botaoCadEnderecoEditar;
+    }
+
+    public JButton getBotaoCadEnderecoProcurar() {
+        return botaoCadEnderecoProcurar;
+    }
+
+    public JButton getBotaoCadLimpar() {
+        return botaoCadLimpar;
+    }
+
+    public JButton getBotaoCadTelefoneAdicionar() {
+        return botaoCadTelefoneAdicionar;
+    }
+
+    public JButton getBotaoCadTelefoneDelete() {
+        return botaoCadTelefoneDelete;
+    }
+
+    public JButton getBotaoCadTelefoneEditar() {
+        return botaoCadTelefoneEditar;
+    }
+
+    public JButton getBotaoCadTelefoneProcurar() {
+        return botaoCadTelefoneProcurar;
+    }
+
+    public JButton getBotaoCadVoltar() {
+        return botaoCadVoltar;
+    }
+
+    public Regime getComboCadPessoa() {
+        String selecionado = (String) comboCadPessoa.getSelectedItem();
+        if ("Física".equals(selecionado)) {
+            return Regime.PESSOA_FISICA;
+        } else if ("Jurídica".equals(selecionado)) {
+            return Regime.PESSOA_JURIDICA;
+        }
+        return null;
+    }
+
+    public JComboBox<String> getComboCadTipo() {
+        return comboCadTipo;
+    }
+
+    public JTextField getTextFieldCadBairro() {
+        return textFieldCadBairro;
+    }
+
+    public JTextField getTextFieldCadCep() {
+        return textFieldCadCep;
+    }
+
+    public JTextField getTextFieldCadCidade() {
+        return textFieldCadCidade;
+    }
+
+    public JTextField getTextFieldCadComplemento() {
+        return textFieldCadComplemento;
+    }
+
+    public JTextField getTextFieldCadContato() {
+        return textFieldCadContato;
+    }
+
+    public String getTextFieldCadCpf() {
+        return textFieldCadCpf.getText();
+    }
+
+    public JTextField getTextFieldCadId() {
+        return textFieldCadId;
+    }
+
+    public JTextField getTextFieldCadLogradouro() {
+        return textFieldCadLogradouro;
+    }
+
+    public String getTextFieldCadNome() {
+        return textFieldCadNome.getText();
+    }
+
+    public JTextField getTextFieldCadNumero() {
+        return textFieldCadNumero;
+    }
+
+    public String getTextFieldCadObservacaoCliente() {
+        return textFieldCadObservacaoCliente.getText();
+    }
+
+    public JTextField getTextFieldCadObservacaoEndereco() {
+        return textFieldCadObservacaoEndereco;
+    }
+
+    public JTextField getTextFieldCadTelefone() {
+        return textFieldCadTelefone;
+    }
+
+    public JTextField getTextFieldCadUf() {
+        return textFieldCadUf;
+    }
 }

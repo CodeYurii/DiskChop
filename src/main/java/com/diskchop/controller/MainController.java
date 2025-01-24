@@ -4,8 +4,6 @@ import com.diskchop.view.CadastroClientes;
 import com.diskchop.view.TelaInicialMenu;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class MainController {
     private TelaInicialMenu telaInicialMenu;
@@ -29,25 +27,13 @@ public class MainController {
     public void toggleSubMenu(JPanel subMenu){
         JPanel aberto = telaInicialMenu.getSubmenuAberto();
         if (aberto != null) aberto.setVisible(false);
-        // Verifica se o submenu clicado é o que já está aberto
         boolean isSameSubMenu = aberto == subMenu;
-        subMenu.setVisible(!isSameSubMenu); // Se for o mesmo, fecha, caso contrário, abre
-        telaInicialMenu.setSubmenuAberto(isSameSubMenu ? null : subMenu); // Atualiza o submenu aberto
-    }
-
-    private void initViews() {
-        // Inicializa a tela inicial
-        //telaInicialMenu = new TelaInicialMenu();
-
-        // Configura as ações dos botões principais
-        configureActions();
+        subMenu.setVisible(!isSameSubMenu);
+        telaInicialMenu.setSubmenuAberto(isSameSubMenu ? null : subMenu);
     }
 
     public void configureActions() {
-        // Configura o botão de cadastro de clientes
         telaInicialMenu.getBtnMenu().addActionListener(e -> toggleMenu());
-        //telaInicial.addCadastroButtonListener(e -> openCadastroClientes());
-        //JPanel painelSubmenuCadastro = telaInicialMenu.getPainelSubmenuCadastro();
         telaInicialMenu.getBtnCadastro().addActionListener(e -> toggleSubMenu(telaInicialMenu.getPainelSubmenuCadastro()));
         telaInicialMenu.getBtnEstoque().addActionListener(e -> toggleSubMenu(telaInicialMenu.getPainelSubmenuEstoque()));
         telaInicialMenu.getBtnPedido().addActionListener(e -> toggleSubMenu(telaInicialMenu.getPainelSubmenuPedido()));
@@ -60,15 +46,15 @@ public class MainController {
     }
 
     private void openCadastroClientes() {
-        // Abre a tela de CadastroClientes como modal
         CadastroClientes cadastroClientes = new CadastroClientes(telaInicialMenu, true);
+        CadastroClientesController controller = new CadastroClientesController(cadastroClientes);
         cadastroClientes.setVisible(true);
     }
 
     public void fecharSubmenuAberto() {
         if (telaInicialMenu.getSubmenuAberto() != null) {
-            telaInicialMenu.getSubmenuAberto().setVisible(false); // Fecha o submenu aberto
-            telaInicialMenu.setSubmenuAberto(null); // Nenhum submenu está aberto
+            telaInicialMenu.getSubmenuAberto().setVisible(false);
+            telaInicialMenu.setSubmenuAberto(null);
         }
     }
 
@@ -78,10 +64,8 @@ public class MainController {
                 "Confirmar Saída",
                 JOptionPane.YES_NO_OPTION,
                 JOptionPane.QUESTION_MESSAGE);
-
-        // Se o usuário clicar em "Sim", fecha o programa
         if (resposta == JOptionPane.YES_OPTION) {
-            System.exit(0); // Fecha o programa
+            System.exit(0);
         }
     }
 
