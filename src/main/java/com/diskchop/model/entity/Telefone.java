@@ -2,6 +2,7 @@ package com.diskchop.model.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import org.hibernate.boot.model.relational.SqlStringGenerationContext;
 
 import java.time.LocalDateTime;
 
@@ -19,7 +20,7 @@ public class Telefone {
     private Cliente cliente;
 
     @Column(nullable = false)
-    private String numero;
+    private String telefone;
 
     @Column
     private String contato;
@@ -30,19 +31,23 @@ public class Telefone {
     public Telefone() {
     }
 
-    public Telefone(Long idTelefone, Cliente cliente, String numero, String contato) {
+    public Telefone(Long idTelefone, Cliente cliente, String telefone, String contato) {
         this.idTelefone = idTelefone;
         this.cliente = cliente;
-        this.numero = numero;
+        this.telefone = telefone;
         this.contato = contato;
         this.dataCadastroTelefone = LocalDateTime.now();
     }
 
-    public Telefone(Long idTelefone, Cliente cliente, String numero, String contato, LocalDateTime dataCadastroTelefone) {
+    public Telefone(Long idTelefone, Cliente cliente, String telefone, String contato, LocalDateTime dataCadastroTelefone) {
         this.idTelefone = idTelefone;
         this.cliente = cliente;
-        this.numero = numero;
+        this.telefone = telefone;
         this.contato = contato;
         this.dataCadastroTelefone = dataCadastroTelefone != null ? dataCadastroTelefone : LocalDateTime.now();
+    }
+
+    public void setDataCadastroTelefone() {
+        this.dataCadastroTelefone = LocalDateTime.now();
     }
 }

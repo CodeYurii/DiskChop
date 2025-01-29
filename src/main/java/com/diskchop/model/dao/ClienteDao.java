@@ -9,34 +9,61 @@ import java.util.Optional;
 
 public class ClienteDao {
 
-    @PersistenceContext
     private EntityManager em;
 
+    // Construtor que inicializa o EntityManager manualmente
     public ClienteDao() {
+        // Criando a EntityManagerFactory e o EntityManager
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("diskchop");
+        this.em = emf.createEntityManager();
+    }
+
+    public void salvar(Cliente cliente) {
         try {
-            // Criando o EntityManagerFactory
-            EntityManagerFactory emf = Persistence.createEntityManagerFactory("diskchop");
-            this.em = emf.createEntityManager();
+            // Iniciar a transação manualmente
+            em.getTransaction().begin();
+
+            if (cliente.getIdCliente() == null) {
+                em.persist(cliente); // Inserir um novo cliente
+            } else {
+                em.merge(cliente); // Atualizar um cliente existente
+            }
+
+            // Confirmar a transação
+            em.getTransaction().commit();
         } catch (Exception e) {
-            // Capturando exceção para depuração
-            e.printStackTrace();
+            // Em caso de erro, realizar o rollback da transação
+            if (em.getTransaction().isActive()) {
+                em.getTransaction().rollback();
+            }
+            throw new RuntimeException("Erro ao salvar cliente", e);
         }
     }
 
-
-    @Transactional
-    public void salvar(Cliente cliente) {
-        em.getTransaction().begin();
-        if (cliente.getIdCliente() == null){
-            em.persist(cliente);
-        } else {
-            em.merge(cliente);
+    // Método para fechar o EntityManager quando não for mais necessário
+    public void close() {
+        if (em.isOpen()) {
+            em.close();
         }
-        em.getTransaction().commit();
     }
 
     public List<Cliente> listarTodos() {
         return em.createQuery("SELECT c FROM Cliente c", Cliente.class).getResultList();
+    }
+
+    public Long buscarPorCpf(String cpf) {
+        Long id = null;
+        TypedQuery<Long> query = em.createQuery(
+                "SELECT c.id FROM Cliente c WHERE c.cpf = :cpf", Long.class);
+        query.setParameter("cpf", cpf);
+        id = query.getSingleResult();
+        return id;
+    }
+
+    public List<Cliente> buscarCliente(String cpf) {
+        return em.createQuery("SELECT c FROM Cliente c WHERE c.cpf = :cpf", Cliente.class)
+                .setParameter("cpf", cpf)  // Atribuindo o valor ao parâmetro 'cpf'
+                .getResultList();
     }
 
     public Optional<Cliente> buscarPorId(Long idCliente) {

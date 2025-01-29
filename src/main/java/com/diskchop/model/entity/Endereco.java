@@ -14,7 +14,7 @@ public class Endereco {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idEndereco;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_cliente", referencedColumnName = "idCliente", nullable = false)
     private Cliente cliente;
 
@@ -32,6 +32,9 @@ public class Endereco {
     private String uf;
     @Column(nullable = false)
     private String cep;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "tipo", nullable = false)
+    private Tipo tipo;
     @Column
     private String observacaoEndereco;
     @Column(name = "data_cadastro_endereco", nullable = false, updatable = false)
@@ -69,4 +72,22 @@ public class Endereco {
         this.observacaoEndereco = observacaoEndereco;
         this.dataCadastroEndereco = dataCadastroEndereco != null ? dataCadastroEndereco : LocalDateTime.now();
     }
+
+    public Endereco(Long idEndereco, Cliente cliente, String logradouro, String numero, String complemento, String bairro, String cidade,
+                    String uf, String cep, Tipo tipo, String observacaoEndereco, LocalDateTime dataCadastroEndereco) {
+        this.idEndereco = idEndereco;
+        this.cliente = cliente;
+        this.logradouro = logradouro;
+        this.numero = numero;
+        this.complemento = complemento;
+        this.bairro = bairro;
+        this.cidade = cidade;
+        this.uf = uf;
+        this.cep = cep;
+        this.tipo = tipo;
+        this.observacaoEndereco = observacaoEndereco;
+        this.dataCadastroEndereco = dataCadastroEndereco != null ? dataCadastroEndereco : LocalDateTime.now();;
+    }
+
+    public void setDataCadastroEndereco() {this.dataCadastroEndereco = LocalDateTime.now();}
 }

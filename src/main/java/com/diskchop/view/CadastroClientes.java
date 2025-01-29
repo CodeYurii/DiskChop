@@ -5,6 +5,7 @@
 package com.diskchop.view;
 
 import com.diskchop.model.entity.Regime;
+import com.diskchop.model.entity.Tipo;
 
 import javax.swing.*;
 import java.awt.*;
@@ -902,6 +903,103 @@ public class CadastroClientes extends javax.swing.JDialog {
     // End of variables declaration
 
 
+    public JScrollPane getScrollPaneCadClientes() {
+        return scrollPaneCadClientes;
+    }
+
+    public JScrollPane getScrollPaneCadEnderecos() {
+        return scrollPaneCadEnderecos;
+    }
+
+    public JScrollPane getScrollPaneCadTelefones() {
+        return scrollPaneCadTelefones;
+    }
+
+    public JTabbedPane getTabbedPaneCad() {
+        return tabbedPaneCad;
+    }
+
+    public JTable getTableCadEnderecos() {
+        return tableCadEnderecos;
+    }
+
+    public JPanel getPainelCenter() {
+        return painelCenter;
+    }
+
+    public JPanel getPainelTop() {
+        return painelTop;
+    }
+
+    public JPanel getPainelBottom() {
+        return painelBottom;
+    }
+
+    public JLabel getLabelCadBairro() {
+        return labelCadBairro;
+    }
+
+    public JPanel getPainelCadClientes() {
+        return painelCadClientes;
+    }
+
+    public JPanel getPainelCadEnderecos() {
+        return painelCadEnderecos;
+    }
+
+    public JPanel getPainelCadTelefones() {
+        return painelCadTelefones;
+    }
+
+    public JLabel getLabelCadTitulo() {
+        return labelCadTitulo;
+    }
+
+    public JComboBox[] getTodosComboBox(){
+        return new JComboBox[]{
+                comboCadPessoa,
+                comboCadTipo
+        };
+    }
+
+    public JTextField[] getTodosJTextFields(){
+        return new JTextField[]{
+                textFieldCadBairro,
+                textFieldCadCep,
+                textFieldCadCidade,
+                textFieldCadComplemento,
+                textFieldCadContato,
+                textFieldCadCpf,
+                textFieldCadId,
+                textFieldCadLogradouro,
+                textFieldCadNome,
+                textFieldCadNumero,
+                textFieldCadObservacaoCliente,
+                textFieldCadObservacaoEndereco,
+                textFieldCadTelefone,
+                textFieldCadUf
+        };
+    }
+
+    public JTextField[] getClienteJTextFields(){
+        return new JTextField[]{
+                textFieldCadId,
+                textFieldCadNome,
+                textFieldCadCpf,
+                textFieldCadObservacaoCliente,
+        };
+    }
+
+
+
+    public JTable getTableCadTelefones() {
+        return tableCadTelefones;
+    }
+
+    public JTable getTableCadClientes() {
+        return tableCadClientes;
+    }
+
     public JButton getBotaoCadClienteAdicionar() {
         return botaoCadClienteAdicionar;
     }
@@ -968,8 +1066,83 @@ public class CadastroClientes extends javax.swing.JDialog {
         return null;
     }
 
-    public JComboBox<String> getComboCadTipo() {
-        return comboCadTipo;
+
+
+    public Tipo getComboCadTipo() {
+        String selecionado = (String) comboCadTipo.getSelectedItem();
+
+        if (selecionado == null || selecionado.isEmpty()) {
+            return null;  // Ou um valor default como Tipo.UNKNOWN, se houver
+        }
+
+        switch (selecionado) {
+            case "Urbano":
+                return Tipo.URBANO;
+            case "Rural":
+                return Tipo.RURAL;
+            default:
+                // Retorne um valor default ou lance uma exceção, dependendo do seu caso
+                return null; // ou Tipo.UNKNOWN
+        }
+    }
+
+    public String getTextFieldCadBairroString() {
+        return textFieldCadBairro.getText();
+    }
+
+    public String getTextFieldCadCepString() {
+        return textFieldCadCep.getText();
+    }
+
+    public String getTextFieldCadCidadeString() {
+        return textFieldCadCidade.getText();
+    }
+
+    public String getTextFieldCadComplementoString() {
+        return textFieldCadComplemento.getText();
+    }
+
+    public JTextField getTextFieldCadContato() {
+        return textFieldCadContato;
+    }
+
+    public String getTextFieldCadCpfString() {
+        return textFieldCadCpf.getText();
+    }
+
+    public JTextField getTextFieldCadId() {
+        return textFieldCadId;
+    }
+    public Long getTextFieldCadIdLong() {
+        return Long.valueOf(textFieldCadId.getText());
+    }
+
+    public String getTextFieldCadLogradouroString() {
+        return textFieldCadLogradouro.getText();
+    }
+
+    public String getTextFieldCadNomeString() {
+        return textFieldCadNome.getText();
+    }
+
+    public String getTextFieldCadNumeroString() {
+        return textFieldCadNumero.getText();
+    }
+
+    public String getTextFieldCadObservacaoClienteString() {
+        return textFieldCadObservacaoCliente.getText();
+    }
+
+    public String getTextFieldCadObservacaoEnderecoString() {
+        return textFieldCadObservacaoEndereco.getText();
+    }
+
+    public JTextField getTextFieldCadTelefone() {
+        return textFieldCadTelefone;
+    }
+
+    public String getTextFieldCadUfString() {
+        return textFieldCadUf.getText();
     }
 
     public JTextField getTextFieldCadBairro() {
@@ -988,40 +1161,28 @@ public class CadastroClientes extends javax.swing.JDialog {
         return textFieldCadComplemento;
     }
 
-    public JTextField getTextFieldCadContato() {
-        return textFieldCadContato;
-    }
-
-    public String getTextFieldCadCpf() {
-        return textFieldCadCpf.getText();
-    }
-
-    public JTextField getTextFieldCadId() {
-        return textFieldCadId;
+    public JTextField getTextFieldCadCpf() {
+        return textFieldCadCpf;
     }
 
     public JTextField getTextFieldCadLogradouro() {
         return textFieldCadLogradouro;
     }
 
-    public String getTextFieldCadNome() {
-        return textFieldCadNome.getText();
+    public JTextField getTextFieldCadNome() {
+        return textFieldCadNome;
     }
 
     public JTextField getTextFieldCadNumero() {
         return textFieldCadNumero;
     }
 
-    public String getTextFieldCadObservacaoCliente() {
-        return textFieldCadObservacaoCliente.getText();
+    public JTextField getTextFieldCadObservacaoCliente() {
+        return textFieldCadObservacaoCliente;
     }
 
     public JTextField getTextFieldCadObservacaoEndereco() {
         return textFieldCadObservacaoEndereco;
-    }
-
-    public JTextField getTextFieldCadTelefone() {
-        return textFieldCadTelefone;
     }
 
     public JTextField getTextFieldCadUf() {

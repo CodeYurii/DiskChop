@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,8 +32,9 @@ public class Cliente {
     @Column(name = "data_cadastro_cliente", nullable = false, updatable = false)
     private LocalDateTime dataCadastroCliente;
 
-    @Column(name = "status", nullable = false)
-    private boolean status;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status_cliente", nullable = true)
+    private StatusCliente statusCliente;
 
     @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     @OrderBy("dataCadastroEndereco DESC")
@@ -50,22 +52,21 @@ public class Cliente {
         this.cpf = cpf;
         this.regime = regime;
         this.observacao = observacao;
-        this.status = true;
     }
 
     public Cliente(Long idCliente, String nome, String cpf, Regime regime, String observacao,
-                   boolean status, List<Endereco> enderecos, List<Telefone> telefones) {
+                   StatusCliente statusCliente, List<Endereco> enderecos, List<Telefone> telefones) {
         this.idCliente = idCliente;
         this.nome = nome;
         this.cpf = cpf;
         this.regime = regime;
         this.observacao = observacao;
-        this.status = status;
+        this.statusCliente = statusCliente;
         this.enderecos = enderecos;
         this.telefones = telefones;
     }
 
-public void setDataCadastroCliente() {
+    public void setDataCadastroCliente() {
         this.dataCadastroCliente = LocalDateTime.now();
 }
 

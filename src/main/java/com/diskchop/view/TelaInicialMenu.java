@@ -34,44 +34,45 @@ public class TelaInicialMenu extends JFrame {
         btnMenu.setMargin(new Insets(5, 5, 5, 5));
         btnMenu.setFocusPainted(false);
         btnMenu.setBorderPainted(false);
-        btnMenu.setBackground(new Color(248, 248, 248));
+        btnMenu.setBackground(new Color(18, 18, 18));
         btnMenu.setForeground(Color.WHITE);
 
         // Cabeçalho Superior
         JPanel cabecalho = new JPanel();
-        cabecalho.setBackground(new Color(248, 248, 248));
+        cabecalho.setBackground(new Color(18, 18, 18));
         cabecalho.setPreferredSize(new Dimension(getWidth(), 60));
         cabecalho.setLayout(new BorderLayout());
+        cabecalho.setBorder(BorderFactory.createLineBorder(new Color(50, 50, 50)));
         JLabel titulo = new JLabel("DISK CHOPP SUZANO", SwingConstants.CENTER);
-        titulo.setFont(new Font("Serif", Font.ITALIC | Font.BOLD, 40));
-        titulo.setForeground(new Color(0, 77, 64));
+        titulo.setFont(new Font("Roboto", Font.ITALIC | Font.BOLD, 40));
+        titulo.setForeground(new Color(217, 231, 196));
         cabecalho.add(btnMenu, BorderLayout.WEST);
         cabecalho.add(titulo, BorderLayout.CENTER);
 
         // Menu Lateral
         menuLateral = new JPanel();
-        menuLateral.setBackground(new Color(248, 248, 248));
+        menuLateral.setBackground(new Color(40, 40, 40));
         menuLateral.setPreferredSize(new Dimension(180, getHeight()));
         menuLateral.setLayout(new BoxLayout(menuLateral, BoxLayout.Y_AXIS));
         menuLateral.setVisible(false);
 
         //Botões Menu
-        btnCadastro = criarBotaoMenu(CarregadorIcones.loadIcon("/icones/cadastro2.png",32, 32), "Cadastro");
-        btnPedido = criarBotaoMenu(CarregadorIcones.loadIcon("/icones/pedido2.png",32, 32), "Pedido");
-        btnEstoque = criarBotaoMenu(CarregadorIcones.loadIcon("/icones/estoqueBarril2.png",32,32), "Estoque");
-        btnFinanceiro = criarBotaoMenu(CarregadorIcones.loadIcon("/icones/financeiro2.png",32,32), "Financeiro");
-        btnAjuda = criarBotaoMenu(CarregadorIcones.loadIcon("/icones/ajuda.png",32,32), "Ajuda");
-        btnSair = criarBotaoMenu(CarregadorIcones.loadIcon("/icones/sair2.png",32,32), "Sair");
+        btnCadastro = criarBotaoMenu(CarregadorIcones.loadIcon("/icones/cadastro.png",32, 32), "Cadastro");
+        btnPedido = criarBotaoMenu(CarregadorIcones.loadIcon("/icones/pedido3.png",32, 32), "Pedido");
+        btnEstoque = criarBotaoMenu(CarregadorIcones.loadIcon("/icones/estoqueBarril9.png",32,32), "Estoque");
+        btnFinanceiro = criarBotaoMenu(CarregadorIcones.loadIcon("/icones/financeiro4.png",32,32), "Financeiro");
+        btnAjuda = criarBotaoMenu(CarregadorIcones.loadIcon("/icones/ajuda2.png",32,32), "Ajuda");
+        btnSair = criarBotaoMenu(CarregadorIcones.loadIcon("/icones/sair5.png",32,32), "Sair");
 
         // Criar submenus
-        btnCadastroCliente = criarBotaoSubMenu(CarregadorIcones.loadIcon("/icones/cadastroUsuario.png",32,32), "Cadastrar Cliente");
-        btnCadastroProduto = criarBotaoSubMenu(CarregadorIcones.loadIcon("/icones/cadastroProduto.png",32,32), "Cadastrar Produto");
+        btnCadastroCliente = criarBotaoSubMenu(CarregadorIcones.loadIcon("/icones/cadastroUsuario3.png",32,32), "Cliente");
+        btnCadastroProduto = criarBotaoSubMenu(CarregadorIcones.loadIcon("/icones/cadastroProduto2.png",32,32), "Produto");
         painelSubmenuCadastro = criarPainelSubMenu(btnCadastroCliente);
         painelSubmenuCadastro.add(btnCadastroProduto);
 
-        btnEstoqueBarris = criarBotaoSubMenu(CarregadorIcones.loadIcon("/icones/estoqueBarril.png",32,32), "Estoque Barris");
-        btnEstoqueChoppeiras = criarBotaoSubMenu(CarregadorIcones.loadIcon("/icones/choppeira.png",32,32), "Estoque Choppeiras");
-        btnEstoqueCilindros = criarBotaoSubMenu(CarregadorIcones.loadIcon("/icones/estoqueCilindro.png",32,32), "Estoque Cilindros");
+        btnEstoqueBarris = criarBotaoSubMenu(CarregadorIcones.loadIcon("/icones/estoqueBarril10.png",32,32), "Estoque Barris");
+        btnEstoqueChoppeiras = criarBotaoSubMenu(CarregadorIcones.loadIcon("/icones/choppeira2.png",32,32), "Estoque Choppeiras");
+        btnEstoqueCilindros = criarBotaoSubMenu(CarregadorIcones.loadIcon("/icones/estoqueCilindro2.png",32,32), "Estoque Cilindros");
         painelSubmenuEstoque = criarPainelSubMenu(btnEstoqueBarris);
         painelSubmenuEstoque.add(btnEstoqueChoppeiras);
         painelSubmenuEstoque.add(btnEstoqueCilindros);
@@ -109,7 +110,7 @@ public class TelaInicialMenu extends JFrame {
             }
         };
         painelPrincipal.setLayout(new BorderLayout());
-        painelPrincipal.setBackground(new Color(0, 77, 64));
+        painelPrincipal.setBackground(new Color(18, 18, 18));
 
         // Adiciona os painéis ao JFrame
         add(cabecalho, BorderLayout.NORTH);
@@ -121,10 +122,10 @@ public class TelaInicialMenu extends JFrame {
     // Função para criar botões
     private JButton criarBotaoMenu(ImageIcon icone, String titulo) {
         JButton botao = new JButton(icone);
-        botao.setBackground(new Color(250,250,250));
+        botao.setBackground(new Color(63, 63, 63));
         botao.setFont(new Font("Roboto", Font.BOLD, 16));
         botao.setFocusPainted(false);
-        botao.setForeground(new Color(34, 139, 34));
+        botao.setForeground(new Color(250,250,250));
         botao.setText(titulo);
         botao.setMaximumSize(new Dimension(180, 60));
         botao.setHorizontalAlignment(SwingConstants.LEFT);
@@ -138,9 +139,9 @@ public class TelaInicialMenu extends JFrame {
     private JButton criarBotaoSubMenu(ImageIcon icone, String descricao) {
         JButton botao = new JButton(icone);
         botao.setText(descricao);
-        botao.setBackground(Color.WHITE);
+        botao.setBackground(new Color(87, 87, 87));
         botao.setFont(new Font("Roboto", Font.ITALIC, 12));
-        botao.setForeground(new Color(34, 139, 34));
+        botao.setForeground(new Color(250,250,250));
         botao.setMaximumSize(new Dimension(180, 40));
         botao.setHorizontalAlignment(SwingConstants.LEFT);
         botao.setHorizontalTextPosition(SwingConstants.RIGHT);
@@ -154,7 +155,7 @@ public class TelaInicialMenu extends JFrame {
      private JPanel criarPainelSubMenu(JButton botao){
          JPanel painel = new JPanel();
          painel.setLayout(new BoxLayout(painel, BoxLayout.Y_AXIS));
-         painel.setBackground(new Color(173, 216, 170));
+         painel.setBackground(new Color(121212));
          painel.setVisible(false);
          painel.add(Box.createVerticalStrut(2));
          painel.add(botao);
