@@ -50,8 +50,13 @@ public class EnderecoDao {
             if (enderecoExistente == null) {
                 throw new IllegalArgumentException("endereço nao encontrado");
             }
+            enderecoExistente = endereco;
+            enderecoExistente.setIdEndereco(idEndereco);
+            enderecoExistente.setCliente(cliente);
+
             cliente.getEnderecos().add(enderecoExistente);
             em.merge(cliente);
+            em.getTransaction().commit();
         } catch (Exception e) {
             if (em.getTransaction().isActive()) {
                 em.getTransaction().rollback();

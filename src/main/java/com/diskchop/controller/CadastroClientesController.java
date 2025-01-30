@@ -19,9 +19,9 @@ import org.hibernate.exception.ConstraintViolationException;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class CadastroClientesController {
@@ -50,12 +50,29 @@ public class CadastroClientesController {
         view.getBotaoCadVoltar().addActionListener(e -> {voltarMenu();});
         view.getBotaoCadClienteAdicionar().addActionListener(e -> {salvarCliente();});
         view.getBotaoCadEnderecoAdicionar().addActionListener(e -> {salvarEndereco();});
-        view.getBotaoCadClienteProcurar().addActionListener(e -> buscarCliente());
+        view.getBotaoCadClienteProcurar().addActionListener(e -> buscarClienteId());
         view.getBotaoCadLimpar().addActionListener(e -> limparCampos());
         view.getBotaoCadEnderecoProcurar().addActionListener(e -> buscarEnderecoCLiente());
         view.getBotaoCadTelefoneAdicionar().addActionListener(e -> {salvarTelefone();});
         view.getBotaoCadTelefoneProcurar().addActionListener(e -> buscarTelefoneCLiente());
-        view.getBotaoCadEnderecoEditar().addActionListener(e -> editarEndereco());
+        //view.getBotaoCadEnderecoEditar().addActionListener(e -> editarEndereco());
+        view.getBotaoCadClienteSalvar().addActionListener(e -> {editarCliente();});
+        view.getTextFieldCadNome().addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    buscarClienteNome();
+                }
+            }
+        });
+        view.getTextFieldCadCpf().addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    buscarClienteCpf();
+                }
+            }
+        });
         view.getPainelCenter().setBackground(new Color(40, 40, 40));
         view.getPainelTop().setBackground(new Color(40, 40, 40));
         view.getPainelBottom().setBackground(new Color(40, 40, 40));
@@ -81,6 +98,13 @@ public class CadastroClientesController {
         view.getTableCadClientes().getTableHeader().setBackground(new Color(63, 63, 63));
         view.getTableCadClientes().getTableHeader().setForeground(Color.WHITE);
         view.getTableCadClientes().getTableHeader().setFont(new Font ("Roboto", Font.BOLD, 12));
+        view.getTableCadEnderecos().setOpaque(true);
+        view.getTableCadEnderecos().getTableHeader().setBackground(new Color(63, 63, 63));
+        view.getTableCadEnderecos().getTableHeader().setForeground(Color.WHITE);
+        view.getTableCadEnderecos().getTableHeader().setFont(new Font ("Roboto", Font.BOLD, 12));
+        view.getTableCadEnderecos().setBackground(new Color(40, 40, 40));
+        view.getTableCadEnderecos().setForeground(new Color(255, 255, 255));
+        view.getTableCadEnderecos().setRowHeight(22);
         view.setBackground(new Color(40, 40, 40));
         view.getBotaoCadVoltar().setBackground(new Color(18, 18, 18));
     }
@@ -111,25 +135,26 @@ public class CadastroClientesController {
             Cliente editarCliente = new Cliente();
             editarCliente = carregarNovoCliente();
             editarCliente.setIdCliente(view.getTextFieldCadIdLong());
-            clienteDao.salvar(editarCliente);
+            clienteDao.salvarCliente(editarCliente);
             TelaMensagensSistema.mostrarInformacao(MensagensSistema.CLIENTE_CADASTRO_SUCESSO);
         } catch (Exception e){
             ErrorHandler.handle(e);
         }
     }
-
+ /*
     private void editarEndereco(){
         try{
             Endereco editarEndereco = new Endereco();
             editarEndereco = carregarNovoEndereco();
             String cpf = view.getTextFieldCadCpfString();
-            Long idCliente = clienteDao.buscarPorCpf(cpf);
+            //Cliente cliente1 = clienteDao.buscarPorCpf(cpf);
             endereco.setIdEndereco(view.getTextFieldCadIdLong());
-            enderecoDao.atualizarEndereco(idCliente, editarEndereco.getIdEndereco(), endereco);
+            cliente1.getEnderecos().add(endereco);
+            clienteDao.salvar(cliente1);
         } catch (Exception e){
             ErrorHandler.handle(e);
         }
-    }
+    }*/
 
     private void editarTelefone(){}
 
@@ -138,11 +163,17 @@ public class CadastroClientesController {
     /*** funções salvar ***/
     private void salvarCliente() {
        try {
-           Cliente novoCliente = new Cliente();
+           Cliente novoCliente;
            novoCliente = carregarNovoCliente();
-           //validarCliente(cliente);
-           clienteDao.salvar(novoCliente);
+           validarCliente(novoCliente);
+           if (clienteDao.isCpfCadastrado(novoCliente.getCpf())) {
+               TelaMensagensSistema.mostrarErro("CPF já cadastrado.");
+               return;
+           }
+           clienteDao.salvarCliente(novoCliente);
            TelaMensagensSistema.mostrarInformacao(MensagensSistema.CLIENTE_CADASTRO_SUCESSO);
+           Long idCliente = clienteDao.buscarIdPorCpf(view.getTextFieldCadCpf().getText());
+           view.getTextFieldCadId().setText(idCliente.toString());
        } catch (Exception e) {
            ErrorHandler.handle(e);
        }
@@ -152,7 +183,7 @@ public class CadastroClientesController {
         try {
             Endereco novoEndereco = new Endereco();
             String cpf = view.getTextFieldCadCpfString();
-            Long idCliente = clienteDao.buscarPorCpf(cpf);
+            Long idCliente = clienteDao.buscarIdPorCpf(cpf);
             novoEndereco = carregarNovoEndereco();
             enderecoDao.adicionarEnderecoAoCliente(idCliente, novoEndereco);
             TelaMensagensSistema.mostrarInformacao(MensagensSistema.CLIENTE_CADASTRO_SUCESSO);
@@ -165,7 +196,7 @@ public class CadastroClientesController {
         try {
             Telefone novoTelefone = new Telefone();
             String cpf = view.getTextFieldCadCpfString();
-            Long idCliente = clienteDao.buscarPorCpf(cpf);
+            Long idCliente = clienteDao.buscarIdPorCpf(cpf);
             novoTelefone = carregarNovoTelefone();
             telefoneDao.adicionarTelefoneCliente(idCliente, novoTelefone);
             TelaMensagensSistema.mostrarInformacao(MensagensSistema.CLIENTE_CADASTRO_SUCESSO);
@@ -187,9 +218,9 @@ public class CadastroClientesController {
 
     private Cliente carregarNovoCliente(){
         Cliente novoCliente = new Cliente();
-        novoCliente.setNome(view.getTextFieldCadNomeString());
+        novoCliente.setNome(view.getTextFieldCadNomeString().toUpperCase());
         novoCliente.setCpf(view.getTextFieldCadCpfString());
-        novoCliente.setObservacao(view.getTextFieldCadObservacaoClienteString());
+        novoCliente.setObservacao(view.getTextFieldCadObservacaoClienteString().toUpperCase());
         novoCliente.setRegime(view.getComboCadPessoa());
         novoCliente.setStatusCliente(StatusCliente.ATIVO);
         if (novoCliente.getDataCadastroCliente() == null) {novoCliente.setDataCadastroCliente();}
@@ -212,16 +243,38 @@ public class CadastroClientesController {
     }
 
     /*** funções de busca ***/
-    private void buscarCliente(){
+    private void buscarClienteId(){
         DefaultTableModel novoModelo = new DefaultTableModel(
                 new Object[][] {}, // Dados inicialmente vazios
                 new String[] {"ID", "Nome", "CPF", "Regime", "Status", "Data_Cadastro", "Obs"} // Cabeçalhos das colunas
         );
         view.getTableCadClientes().setModel(novoModelo);
         novoModelo.setRowCount(0);
-        String cpf = view.getTextFieldCadCpfString();
+        Long id = view.getTextFieldCadIdLong();
+        Cliente cliente1;
+        cliente1 = clienteDao.buscarClientePorId(id);
+        Object[] rowData = {
+                cliente1.getIdCliente(),
+                cliente1.getNome(),
+                cliente1.getCpf(),
+                cliente1.getRegime(),
+                cliente1.getStatusCliente(),
+                cliente1.getDataCadastroCliente().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")),
+                cliente1.getObservacao()
+        };
+        novoModelo.addRow(rowData);
+    }
+
+    private void buscarClienteNome(){
+        DefaultTableModel novoModelo = new DefaultTableModel(
+                new Object[][] {}, // Dados inicialmente vazios
+                new String[] {"ID", "Nome", "CPF", "Regime", "Status", "Data_Cadastro", "Obs"} // Cabeçalhos das colunas
+        );
+        view.getTableCadClientes().setModel(novoModelo);
+        novoModelo.setRowCount(0);
+        String nome = view.getTextFieldCadNome().getText().trim().toUpperCase();
         List<Cliente>cliente;
-        cliente = clienteDao.buscarCliente(cpf);
+        cliente = clienteDao.buscarClientePorNome(nome);
         for (Cliente cliente1 : cliente) {
             Object[] rowData = {
                     cliente1.getIdCliente(),
@@ -234,10 +287,28 @@ public class CadastroClientesController {
             };
             novoModelo.addRow(rowData);
         }
-        view.getTextFieldCadId().setText(cliente.get(0).getIdCliente().toString());
-        view.getTextFieldCadNome().setText(cliente.get(0).getNome());
-        view.getTextFieldCadCpf().setText(cliente.get(0).getCpf());
-        view.getTextFieldCadObservacaoCliente().setText(cliente.get(0).getObservacao());
+    }
+
+    public void buscarClienteCpf(){
+        DefaultTableModel novoModelo = new DefaultTableModel(
+                new Object[][] {}, // Dados inicialmente vazios
+                new String[] {"ID", "Nome", "CPF", "Regime", "Status", "Data_Cadastro", "Obs"} // Cabeçalhos das colunas
+        );
+        view.getTableCadClientes().setModel(novoModelo);
+        novoModelo.setRowCount(0);
+        String cpf = view.getTextFieldCadCpf().getText().trim();
+        Cliente cliente1;
+        cliente1 = clienteDao.buscarClientePorCpf(cpf);
+            Object[] rowData = {
+                    cliente1.getIdCliente(),
+                    cliente1.getNome(),
+                    cliente1.getCpf(),
+                    cliente1.getRegime(),
+                    cliente1.getStatusCliente(),
+                    cliente1.getDataCadastroCliente().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")),
+                    cliente1.getObservacao()
+            };
+            novoModelo.addRow(rowData);
     }
 
     public void buscarEnderecoCLiente(){
@@ -317,7 +388,7 @@ public class CadastroClientesController {
         try {
             validador.validarCliente(cliente);
         } catch (ClienteInvalidoException e) {
-             ErrorHandler.handle(e);
+             TelaMensagensSistema.mostrarErro(e.getMessage());
         }
     }
 
