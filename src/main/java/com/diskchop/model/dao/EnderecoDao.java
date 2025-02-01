@@ -5,8 +5,6 @@ import com.diskchop.model.entity.Endereco;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
-import jakarta.persistence.PersistenceContext;
-import jakarta.transaction.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +19,7 @@ public class EnderecoDao {
         this.em = emf.createEntityManager();
     }
 
-    public void adicionarEnderecoAoCliente(Long idCliente, Endereco endereco) {
+    public void adicionarEnderecoCliente(Long idCliente, Endereco endereco) {
         try {
             em.getTransaction().begin();
             Cliente cliente = em.find(Cliente.class, idCliente);

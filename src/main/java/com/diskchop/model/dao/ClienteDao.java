@@ -11,14 +11,11 @@ public class ClienteDao {
 
     private EntityManager em;
 
-    // Construtor que inicializa o EntityManager manualmente
     public ClienteDao() {
-        // Criando a EntityManagerFactory e o EntityManager
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("diskchop");
         this.em = emf.createEntityManager();
     }
 
-    // Método para fechar o EntityManager quando não for mais necessário
     public void close() {
         if (em.isOpen()) {
             em.close();
@@ -30,6 +27,20 @@ public class ClienteDao {
             em.getTransaction().begin();
             Cliente clienteSalvo = cliente;
             em.persist(clienteSalvo);
+            em.getTransaction().commit();
+        } catch (Exception e) {
+            if (em.getTransaction().isActive()) {
+                em.getTransaction().rollback();
+            }
+            TelaMensagensSistema.mostrarErro(MensagensSistema.ERRO_BANCO_DADOS);
+        }
+    }
+
+    public void atualizarCliente(Cliente cliente) {
+        try {
+            em.getTransaction().begin();
+            Cliente clienteSalvo = cliente;
+            em.merge(clienteSalvo);
             em.getTransaction().commit();
         } catch (Exception e) {
             if (em.getTransaction().isActive()) {
@@ -81,6 +92,23 @@ public class ClienteDao {
         }
     }
 
+    public void excluirCliente(Long id) {
+        try {
+            Cliente cliente = em.find(Cliente.class, id);
+            if (cliente != null) {
+                em.getTransaction().begin();
+                em.remove(cliente);
+                em.getTransaction().commit();
+            } else {
+                throw new RuntimeException("Cliente não encontrado para exclusão.");
+            }
+        } catch (Exception e) {
+            if (em.getTransaction().isActive()) {
+                em.getTransaction().rollback();
+            }
+            throw new RuntimeException("Erro ao excluir cliente", e);
+        }
+    }
 
     public List<Cliente> listarTodos() {
         return em.createQuery("SELECT c FROM Cliente c", Cliente.class).getResultList();
@@ -94,15 +122,4 @@ public class ClienteDao {
         id = query.getSingleResult();
         return id;
     }
-
-
-
-    public Cliente buscarClienteId(Long idCliente) {
-        try {
-            return em.find(Cliente.class, idCliente); // Retorna um único cliente ou null
-        } catch (Exception e) {
-           throw new RuntimeException("Erro ao buscar cliente", e);
-        }
-    }
-
 }
