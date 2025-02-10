@@ -1,0 +1,58 @@
+-- Inserindo 10 clientes
+INSERT INTO tb_clientes (idCliente, nome, cpf, regime, observacao, data_cadastro_cliente, status_cliente) VALUES
+(1, 'Carlos Silva', '12345678901', 'PESSOA_FISICA', 'Cliente ativo', NOW(), 'ATIVO'),
+(2, 'Mariana Souza', '98765432100', 'PESSOA_FISICA', 'Cliente preferencial', NOW(), 'ATIVO'),
+(3, 'Empresa XYZ', '12345678000199', 'PESSOA_JURIDICA', 'Cliente corporativo', NOW(), 'ATIVO'),
+(4, 'Fernando Lima', '65432198722', 'PESSOA_FISICA', 'Cliente novo', NOW(), 'SUSPENSO'),
+(5, 'Beatriz Oliveira', '74185296355', 'PESSOA_FISICA', 'Cliente VIP', NOW(), 'ATIVO'),
+(6, 'Empresa ABC', '32165498000188', 'PESSOA_JURIDICA', 'Cliente empresa parceira', NOW(), 'ATIVO'),
+(7, 'Lucas Ferreira', '85274196333', 'PESSOA_FISICA', 'Cliente em análise', NOW(), 'SUSPENSO'),
+(8, 'Joana Mendes', '36925814766', 'PESSOA_FISICA', 'Cliente fidelizado', NOW(), 'ATIVO'),
+(9, 'Tech Solutions', '98732154000177', 'PESSOA_JURIDICA', 'Cliente de tecnologia', NOW(), 'ATIVO'),
+(10, 'Gustavo Costa', '15935748622', 'PESSOA_FISICA', 'Cliente com pendências', NOW(), 'SUSPENSO');
+
+-- Inserindo 2 endereços para cada cliente
+INSERT INTO tb_enderecos (idEndereco, id_cliente, logradouro, numero, complemento, bairro, cidade, uf, cep, tipo, observacaoEndereco, data_cadastro_endereco) VALUES
+(1, 1, 'Rua das Flores', '123', 'Apto 201', 'Centro', 'São Paulo', 'SP', '01001000', 'URBANO', NULL, NOW()),
+(2, 1, 'Estrada Velha', '456', NULL, 'Zona Rural', 'Campinas', 'SP', '13050000', 'RURAL', NULL, NOW()),
+(3, 2, 'Av. Paulista', '1000', 'Bloco A', 'Bela Vista', 'São Paulo', 'SP', '01311000', 'URBANO', NULL, NOW()),
+(4, 2, 'Sítio Paraíso', 'S/N', NULL, 'Interior', 'Atibaia', 'SP', '12940000', 'RURAL', NULL, NOW()),
+(5, 3, 'Rua das Indústrias', '200', 'Galpão 3', 'Distrito Industrial', 'Curitiba', 'PR', '80060000', 'URBANO', NULL, NOW()),
+(6, 3, 'Estrada das Empresas', '700', NULL, 'Área Industrial', 'São José dos Pinhais', 'PR', '83005000', 'RURAL', NULL, NOW()),
+(7, 4, 'Rua do Comércio', '89', NULL, 'Centro', 'Belo Horizonte', 'MG', '30110000', 'URBANO', NULL, NOW()),
+(8, 4, 'Fazenda Verde', 'Km 15', NULL, 'Zona Rural', 'Ouro Preto', 'MG', '35400000', 'RURAL', NULL, NOW()),
+(9, 5, 'Av. Brasil', '321', 'Sala 1001', 'Centro', 'Rio de Janeiro', 'RJ', '20040000', 'URBANO', NULL, NOW()),
+(10, 5, 'Chácara das Palmeiras', 'S/N', NULL, 'Campo Grande', 'Rio de Janeiro', 'RJ', '23010000', 'RURAL', NULL, NOW()),
+(11, 6, 'Rua Principal', '777', 'Prédio Comercial', 'Bairro Novo', 'Recife', 'PE', '50050000', 'URBANO', NULL, NOW()),
+(12, 6, 'Rodovia BR-101', 'Km 200', NULL, 'Interior', 'Jaboatão dos Guararapes', 'PE', '54000000', 'RURAL', NULL, NOW()),
+(13, 7, 'Rua da Alegria', '888', NULL, 'Vila Nova', 'Fortaleza', 'CE', '60000000', 'URBANO', NULL, NOW()),
+(14, 7, 'Sítio do Sol', 'S/N', NULL, 'Zona Rural', 'Maranguape', 'CE', '61900000', 'RURAL', NULL, NOW()),
+(15, 8, 'Rua São João', '55', NULL, 'Centro', 'Salvador', 'BA', '40000000', 'URBANO', NULL, NOW()),
+(16, 8, 'Estrada do Coco', 'KM 10', NULL, 'Zona Rural', 'Lauro de Freitas', 'BA', '42700000', 'RURAL', NULL, NOW()),
+(17, 9, 'Av. Rio Branco', '432', 'Andar 12', 'Centro', 'Porto Alegre', 'RS', '90010000', 'URBANO', NULL, NOW()),
+(18, 9, 'Chácara Santa Luzia', 'S/N', NULL, 'Interior', 'Viamão', 'RS', '94450000', 'RURAL', NULL, NOW()),
+(19, 10, 'Rua do Comércio', '987', 'Loja 5', 'Centro', 'Florianópolis', 'SC', '88010000', 'URBANO', NULL, NOW()),
+(20, 10, 'Fazenda Bela Vista', 'KM 30', NULL, 'Zona Rural', 'Joinville', 'SC', '89210000', 'RURAL', NULL, NOW());
+
+-- Inserindo 2 telefones para cada cliente
+INSERT INTO tb_telefones (idTelefone, id_cliente, telefone, contato, data_cadastro_telefone) VALUES
+(1, 1, '11987654321', 'Carlos', NOW()),
+(2, 1, '11976543210', 'Maria', NOW()),
+(3, 2, '21987651234', 'Mariana', NOW()),
+(4, 2, '21965432109', 'Pedro', NOW()),
+(5, 3, '31987659876', 'Atendimento', NOW()),
+(6, 3, '31965431234', 'Suporte', NOW()),
+(7, 4, '41987654567', 'Fernando', NOW()),
+(8, 4, '41965437890', 'Ana', NOW()),
+(9, 5, '51987653210', 'Beatriz', NOW()),
+(10, 5, '51965438976', 'Lucas', NOW()),
+(11, 6, '61987653421', 'Recepção', NOW()),
+(12, 6, '61965439876', 'Vendas', NOW()),
+(13, 7, '71987658976', 'Lucas', NOW()),
+(14, 7, '71965437890', 'Juliana', NOW()),
+(15, 8, '81987653421', 'Joana', NOW()),
+(16, 8, '81965437890', 'Marcos', NOW()),
+(17, 9, '91987653210', 'Tech Solutions', NOW()),
+(18, 9, '91965438976', 'RH', NOW()),
+(19, 10, '11987652345', 'Gustavo', NOW()),
+(20, 10, '11965439876', 'Roberto', NOW());

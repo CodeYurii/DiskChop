@@ -48,11 +48,13 @@ public class EnderecoDao {
             if (enderecoExistente == null) {
                 throw new IllegalArgumentException("endereço nao encontrado");
             }
-            enderecoExistente = endereco;
-            enderecoExistente.setIdEndereco(idEndereco);
-            enderecoExistente.setCliente(cliente);
-
-            cliente.getEnderecos().add(enderecoExistente);
+            enderecoExistente.setLogradouro(endereco.getLogradouro());
+            enderecoExistente.setNumero(endereco.getNumero());
+            enderecoExistente.setBairro(endereco.getBairro());
+            enderecoExistente.setCidade(endereco.getCidade());
+            enderecoExistente.setCep(endereco.getCep());
+            enderecoExistente.setComplemento(endereco.getComplemento());
+            enderecoExistente.setObservacaoEndereco(endereco.getObservacaoEndereco());
             em.merge(cliente);
             em.getTransaction().commit();
         } catch (Exception e) {
@@ -72,15 +74,26 @@ public class EnderecoDao {
         return new ArrayList<>();
     }
 
+    public void excluirEndereco(Long id) {
+        try {
+            Endereco endereco = em.find(Endereco.class, id);
+            if (endereco != null) {
+                // Obtendo o cliente dono do endereço
+                Cliente cliente = endereco.getCliente();
 
-
-    public Optional<Endereco> buscarPorId(Long idEndereco) {
-        Endereco endereco  = em.find(Endereco.class, idEndereco);
-        return Optional.ofNullable(endereco);
-    }
-
-    public void remover(Long idEndereco) {
-       Endereco endereco = buscarPorId(idEndereco).orElseThrow(() -> new RuntimeException("Endereco não encontrado"));
-        em.remove(endereco);
+                if (cliente != null) {
+                    // Removendo o endereço da lista do cliente
+                    cliente.getEnderecos().remove(endereco);
+                    em.merge(cliente); // Atualizando o cliente para refletir a remoção
+                }
+            } else {
+                throw new RuntimeException("Endereço não encontrado para exclusão.");
+            }
+        } catch (Exception e) {
+            if (em.getTransaction().isActive()) {
+                em.getTransaction().rollback();
+            }
+            throw new RuntimeException("Erro ao excluir Endereço", e);
+        }
     }
 }

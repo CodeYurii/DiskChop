@@ -1,6 +1,8 @@
 package com.diskchop.controller;
 
+import com.diskchop.view.Cadastro;
 import com.diskchop.view.CadastroClientes;
+import com.diskchop.view.Estoque;
 import com.diskchop.view.TelaInicialMenu;
 
 import javax.swing.*;
@@ -39,16 +41,28 @@ public class MainController {
         telaInicialMenu.getBtnPedido().addActionListener(e -> toggleSubMenu(telaInicialMenu.getPainelSubmenuPedido()));
         telaInicialMenu.getBtnFinanceiro().addActionListener(e -> toggleSubMenu(telaInicialMenu.getPainelSubmenuFinanceiro()));
         telaInicialMenu.getBtnCadastroCliente().addActionListener(e -> {
-            openCadastroClientes();
+            openCadastroClientes2();
         });
         telaInicialMenu.getBtnAjuda().addActionListener(e -> fecharSubmenuAberto());
         telaInicialMenu.getBtnSair().addActionListener(e -> confirmarSaida());
+        telaInicialMenu.getBtnEstoqueBarris().addActionListener(e -> openEstoque());
     }
 
     private void openCadastroClientes() {
         CadastroClientes cadastroClientes = new CadastroClientes(telaInicialMenu, true);
-        CadastroClientesController controller = new CadastroClientesController(cadastroClientes);
+       // CadastroController controller = new CadastroController(cadastroClientes);
         cadastroClientes.setVisible(true);
+    }
+    private void openCadastroClientes2() {
+        Cadastro cadastro = new Cadastro(telaInicialMenu, true);
+        CadastroController controller = new CadastroController(cadastro);
+        cadastro.setVisible(true);
+    }
+
+    private void openEstoque() {
+        Estoque estoque = new Estoque(telaInicialMenu, true);
+        //CadastroClientesController controller = new CadastroClientesController(cadastroClientes);
+        estoque.setVisible(true);
     }
 
     public void fecharSubmenuAberto() {

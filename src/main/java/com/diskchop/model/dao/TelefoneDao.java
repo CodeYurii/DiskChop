@@ -38,6 +38,29 @@ public class TelefoneDao {
         }
     }
 
+    public void atualizarTelefoneCLiente(Long idCliente, Long idTelefone, Telefone telefone) {
+        try{
+            em.getTransaction().begin();
+            Cliente cliente = em.find(Cliente.class, idCliente);
+            if (cliente == null) {
+                throw new IllegalArgumentException("Cliente não encontrado");
+            }
+            Telefone telefoneExistente = em.find(Telefone.class, idTelefone);
+            if (telefoneExistente == null) {
+                throw new IllegalArgumentException("Telefone nao encontrado");
+            }
+            telefoneExistente.setTelefone(telefone.getTelefone());
+            telefoneExistente.setContato(telefone.getContato());
+            em.merge(cliente);
+            em.getTransaction().commit();
+        } catch (Exception e) {
+            if (em.getTransaction().isActive()) {
+                em.getTransaction().rollback();
+            }
+            throw new RuntimeException("Erro ao atualizar o telefone", e);
+        }
+    }
+
     public List<Telefone> buscarTelefonesDoCliente(Long idCliente) {
         Cliente cliente = em.find(Cliente.class, idCliente);
         if (cliente != null) {
@@ -47,10 +70,25 @@ public class TelefoneDao {
         return new ArrayList<>();
     }
 
+    public void excluirTelefone(Long id) {
+        try {
+            Telefone telefone = em.find(Telefone.class, id);
+            if (telefone != null) {
+                Cliente cliente = telefone.getCliente();
 
-
-    public Optional<Endereco> buscarPorId(Long idEndereco) {
-        Endereco endereco  = em.find(Endereco.class, idEndereco);
-        return Optional.ofNullable(endereco);
+                if (cliente != null) {
+                    // Removendo o endereço da lista do cliente
+                    cliente.getTelefones().remove(telefone);
+                    em.merge(cliente); // Atualizando o cliente para refletir a remoção
+                }
+            } else {
+                throw new RuntimeException("Telefone não encontrado para exclusão.");
+            }
+        } catch (Exception e) {
+            if (em.getTransaction().isActive()) {
+                em.getTransaction().rollback();
+            }
+            throw new RuntimeException("Erro ao excluir Telefone", e);
+        }
     }
 }

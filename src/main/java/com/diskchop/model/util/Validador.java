@@ -3,8 +3,10 @@ package com.diskchop.model.util;
 import com.diskchop.model.entity.Cliente;
 import com.diskchop.model.entity.Endereco;
 import com.diskchop.model.entity.Regime;
+import com.diskchop.model.entity.Telefone;
 import com.diskchop.model.util.erros.ClienteInvalidoException;
 import com.diskchop.model.util.erros.EnderecoInvalidoException;
+import com.diskchop.model.util.erros.TelefoneInvalidoException;
 
 import javax.swing.*;
 
@@ -12,18 +14,32 @@ public class Validador {
 
     public Validador() {}
 
+
+    /*** Validação Telefone ***/
+    public void validarTelefone(Telefone telefone) throws TelefoneInvalidoException {
+        validarNumeroTelefone(telefone.getTelefone());
+        validarContatoTelefone(telefone.getContato());
+    }
+
+    private void validarNumeroTelefone(String telefone){
+        if (telefone != null && !telefone.matches("^\\d{11}$")) {
+            throw new ClienteInvalidoException(MensagensSistema.TELEFONE_NUMERO_INVALIDO);
+        }
+    }
+
+    private void validarContatoTelefone(String contato){
+        if(contato == null || !contato.matches("^[\\p{L} .'-]+$")){
+            throw new EnderecoInvalidoException(MensagensSistema.TELEFONE_NUMERO_INVALIDO);
+        }
+    }
+
     /*** Validação Endereço ***/
     public void validarEndereco(Endereco endereco) throws EnderecoInvalidoException {
-        System.out.println(endereco.getLogradouro());
         validarLogradouro(endereco.getLogradouro());
-
         validarNumero(endereco.getNumero());
         validarCidade(endereco.getCidade());
         validarBairro(endereco.getBairro());
         validarCep(endereco.getCep());
-        validarUF(endereco.getUf());
-        validarObsEndereco(endereco.getObservacaoEndereco());
-        validarComplemento(endereco.getComplemento());
     }
     private void validarLogradouro(String logradouro){
         if(logradouro == null || !logradouro.matches("^[\\p{L} .'-]+$")){
@@ -48,22 +64,6 @@ public class Validador {
     private void validarCidade(String cidade){
         if(cidade == null || !cidade.matches("^[\\p{L} .'-]+$")){
             throw new EnderecoInvalidoException(MensagensSistema.ENDERECO_CIDADE_INVALIDO);
-        }
-    }
-    private void validarUF(String uf){
-        if(uf == null || !uf.matches("^(AC|AL|AP|AM|BA|CE|DF|ES|GO|MA|MT|MS|MG|PA|PB|PR|PE|PI|RJ|RN|RS" +
-                "|RO|RR|SC|SP|SE|TO|ac|al|ap|am|ba|ce|df|es|go|ma|mt|ms|mg|pa|pb|pr|pe|pi|rj|rn|rs|ro|rr|sc|sp|se|to)$")){
-            throw new EnderecoInvalidoException(MensagensSistema.ENDERECO_UF_INVALIDO);
-        }
-    }
-    private void validarObsEndereco(String obsEndereco){
-        if(obsEndereco == null || !obsEndereco.matches("^[\\p{L} .'-]+$")){
-            throw new EnderecoInvalidoException(MensagensSistema.ENDERECO_OBSERVACAO_INVALIDO);
-        }
-    }
-    private void validarComplemento(String complemento){
-        if(complemento == null || !complemento.matches("^[\\p{L} .'-]+$")){
-            throw new EnderecoInvalidoException(MensagensSistema.ENDERECO_COMPLEMENTO_INVALIDO);
         }
     }
 

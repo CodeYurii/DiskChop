@@ -29,8 +29,6 @@ public class Endereco {
     @Column(nullable = false)
     private String cidade;
     @Column(nullable = false)
-    private String uf;
-    @Column(nullable = false)
     private String cep;
     @Enumerated(EnumType.STRING)
     @Column(name = "tipo", nullable = false)
@@ -44,14 +42,13 @@ public class Endereco {
     }
 
     public Endereco(Long idEndereco, Cliente cliente, String logradouro, String numero, String complemento, String bairro,
-                    String uf, String cidade, String cep, String observacaoEndereco) {
+                    String cidade, String cep, String observacaoEndereco) {
         this.idEndereco = idEndereco;
         this.cliente = cliente;
         this.logradouro = logradouro;
         this.numero = numero;
         this.complemento = complemento;
         this.bairro = bairro;
-        this.uf = uf;
         this.cidade = cidade;
         this.cep = cep;
         this.observacaoEndereco = observacaoEndereco;
@@ -59,14 +56,13 @@ public class Endereco {
     }
 
     public Endereco(Long idEndereco, Cliente cliente, String logradouro, String numero, String complemento, String bairro,
-                    String uf, String cidade, String cep, String observacaoEndereco, LocalDateTime dataCadastroEndereco) {
+                    String cidade, String cep, String observacaoEndereco, LocalDateTime dataCadastroEndereco) {
         this.idEndereco = idEndereco;
         this.cliente = cliente;
         this.logradouro = logradouro;
         this.numero = numero;
         this.complemento = complemento;
         this.bairro = bairro;
-        this.uf = uf;
         this.cidade = cidade;
         this.cep = cep;
         this.observacaoEndereco = observacaoEndereco;
@@ -74,7 +70,7 @@ public class Endereco {
     }
 
     public Endereco(Long idEndereco, Cliente cliente, String logradouro, String numero, String complemento, String bairro, String cidade,
-                    String uf, String cep, Tipo tipo, String observacaoEndereco, LocalDateTime dataCadastroEndereco) {
+                    String cep, Tipo tipo, String observacaoEndereco, LocalDateTime dataCadastroEndereco) {
         this.idEndereco = idEndereco;
         this.cliente = cliente;
         this.logradouro = logradouro;
@@ -82,7 +78,6 @@ public class Endereco {
         this.complemento = complemento;
         this.bairro = bairro;
         this.cidade = cidade;
-        this.uf = uf;
         this.cep = cep;
         this.tipo = tipo;
         this.observacaoEndereco = observacaoEndereco;

@@ -990,6 +990,19 @@ public class CadastroClientes extends javax.swing.JDialog {
         };
     }
 
+    public JTextField[] getEnderecoJTextFields(){
+        return new JTextField[]{
+                textFieldCadLogradouro,
+                textFieldCadNumero,
+                textFieldCadBairro,
+                textFieldCadObservacaoEndereco,
+                textFieldCadUf,
+                textFieldCadCep,
+                textFieldCadCidade,
+                textFieldCadComplemento
+        };
+    }
+
 
 
     public JTable getTableCadTelefones() {
