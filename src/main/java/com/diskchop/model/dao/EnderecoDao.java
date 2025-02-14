@@ -5,6 +5,7 @@ import com.diskchop.model.entity.Endereco;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
+import jakarta.persistence.Query;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,13 +23,17 @@ public class EnderecoDao {
     public void adicionarEnderecoCliente(Long idCliente, Endereco endereco) {
         try {
             em.getTransaction().begin();
+
             Cliente cliente = em.find(Cliente.class, idCliente);
             if (cliente != null) {
                 endereco.setCliente(cliente);
                 cliente.getEnderecos().add(endereco);
-                em.merge(cliente);
+                em.persist(endereco); // Persistindo o novo endereço
+            } else {
+                throw new RuntimeException("Cliente não encontrado para o ID: " + idCliente);
             }
             em.getTransaction().commit();
+            em.clear();
         } catch (Exception e) {
             if (em.getTransaction().isActive()) {
                 em.getTransaction().rollback();
@@ -37,24 +42,13 @@ public class EnderecoDao {
         }
     }
 
-    public void atualizarEndereco(Long idCliente, Long idEndereco, Endereco endereco) {
+    public void atualizarEndereco(Long idCliente, Endereco endereco) {
         try{
             em.getTransaction().begin();
             Cliente cliente = em.find(Cliente.class, idCliente);
             if (cliente == null) {
                 throw new IllegalArgumentException("Cliente nao encontrado");
             }
-            Endereco enderecoExistente = em.find(Endereco.class, idEndereco);
-            if (enderecoExistente == null) {
-                throw new IllegalArgumentException("endereço nao encontrado");
-            }
-            enderecoExistente.setLogradouro(endereco.getLogradouro());
-            enderecoExistente.setNumero(endereco.getNumero());
-            enderecoExistente.setBairro(endereco.getBairro());
-            enderecoExistente.setCidade(endereco.getCidade());
-            enderecoExistente.setCep(endereco.getCep());
-            enderecoExistente.setComplemento(endereco.getComplemento());
-            enderecoExistente.setObservacaoEndereco(endereco.getObservacaoEndereco());
             em.merge(cliente);
             em.getTransaction().commit();
         } catch (Exception e) {
@@ -63,6 +57,19 @@ public class EnderecoDao {
             }
             throw new RuntimeException("Erro ao atualizar o endereço", e);
         }
+    }
+
+    public void selecrionarEndereco(Endereco endereco){
+        try{
+            em.getTransaction().begin();
+            Endereco enderecoSelecionado = em.find(Endereco.class, endereco.getIdEndereco());
+            if (enderecoSelecionado != null) {
+                em.merge(enderecoSelecionado);
+                em.getTransaction().commit();
+                em.clear();
+                em.refresh(enderecoSelecionado);
+            }
+        } catch (Exception e) {}
     }
 
     public List<Endereco> buscarEnderecosDoCliente(Long idCliente) {

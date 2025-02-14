@@ -36,11 +36,11 @@ public class Cliente {
     @Column(name = "status_cliente", nullable = true)
     private StatusCliente statusCliente;
 
-    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = false)
     @OrderBy("dataCadastroEndereco DESC")
     private List<Endereco> enderecos = new ArrayList<>();
 
-    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
     @OrderBy("dataCadastroTelefone DESC")
     private List<Telefone> telefones = new ArrayList<>();
 
@@ -54,13 +54,14 @@ public class Cliente {
         this.observacao = observacao;
     }
 
-    public Cliente(Long idCliente, String nome, String cpf, Regime regime, String observacao,
+    public Cliente(Long idCliente, String nome, String cpf, Regime regime, String observacao, LocalDateTime dataCadastroCliente,
                    StatusCliente statusCliente, List<Endereco> enderecos, List<Telefone> telefones) {
         this.idCliente = idCliente;
         this.nome = nome;
         this.cpf = cpf;
         this.regime = regime;
         this.observacao = observacao;
+        this.dataCadastroCliente = (dataCadastroCliente != null) ? dataCadastroCliente : LocalDateTime.now();
         this.statusCliente = statusCliente;
         this.enderecos = enderecos;
         this.telefones = telefones;

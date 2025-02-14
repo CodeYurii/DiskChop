@@ -831,19 +831,11 @@ public class Cadastro extends javax.swing.JDialog {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
+                UIManager.setLookAndFeel(new FlatDarkLaf());  // Para um tema escuro
+
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Cadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Cadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Cadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Cadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         //</editor-fold>
 
@@ -935,9 +927,9 @@ public class Cadastro extends javax.swing.JDialog {
 
     public Tipo getComboTipo(){
         String selecionado = (String) comboArea.getSelectedItem();
-        if ("URBANO".equals(selecionado)) {
+        if ("Urbano".equals(selecionado)) {
             return Tipo.URBANO;
-        } else if ("RURAL".equals(selecionado)) {
+        } else if ("Rural".equals(selecionado)) {
             return Tipo.RURAL;
         }
         return null;
@@ -945,9 +937,9 @@ public class Cadastro extends javax.swing.JDialog {
 
     public StatusCliente getComboStatusCliente(){
         String selecionado = (String) comboStatusCliente.getSelectedItem();
-        if ("ATIVO".equals(selecionado)) {
+        if ("Ativo".equals(selecionado)) {
             return StatusCliente.ATIVO;
-        } else if ("SUSPENSO".equals(selecionado)) {
+        } else if ("Suspenso".equals(selecionado)) {
             return StatusCliente.SUSPENSO;
         }
         return null;

@@ -22,17 +22,18 @@ public class ClienteDao {
         }
     }
 
-    public void salvarCliente(Cliente cliente) {
+    public boolean salvarCliente(Cliente cliente) {
         try {
             em.getTransaction().begin();
-            Cliente clienteSalvo = cliente;
-            em.persist(clienteSalvo);
+            em.persist(cliente);
             em.getTransaction().commit();
+            return true;
         } catch (Exception e) {
             if (em.getTransaction().isActive()) {
                 em.getTransaction().rollback();
             }
             TelaMensagensSistema.mostrarErro(MensagensSistema.ERRO_BANCO_DADOS);
+            return false;
         }
     }
 
@@ -40,8 +41,10 @@ public class ClienteDao {
         try {
             em.getTransaction().begin();
             Cliente clienteSalvo = cliente;
+            em.flush();
             em.merge(clienteSalvo);
             em.getTransaction().commit();
+            em.clear();
         } catch (Exception e) {
             if (em.getTransaction().isActive()) {
                 em.getTransaction().rollback();
@@ -74,10 +77,12 @@ public class ClienteDao {
 
     public Cliente buscarClientePorId(Long id) {
         try {
-            // A busca é feita diretamente pelo ID, que é uma chave primária
-            return em.find(Cliente.class, id);
+            Cliente cliente = em.find(Cliente.class, id);
+            em.refresh(cliente);
+            return cliente;
         } catch (Exception e) {
-            throw new RuntimeException("Erro ao buscar cliente por ID", e);
+            TelaMensagensSistema.mostrarErro("Erro ao buscar cliente por ID");
+            return null;
         }
     }
 
