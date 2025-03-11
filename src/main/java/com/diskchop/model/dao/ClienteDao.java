@@ -24,9 +24,16 @@ public class ClienteDao {
 
     public boolean salvarCliente(Cliente cliente) {
         try {
+
             em.getTransaction().begin();
-            em.persist(cliente);
+            if(cliente.getIdCliente() == null || cliente.getIdCliente().equals("")){
+                em.persist(cliente);
+            } else {
+                em.merge(cliente);
+                em.flush();
+            }
             em.getTransaction().commit();
+            em.clear();
             return true;
         } catch (Exception e) {
             if (em.getTransaction().isActive()) {

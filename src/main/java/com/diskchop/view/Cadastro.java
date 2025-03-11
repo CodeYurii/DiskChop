@@ -3,9 +3,9 @@ package com.diskchop.view;
 import com.diskchop.model.entity.Regime;
 import com.diskchop.model.entity.StatusCliente;
 import com.diskchop.model.entity.Tipo;
-import com.formdev.flatlaf.FlatDarkLaf;
 
 import javax.swing.*;
+
 /**
  *
  * @author Yuri
@@ -29,6 +29,7 @@ public class Cadastro extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">
     private void initComponents() {
 
+        scrollPaneBackground = new javax.swing.JScrollPane();
         panelBackground = new javax.swing.JPanel();
         paneltop = new javax.swing.JPanel();
         labelTituloClientes = new javax.swing.JLabel();
@@ -36,7 +37,11 @@ public class Cadastro extends javax.swing.JDialog {
         panelClientes = new javax.swing.JPanel();
         scrollPaneClientes = new javax.swing.JScrollPane();
         tableClientes = new javax.swing.JTable();
+        textFieldId = new javax.swing.JTextField();
         textFieldNome = new javax.swing.JTextField();
+        textFieldCpf = new javax.swing.JTextField();
+        textFieldObsCLiente = new javax.swing.JTextField();
+        comboRegime = new javax.swing.JComboBox<>();
         labelNome = new javax.swing.JLabel();
         labelPanelClientes = new javax.swing.JLabel();
         botaoSalvarCliente = new javax.swing.JButton();
@@ -44,32 +49,33 @@ public class Cadastro extends javax.swing.JDialog {
         botaoNovoCliente = new javax.swing.JButton();
         botaoBuscarCliente = new javax.swing.JButton();
         labelCpf = new javax.swing.JLabel();
-        textFieldCpf = new javax.swing.JTextField();
         labelObsClientes = new javax.swing.JLabel();
-        textFieldObsCLiente = new javax.swing.JTextField();
         labelId = new javax.swing.JLabel();
-        textFieldId = new javax.swing.JTextField();
-        comboRegime = new javax.swing.JComboBox<>();
         labelListaClientes = new javax.swing.JLabel();
         labelRegime = new javax.swing.JLabel();
         labelStatusCliente = new javax.swing.JLabel();
         comboStatusCliente = new javax.swing.JComboBox<>();
         botaoExcluirCliente = new javax.swing.JButton();
+        botaoEditarCliente = new javax.swing.JButton();
+        botaoCancelar = new javax.swing.JButton();
         panelEnderecos = new javax.swing.JPanel();
         scrollPaneEnderecos = new javax.swing.JScrollPane();
         tableEnderecos = new javax.swing.JTable();
         labelPanelEnderecos = new javax.swing.JLabel();
         comboArea = new javax.swing.JComboBox<>();
         labelBairro = new javax.swing.JLabel();
-        textFieldBairro = new javax.swing.JTextField();
-        labelCidade = new javax.swing.JLabel();
-        textFieldCidade = new javax.swing.JTextField();
-        labelArea = new javax.swing.JLabel();
+        textFieldIdEndereco = new javax.swing.JTextField();
+        textFieldLogradouro = new javax.swing.JTextField();
+        textFieldNumeroEndereco = new javax.swing.JTextField();
         textFieldComplemento = new javax.swing.JTextField();
-        labelComplemento = new javax.swing.JLabel();
-        textFieldObsEnderecos = new javax.swing.JTextField();
-        labelObsEndereco = new javax.swing.JLabel();
+        textFieldBairro = new javax.swing.JTextField();
+        textFieldCidade = new javax.swing.JTextField();
         textFieldCep = new javax.swing.JTextField();
+        textFieldObsEnderecos = new javax.swing.JTextField();
+        labelCidade = new javax.swing.JLabel();
+        labelArea = new javax.swing.JLabel();
+        labelComplemento = new javax.swing.JLabel();
+        labelObsEndereco = new javax.swing.JLabel();
         labelCep = new javax.swing.JLabel();
         botaoAdicionarEndereco = new javax.swing.JButton();
         botaoExcluirEndereco = new javax.swing.JButton();
@@ -77,11 +83,11 @@ public class Cadastro extends javax.swing.JDialog {
         labelListaEnderecos = new javax.swing.JLabel();
         labelNumeroEnderco = new javax.swing.JLabel();
         labelLogradouro = new javax.swing.JLabel();
-        textFieldLogradouro = new javax.swing.JTextField();
-        textFieldNumeroEndereco = new javax.swing.JTextField();
         botaoSalvarEndereco = new javax.swing.JButton();
         labelIdEndereco = new javax.swing.JLabel();
-        textFieldIdEndereco = new javax.swing.JTextField();
+        botaoLimparCamposEndereco = new javax.swing.JButton();
+        botaoEditarEndereco = new javax.swing.JButton();
+        botaoCancelarEndereco = new javax.swing.JButton();
         panelTelefones = new javax.swing.JPanel();
         scrollPaneTelefones = new javax.swing.JScrollPane();
         tableTelefones = new javax.swing.JTable();
@@ -97,16 +103,25 @@ public class Cadastro extends javax.swing.JDialog {
         labelListaTelefones = new javax.swing.JLabel();
         textFieldIdTelefone = new javax.swing.JTextField();
         labelIdTelefone = new javax.swing.JLabel();
+        botaoLimparCamposTelefone = new javax.swing.JButton();
+        botaoEditarTelefone = new javax.swing.JButton();
+        botaoCancelarTelefone = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(20, 20, 25));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setModal(true);
-        setSize(new java.awt.Dimension(954, 851));
+        setPreferredSize(new java.awt.Dimension(1300, 780));
+        setResizable(false);
+        setSize(new java.awt.Dimension(1300, 780));
+
+        scrollPaneBackground.setPreferredSize(new java.awt.Dimension(1300, 780));
 
         panelBackground.setBackground(new java.awt.Color(20, 20, 25));
+        panelBackground.setPreferredSize(new java.awt.Dimension(1280, 770));
 
         paneltop.setBackground(new java.awt.Color(30, 30, 35));
+        paneltop.setPreferredSize(new java.awt.Dimension(1280, 0));
 
         labelTituloClientes.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
         labelTituloClientes.setForeground(new java.awt.Color(235, 235, 235));
@@ -126,28 +141,30 @@ public class Cadastro extends javax.swing.JDialog {
         paneltopLayout.setHorizontalGroup(
                 paneltopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(paneltopLayout.createSequentialGroup()
-                                .addContainerGap()
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(botaoVoltar)
                                 .addGap(18, 18, 18)
-                                .addComponent(labelTituloClientes)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(labelTituloClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 1215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(14, 14, 14))
         );
         paneltopLayout.setVerticalGroup(
                 paneltopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(paneltopLayout.createSequentialGroup()
-                                .addGap(0, 9, Short.MAX_VALUE)
-                                .addGroup(paneltopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(botaoVoltar)
-                                        .addComponent(labelTituloClientes)))
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addGroup(paneltopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(botaoVoltar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(labelTituloClientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         panelClientes.setBackground(new java.awt.Color(20, 20, 25));
+        panelClientes.setPreferredSize(new java.awt.Dimension(1280, 250));
 
         scrollPaneClientes.setBackground(new java.awt.Color(60, 60, 60));
         scrollPaneClientes.setBorder(null);
+        scrollPaneClientes.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
 
         tableClientes.setBackground(new java.awt.Color(20, 20, 25));
-        tableClientes.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        tableClientes.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         tableClientes.setForeground(new java.awt.Color(250, 250, 250));
         tableClientes.setModel(new javax.swing.table.DefaultTableModel(
                 new Object [][] {
@@ -163,109 +180,137 @@ public class Cadastro extends javax.swing.JDialog {
         tableClientes.setGridColor(new java.awt.Color(60, 60, 65));
         scrollPaneClientes.setViewportView(tableClientes);
 
+        textFieldId.setBackground(new java.awt.Color(30, 30, 35));
+        textFieldId.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        textFieldId.setForeground(new java.awt.Color(235, 235, 235));
+        textFieldId.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(60, 60, 65), 1, true));
+        textFieldId.setCaretColor(new java.awt.Color(235, 235, 235));
+        textFieldId.setPreferredSize(new java.awt.Dimension(0, 20));
+
         textFieldNome.setBackground(new java.awt.Color(30, 30, 35));
-        textFieldNome.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        textFieldNome.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         textFieldNome.setForeground(new java.awt.Color(235, 235, 235));
+        textFieldNome.setToolTipText("Não use acentuação ao preencher o nome");
         textFieldNome.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(60, 60, 65), 1, true));
         textFieldNome.setCaretColor(new java.awt.Color(235, 235, 235));
-        textFieldNome.setPreferredSize(new java.awt.Dimension(0, 25));
-
-        labelNome.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        labelNome.setForeground(new java.awt.Color(255, 200, 87));
-        labelNome.setText("NOME:");
-
-        labelPanelClientes.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
-        labelPanelClientes.setForeground(new java.awt.Color(235, 235, 235));
-        labelPanelClientes.setText("CLIENTES");
-
-        botaoSalvarCliente.setBackground(new java.awt.Color(40, 40, 45));
-        botaoSalvarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconesCrud/diskette.png"))); // NOI18N
-        botaoSalvarCliente.setToolTipText("Salvar Cliente");
-        botaoSalvarCliente.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(60, 60, 65), 2, true));
-
-        botaoLimparCampos.setBackground(new java.awt.Color(40, 40, 45));
-        botaoLimparCampos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconesCrud/eraser.png"))); // NOI18N
-        botaoLimparCampos.setToolTipText("Limpar Campos de Preenchimento");
-        botaoLimparCampos.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(60, 60, 65), 2, true));
-
-        botaoNovoCliente.setBackground(new java.awt.Color(40, 40, 45));
-        botaoNovoCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconesCrud/adicionar.png"))); // NOI18N
-        botaoNovoCliente.setToolTipText("Adicionar Novo Cliente");
-        botaoNovoCliente.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(60, 60, 65), 2, true));
-
-        botaoBuscarCliente.setBackground(new java.awt.Color(40, 40, 45));
-        botaoBuscarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconesCrud/lupa.png"))); // NOI18N
-        botaoBuscarCliente.setToolTipText("Buscar Cliente Por Id");
-        botaoBuscarCliente.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(60, 60, 65), 2, true));
-
-        labelCpf.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        labelCpf.setForeground(new java.awt.Color(255, 200, 87));
-        labelCpf.setText("CPF/CNPJ:");
+        textFieldNome.setPreferredSize(new java.awt.Dimension(0, 20));
 
         textFieldCpf.setBackground(new java.awt.Color(30, 30, 35));
-        textFieldCpf.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        textFieldCpf.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         textFieldCpf.setForeground(new java.awt.Color(235, 235, 235));
+        textFieldCpf.setToolTipText("Digite os números sem \".\" ou \"()\"");
         textFieldCpf.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(60, 60, 65), 1, true));
         textFieldCpf.setCaretColor(new java.awt.Color(235, 235, 235));
-        textFieldCpf.setPreferredSize(new java.awt.Dimension(0, 25));
-
-        labelObsClientes.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        labelObsClientes.setForeground(new java.awt.Color(255, 200, 87));
-        labelObsClientes.setText("OBS:");
+        textFieldCpf.setPreferredSize(new java.awt.Dimension(0, 20));
 
         textFieldObsCLiente.setBackground(new java.awt.Color(30, 30, 35));
-        textFieldObsCLiente.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        textFieldObsCLiente.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         textFieldObsCLiente.setForeground(new java.awt.Color(235, 235, 235));
         textFieldObsCLiente.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(60, 60, 65), 1, true));
         textFieldObsCLiente.setCaretColor(new java.awt.Color(235, 235, 235));
-        textFieldObsCLiente.setPreferredSize(new java.awt.Dimension(0, 25));
+        textFieldObsCLiente.setPreferredSize(new java.awt.Dimension(0, 20));
         textFieldObsCLiente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textFieldObsCLienteActionPerformed(evt);
             }
         });
 
-        labelId.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        comboRegime.setBackground(new java.awt.Color(30, 30, 35));
+        comboRegime.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        comboRegime.setForeground(new java.awt.Color(235, 235, 235));
+        comboRegime.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "FÍSICA", "JURÍDICA" }));
+        comboRegime.setToolTipText("Física para CPF e Jurídica para CNPJ");
+        comboRegime.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(60, 60, 65), 1, true));
+        comboRegime.setPreferredSize(new java.awt.Dimension(0, 20));
+
+        labelNome.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        labelNome.setForeground(new java.awt.Color(255, 200, 87));
+        labelNome.setText("NOME:");
+        labelNome.setPreferredSize(new java.awt.Dimension(36, 20));
+
+        labelPanelClientes.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        labelPanelClientes.setForeground(new java.awt.Color(235, 235, 235));
+        labelPanelClientes.setText("CLIENTES");
+
+        botaoSalvarCliente.setBackground(new java.awt.Color(20, 20, 25));
+        botaoSalvarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconesCrud/diskette.png"))); // NOI18N
+        botaoSalvarCliente.setToolTipText("Salvar Cliente");
+        botaoSalvarCliente.setBorder(null);
+        botaoSalvarCliente.setEnabled(false);
+        botaoSalvarCliente.setPreferredSize(new java.awt.Dimension(24, 24));
+
+        botaoLimparCampos.setBackground(new java.awt.Color(20, 20, 25));
+        botaoLimparCampos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconesCrud/eraser.png"))); // NOI18N
+        botaoLimparCampos.setToolTipText("Limpar Campos de Preenchimento");
+        botaoLimparCampos.setBorder(null);
+        botaoLimparCampos.setPreferredSize(new java.awt.Dimension(24, 24));
+
+        botaoNovoCliente.setBackground(new java.awt.Color(20, 20, 25));
+        botaoNovoCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconesCrud/plus.png"))); // NOI18N
+        botaoNovoCliente.setToolTipText("Adicionar Novo Cliente");
+        botaoNovoCliente.setBorder(null);
+        botaoNovoCliente.setPreferredSize(new java.awt.Dimension(24, 24));
+
+        botaoBuscarCliente.setBackground(new java.awt.Color(20, 20, 25));
+        botaoBuscarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconesCrud/lupa.png"))); // NOI18N
+        botaoBuscarCliente.setToolTipText("Buscar Cliente Por Id");
+        botaoBuscarCliente.setBorder(null);
+        botaoBuscarCliente.setPreferredSize(new java.awt.Dimension(24, 24));
+
+        labelCpf.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        labelCpf.setForeground(new java.awt.Color(255, 200, 87));
+        labelCpf.setText("CPF/CNPJ:");
+        labelCpf.setPreferredSize(new java.awt.Dimension(62, 20));
+
+        labelObsClientes.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        labelObsClientes.setForeground(new java.awt.Color(255, 200, 87));
+        labelObsClientes.setText("OBS:");
+        labelObsClientes.setPreferredSize(new java.awt.Dimension(26, 20));
+
+        labelId.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         labelId.setForeground(new java.awt.Color(255, 200, 87));
         labelId.setText("ID:");
+        labelId.setPreferredSize(new java.awt.Dimension(15, 20));
 
-        textFieldId.setBackground(new java.awt.Color(30, 30, 35));
-        textFieldId.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        textFieldId.setForeground(new java.awt.Color(235, 235, 235));
-        textFieldId.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(60, 60, 65), 1, true));
-        textFieldId.setCaretColor(new java.awt.Color(235, 235, 235));
-        textFieldId.setPreferredSize(new java.awt.Dimension(0, 25));
-
-        comboRegime.setBackground(new java.awt.Color(30, 30, 35));
-        comboRegime.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        comboRegime.setForeground(new java.awt.Color(235, 235, 235));
-        comboRegime.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Física", "Jurídica" }));
-        comboRegime.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(60, 60, 65), 1, true));
-        comboRegime.setPreferredSize(new java.awt.Dimension(0, 25));
-
-        labelListaClientes.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        labelListaClientes.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         labelListaClientes.setForeground(new java.awt.Color(235, 235, 235));
         labelListaClientes.setText("LISTA DE CLIENTES");
 
-        labelRegime.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        labelRegime.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         labelRegime.setForeground(new java.awt.Color(255, 200, 87));
         labelRegime.setText("REGIME:");
+        labelRegime.setPreferredSize(new java.awt.Dimension(47, 20));
 
-        labelStatusCliente.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        labelStatusCliente.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         labelStatusCliente.setForeground(new java.awt.Color(255, 200, 87));
         labelStatusCliente.setText("STATUS:");
+        labelStatusCliente.setPreferredSize(new java.awt.Dimension(47, 20));
 
         comboStatusCliente.setBackground(new java.awt.Color(30, 30, 35));
-        comboStatusCliente.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        comboStatusCliente.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         comboStatusCliente.setForeground(new java.awt.Color(235, 235, 235));
-        comboStatusCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ativo", "Suspenso" }));
+        comboStatusCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ATIVO", "SUSPENSO" }));
         comboStatusCliente.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(60, 60, 65)));
-        comboStatusCliente.setPreferredSize(new java.awt.Dimension(97, 25));
+        comboStatusCliente.setPreferredSize(new java.awt.Dimension(0, 20));
 
-        botaoExcluirCliente.setBackground(new java.awt.Color(40, 40, 45));
+        botaoExcluirCliente.setBackground(new java.awt.Color(20, 20, 25));
         botaoExcluirCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconesCrud/bin.png"))); // NOI18N
         botaoExcluirCliente.setToolTipText("Excluir Cliente");
-        botaoExcluirCliente.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(60, 60, 65), 2, true));
+        botaoExcluirCliente.setBorder(null);
+        botaoExcluirCliente.setPreferredSize(new java.awt.Dimension(24, 24));
+
+        botaoEditarCliente.setBackground(new java.awt.Color(20, 20, 25));
+        botaoEditarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconesCrud/pencil2.png"))); // NOI18N
+        botaoEditarCliente.setToolTipText("Editar Cliente");
+        botaoEditarCliente.setBorder(null);
+        botaoEditarCliente.setPreferredSize(new java.awt.Dimension(24, 24));
+
+        botaoCancelar.setBackground(new java.awt.Color(20, 20, 25));
+        botaoCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconesCrud/cancel.png"))); // NOI18N
+        botaoCancelar.setToolTipText("Cancelar");
+        botaoCancelar.setBorder(null);
+        botaoCancelar.setEnabled(false);
+        botaoCancelar.setPreferredSize(new java.awt.Dimension(24, 24));
 
         javax.swing.GroupLayout panelClientesLayout = new javax.swing.GroupLayout(panelClientes);
         panelClientes.setLayout(panelClientesLayout);
@@ -274,84 +319,88 @@ public class Cadastro extends javax.swing.JDialog {
                         .addGroup(panelClientesLayout.createSequentialGroup()
                                 .addContainerGap()
                                 .addGroup(panelClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(scrollPaneClientes, javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(scrollPaneClientes)
+                                        .addGroup(panelClientesLayout.createSequentialGroup()
+                                                .addComponent(labelPanelClientes)
+                                                .addGap(0, 0, Short.MAX_VALUE))
                                         .addGroup(panelClientesLayout.createSequentialGroup()
                                                 .addGroup(panelClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(labelListaClientes)
-                                                        .addComponent(labelPanelClientes))
-                                                .addGap(0, 0, Short.MAX_VALUE))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelClientesLayout.createSequentialGroup()
-                                                .addGroup(panelClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                                         .addGroup(panelClientesLayout.createSequentialGroup()
-                                                                .addComponent(labelCpf)
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                                .addComponent(textFieldCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addGap(18, 18, 18)
-                                                                .addComponent(labelObsClientes)
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addComponent(textFieldObsCLiente, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)
-                                                                .addGap(18, 18, 18)
-                                                                .addComponent(labelStatusCliente)
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addComponent(comboStatusCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                        .addGroup(panelClientesLayout.createSequentialGroup()
-                                                                .addComponent(labelId)
+                                                                .addComponent(labelId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                                 .addComponent(textFieldId, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addGap(18, 18, 18)
-                                                                .addComponent(labelRegime)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                                .addComponent(labelRegime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addComponent(comboRegime, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addGap(18, 18, 18)
-                                                                .addComponent(labelNome)
+                                                                .addComponent(comboRegime, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                                .addComponent(labelNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addComponent(textFieldNome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                                .addGap(18, 18, 18)
-                                                .addGroup(panelClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addGroup(panelClientesLayout.createSequentialGroup()
-                                                                .addComponent(botaoBuscarCliente)
-                                                                .addGap(18, 18, 18)
-                                                                .addComponent(botaoNovoCliente)
-                                                                .addGap(18, 18, 18)
-                                                                .addComponent(botaoSalvarCliente)
-                                                                .addGap(18, 18, 18)
-                                                                .addComponent(botaoLimparCampos))
-                                                        .addComponent(botaoExcluirCliente))))
+                                                                .addComponent(textFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                                .addComponent(labelCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                                .addComponent(textFieldCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                                .addComponent(labelObsClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addComponent(textFieldObsCLiente, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                                .addComponent(labelStatusCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addComponent(comboStatusCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                                .addComponent(botaoBuscarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                        .addComponent(labelListaClientes))
+                                                .addGap(12, 12, 12)
+                                                .addComponent(botaoNovoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(botaoEditarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(botaoExcluirCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(botaoSalvarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(botaoCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(botaoLimparCampos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addContainerGap())
         );
         panelClientesLayout.setVerticalGroup(
                 panelClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(panelClientesLayout.createSequentialGroup()
-                                .addContainerGap()
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(labelPanelClientes)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGap(13, 13, 13)
                                 .addGroup(panelClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(panelClientesLayout.createSequentialGroup()
                                                 .addGroup(panelClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(botaoBuscarCliente)
-                                                        .addComponent(botaoNovoCliente)
-                                                        .addGroup(panelClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                                .addComponent(labelId)
-                                                                .addComponent(textFieldId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addComponent(comboRegime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addComponent(labelRegime)
-                                                                .addComponent(labelNome)
-                                                                .addComponent(textFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                                .addGap(17, 17, 17)
-                                                .addGroup(panelClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                        .addComponent(labelCpf)
-                                                        .addComponent(textFieldCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(labelObsClientes)
-                                                        .addComponent(textFieldObsCLiente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(labelStatusCliente)
-                                                        .addComponent(comboStatusCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(botaoExcluirCliente)))
-                                        .addComponent(botaoLimparCampos)
-                                        .addComponent(botaoSalvarCliente))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(labelListaClientes)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(scrollPaneClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(botaoNovoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(botaoSalvarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(botaoExcluirCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(botaoLimparCampos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addGroup(panelClientesLayout.createSequentialGroup()
+                                                                .addGroup(panelClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                        .addGroup(panelClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                                                .addComponent(labelId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                .addComponent(textFieldId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                .addComponent(comboRegime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                .addComponent(labelRegime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                .addComponent(labelNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                .addComponent(textFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                .addComponent(labelCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                .addComponent(textFieldCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                .addComponent(labelObsClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                .addComponent(textFieldObsCLiente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                .addComponent(labelStatusCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                .addComponent(comboStatusCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                        .addComponent(botaoBuscarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                                .addComponent(labelListaClientes))
+                                                        .addComponent(botaoCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(scrollPaneClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(botaoEditarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addContainerGap())
         );
 
@@ -359,9 +408,10 @@ public class Cadastro extends javax.swing.JDialog {
 
         scrollPaneEnderecos.setBackground(new java.awt.Color(60, 60, 60));
         scrollPaneEnderecos.setBorder(null);
+        scrollPaneEnderecos.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
 
         tableEnderecos.setBackground(new java.awt.Color(20, 20, 25));
-        tableEnderecos.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        tableEnderecos.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         tableEnderecos.setForeground(new java.awt.Color(235, 235, 235));
         tableEnderecos.setModel(new javax.swing.table.DefaultTableModel(
                 new Object [][] {
@@ -377,142 +427,174 @@ public class Cadastro extends javax.swing.JDialog {
         tableEnderecos.setGridColor(new java.awt.Color(60, 60, 65));
         scrollPaneEnderecos.setViewportView(tableEnderecos);
 
-        labelPanelEnderecos.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
+        labelPanelEnderecos.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         labelPanelEnderecos.setForeground(new java.awt.Color(235, 235, 235));
         labelPanelEnderecos.setText("ENDEREÇOS");
 
         comboArea.setBackground(new java.awt.Color(30, 30, 35));
-        comboArea.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        comboArea.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         comboArea.setForeground(new java.awt.Color(235, 235, 235));
-        comboArea.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Urbano", "Rural" }));
+        comboArea.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "URBANO", "RURAL" }));
         comboArea.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(60, 60, 65), 1, true));
-        comboArea.setPreferredSize(new java.awt.Dimension(0, 25));
+        comboArea.setInheritsPopupMenu(true);
+        comboArea.setMinimumSize(new java.awt.Dimension(82, 20));
+        comboArea.setPreferredSize(new java.awt.Dimension(0, 20));
 
-        labelBairro.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        labelBairro.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         labelBairro.setForeground(new java.awt.Color(255, 200, 87));
         labelBairro.setText("BAIRRO:");
 
-        textFieldBairro.setBackground(new java.awt.Color(30, 30, 35));
-        textFieldBairro.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        textFieldBairro.setForeground(new java.awt.Color(235, 235, 235));
-        textFieldBairro.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(60, 60, 65), 1, true));
-        textFieldBairro.setCaretColor(new java.awt.Color(235, 235, 235));
-        textFieldBairro.setPreferredSize(new java.awt.Dimension(0, 25));
+        textFieldIdEndereco.setEditable(false);
+        textFieldIdEndereco.setBackground(new java.awt.Color(30, 30, 35));
+        textFieldIdEndereco.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        textFieldIdEndereco.setForeground(new java.awt.Color(235, 235, 235));
+        textFieldIdEndereco.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(60, 60, 65), 1, true));
+        textFieldIdEndereco.setPreferredSize(new java.awt.Dimension(0, 20));
+        textFieldIdEndereco.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textFieldIdEnderecoActionPerformed(evt);
+            }
+        });
 
-        labelCidade.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        labelCidade.setForeground(new java.awt.Color(255, 200, 87));
-        labelCidade.setText("CIDADE:");
+        textFieldLogradouro.setBackground(new java.awt.Color(30, 30, 35));
+        textFieldLogradouro.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        textFieldLogradouro.setForeground(new java.awt.Color(235, 235, 235));
+        textFieldLogradouro.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(60, 60, 65), 1, true));
+        textFieldLogradouro.setCaretColor(new java.awt.Color(235, 235, 235));
+        textFieldLogradouro.setPreferredSize(new java.awt.Dimension(0, 20));
 
-        textFieldCidade.setBackground(new java.awt.Color(30, 30, 35));
-        textFieldCidade.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        textFieldCidade.setForeground(new java.awt.Color(235, 235, 235));
-        textFieldCidade.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(60, 60, 65), 1, true));
-        textFieldCidade.setCaretColor(new java.awt.Color(235, 235, 235));
-        textFieldCidade.setPreferredSize(new java.awt.Dimension(0, 25));
-
-        labelArea.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        labelArea.setForeground(new java.awt.Color(255, 200, 87));
-        labelArea.setText("ÁREA:");
+        textFieldNumeroEndereco.setBackground(new java.awt.Color(30, 30, 35));
+        textFieldNumeroEndereco.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        textFieldNumeroEndereco.setForeground(new java.awt.Color(235, 235, 235));
+        textFieldNumeroEndereco.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(60, 60, 65), 1, true));
+        textFieldNumeroEndereco.setCaretColor(new java.awt.Color(235, 235, 235));
+        textFieldNumeroEndereco.setPreferredSize(new java.awt.Dimension(0, 20));
 
         textFieldComplemento.setBackground(new java.awt.Color(30, 30, 35));
-        textFieldComplemento.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        textFieldComplemento.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         textFieldComplemento.setForeground(new java.awt.Color(235, 235, 235));
         textFieldComplemento.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(60, 60, 65), 1, true));
         textFieldComplemento.setCaretColor(new java.awt.Color(235, 235, 235));
-        textFieldComplemento.setPreferredSize(new java.awt.Dimension(0, 25));
+        textFieldComplemento.setPreferredSize(new java.awt.Dimension(0, 20));
         textFieldComplemento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textFieldComplementoActionPerformed(evt);
             }
         });
 
-        labelComplemento.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        labelComplemento.setForeground(new java.awt.Color(255, 200, 87));
-        labelComplemento.setText("COMPLEMENTO:");
+        textFieldBairro.setBackground(new java.awt.Color(30, 30, 35));
+        textFieldBairro.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        textFieldBairro.setForeground(new java.awt.Color(235, 235, 235));
+        textFieldBairro.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(60, 60, 65), 1, true));
+        textFieldBairro.setCaretColor(new java.awt.Color(235, 235, 235));
+        textFieldBairro.setPreferredSize(new java.awt.Dimension(0, 20));
+        textFieldBairro.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                textFieldBairroKeyPressed(evt);
+            }
+        });
+
+        textFieldCidade.setBackground(new java.awt.Color(30, 30, 35));
+        textFieldCidade.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        textFieldCidade.setForeground(new java.awt.Color(235, 235, 235));
+        textFieldCidade.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(60, 60, 65), 1, true));
+        textFieldCidade.setCaretColor(new java.awt.Color(235, 235, 235));
+        textFieldCidade.setPreferredSize(new java.awt.Dimension(0, 20));
+
+        textFieldCep.setBackground(new java.awt.Color(30, 30, 35));
+        textFieldCep.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        textFieldCep.setForeground(new java.awt.Color(235, 235, 235));
+        textFieldCep.setToolTipText("Digite o cep sem \"-\"");
+        textFieldCep.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(60, 60, 65), 1, true));
+        textFieldCep.setCaretColor(new java.awt.Color(235, 235, 235));
+        textFieldCep.setPreferredSize(new java.awt.Dimension(0, 20));
 
         textFieldObsEnderecos.setBackground(new java.awt.Color(30, 30, 35));
-        textFieldObsEnderecos.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        textFieldObsEnderecos.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         textFieldObsEnderecos.setForeground(new java.awt.Color(235, 235, 235));
         textFieldObsEnderecos.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(60, 60, 65), 1, true));
         textFieldObsEnderecos.setCaretColor(new java.awt.Color(235, 235, 235));
-        textFieldObsEnderecos.setPreferredSize(new java.awt.Dimension(0, 25));
+        textFieldObsEnderecos.setPreferredSize(new java.awt.Dimension(0, 20));
 
-        labelObsEndereco.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        labelCidade.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        labelCidade.setForeground(new java.awt.Color(255, 200, 87));
+        labelCidade.setText("CIDADE:");
+
+        labelArea.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        labelArea.setForeground(new java.awt.Color(255, 200, 87));
+        labelArea.setText("ÁREA:");
+
+        labelComplemento.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        labelComplemento.setForeground(new java.awt.Color(255, 200, 87));
+        labelComplemento.setText("COMPLEMENTO:");
+
+        labelObsEndereco.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         labelObsEndereco.setForeground(new java.awt.Color(255, 200, 87));
         labelObsEndereco.setText("OBS:");
 
-        textFieldCep.setBackground(new java.awt.Color(30, 30, 35));
-        textFieldCep.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        textFieldCep.setForeground(new java.awt.Color(235, 235, 235));
-        textFieldCep.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(60, 60, 65), 1, true));
-        textFieldCep.setCaretColor(new java.awt.Color(235, 235, 235));
-        textFieldCep.setPreferredSize(new java.awt.Dimension(0, 25));
-
-        labelCep.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        labelCep.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         labelCep.setForeground(new java.awt.Color(255, 200, 87));
         labelCep.setText("CEP:");
 
-        botaoAdicionarEndereco.setBackground(new java.awt.Color(40, 40, 45));
-        botaoAdicionarEndereco.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconesCrud/adicionar.png"))); // NOI18N
+        botaoAdicionarEndereco.setBackground(new java.awt.Color(20, 20, 25));
+        botaoAdicionarEndereco.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconesCrud/plus.png"))); // NOI18N
         botaoAdicionarEndereco.setToolTipText("Adicionar Novo Endereço");
-        botaoAdicionarEndereco.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(60, 60, 65), 2, true));
+        botaoAdicionarEndereco.setBorder(null);
+        botaoAdicionarEndereco.setPreferredSize(new java.awt.Dimension(24, 24));
 
-        botaoExcluirEndereco.setBackground(new java.awt.Color(40, 40, 45));
+        botaoExcluirEndereco.setBackground(new java.awt.Color(20, 20, 25));
         botaoExcluirEndereco.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconesCrud/bin.png"))); // NOI18N
         botaoExcluirEndereco.setToolTipText("Excluir Endereço");
-        botaoExcluirEndereco.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(60, 60, 65), 2, true));
+        botaoExcluirEndereco.setBorder(null);
+        botaoExcluirEndereco.setPreferredSize(new java.awt.Dimension(24, 24));
 
-        botaoBuscarEndereco.setBackground(new java.awt.Color(40, 40, 45));
+        botaoBuscarEndereco.setBackground(new java.awt.Color(20, 20, 25));
         botaoBuscarEndereco.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconesCrud/lupa.png"))); // NOI18N
         botaoBuscarEndereco.setToolTipText("Pesquisar Endereços do Cliente");
-        botaoBuscarEndereco.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(60, 60, 65), 2, true));
+        botaoBuscarEndereco.setBorder(null);
+        botaoBuscarEndereco.setPreferredSize(new java.awt.Dimension(24, 24));
 
-        labelListaEnderecos.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        labelListaEnderecos.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         labelListaEnderecos.setForeground(new java.awt.Color(235, 235, 235));
-        labelListaEnderecos.setText("LISTA ENDEREÇOS");
+        labelListaEnderecos.setText("ENDEREÇOS DO CLIENTE");
 
-        labelNumeroEnderco.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        labelNumeroEnderco.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         labelNumeroEnderco.setForeground(new java.awt.Color(255, 200, 87));
         labelNumeroEnderco.setText("Nº:");
 
-        labelLogradouro.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        labelLogradouro.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         labelLogradouro.setForeground(new java.awt.Color(255, 200, 87));
         labelLogradouro.setText("LOGRADOURO:");
 
-        textFieldLogradouro.setBackground(new java.awt.Color(30, 30, 35));
-        textFieldLogradouro.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        textFieldLogradouro.setForeground(new java.awt.Color(235, 235, 235));
-        textFieldLogradouro.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(60, 60, 65), 1, true));
-        textFieldLogradouro.setCaretColor(new java.awt.Color(235, 235, 235));
-        textFieldLogradouro.setPreferredSize(new java.awt.Dimension(0, 25));
-
-        textFieldNumeroEndereco.setBackground(new java.awt.Color(30, 30, 35));
-        textFieldNumeroEndereco.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        textFieldNumeroEndereco.setForeground(new java.awt.Color(235, 235, 235));
-        textFieldNumeroEndereco.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(60, 60, 65), 1, true));
-        textFieldNumeroEndereco.setCaretColor(new java.awt.Color(235, 235, 235));
-        textFieldNumeroEndereco.setPreferredSize(new java.awt.Dimension(0, 25));
-
-        botaoSalvarEndereco.setBackground(new java.awt.Color(40, 40, 45));
+        botaoSalvarEndereco.setBackground(new java.awt.Color(20, 20, 25));
         botaoSalvarEndereco.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconesCrud/diskette.png"))); // NOI18N
         botaoSalvarEndereco.setToolTipText("Salvar Endereço");
-        botaoSalvarEndereco.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(60, 60, 65), 2, true));
+        botaoSalvarEndereco.setBorder(null);
+        botaoSalvarEndereco.setEnabled(false);
+        botaoSalvarEndereco.setPreferredSize(new java.awt.Dimension(24, 24));
 
-        labelIdEndereco.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        labelIdEndereco.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         labelIdEndereco.setForeground(new java.awt.Color(255, 200, 87));
         labelIdEndereco.setText("ID:");
 
-        textFieldIdEndereco.setEditable(false);
-        textFieldIdEndereco.setBackground(new java.awt.Color(30, 30, 35));
-        textFieldIdEndereco.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        textFieldIdEndereco.setForeground(new java.awt.Color(235, 235, 235));
-        textFieldIdEndereco.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(60, 60, 65), 1, true));
-        textFieldIdEndereco.setPreferredSize(new java.awt.Dimension(0, 25));
-        textFieldIdEndereco.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textFieldIdEnderecoActionPerformed(evt);
-            }
-        });
+        botaoLimparCamposEndereco.setBackground(new java.awt.Color(20, 20, 25));
+        botaoLimparCamposEndereco.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconesCrud/eraser.png"))); // NOI18N
+        botaoLimparCamposEndereco.setToolTipText("Limpar Campos de Preenchimento");
+        botaoLimparCamposEndereco.setBorder(null);
+        botaoLimparCamposEndereco.setPreferredSize(new java.awt.Dimension(24, 24));
+
+        botaoEditarEndereco.setBackground(new java.awt.Color(20, 20, 25));
+        botaoEditarEndereco.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconesCrud/pencil2.png"))); // NOI18N
+        botaoEditarEndereco.setToolTipText("Editar Endereço");
+        botaoEditarEndereco.setBorder(null);
+        botaoEditarEndereco.setPreferredSize(new java.awt.Dimension(24, 24));
+
+        botaoCancelarEndereco.setBackground(new java.awt.Color(20, 20, 25));
+        botaoCancelarEndereco.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconesCrud/cancel.png"))); // NOI18N
+        botaoCancelarEndereco.setToolTipText("Cancelar");
+        botaoCancelarEndereco.setBorder(null);
+        botaoCancelarEndereco.setEnabled(false);
+        botaoCancelarEndereco.setPreferredSize(new java.awt.Dimension(24, 24));
 
         javax.swing.GroupLayout panelEnderecosLayout = new javax.swing.GroupLayout(panelEnderecos);
         panelEnderecos.setLayout(panelEnderecosLayout);
@@ -521,53 +603,61 @@ public class Cadastro extends javax.swing.JDialog {
                         .addGroup(panelEnderecosLayout.createSequentialGroup()
                                 .addContainerGap()
                                 .addGroup(panelEnderecosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelEnderecosLayout.createSequentialGroup()
+                                        .addComponent(scrollPaneEnderecos, javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addGroup(panelEnderecosLayout.createSequentialGroup()
                                                 .addGroup(panelEnderecosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addGroup(panelEnderecosLayout.createSequentialGroup()
-                                                                .addComponent(labelCep)
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                                .addComponent(textFieldCep, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addGap(18, 18, 18)
-                                                                .addComponent(labelArea)
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addComponent(comboArea, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addGap(18, 18, 18)
-                                                                .addComponent(labelObsEndereco)
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                                .addComponent(textFieldObsEnderecos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelEnderecosLayout.createSequentialGroup()
-                                                                .addComponent(labelComplemento)
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addComponent(textFieldComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addGap(18, 18, 18)
-                                                                .addComponent(labelBairro)
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addComponent(textFieldBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addGap(18, 18, 18)
-                                                                .addComponent(labelCidade)
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addComponent(textFieldCidade, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE))
                                                         .addGroup(panelEnderecosLayout.createSequentialGroup()
                                                                 .addComponent(labelIdEndereco)
                                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                                 .addComponent(textFieldIdEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addGap(18, 18, 18)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                                                 .addComponent(labelLogradouro)
                                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addComponent(textFieldLogradouro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                                .addGap(18, 18, 18)
+                                                                .addComponent(textFieldLogradouro, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                                                 .addComponent(labelNumeroEnderco)
                                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addComponent(textFieldNumeroEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                                .addGap(18, 18, Short.MAX_VALUE)
-                                                .addComponent(botaoBuscarEndereco)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(botaoAdicionarEndereco)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(botaoSalvarEndereco)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(botaoExcluirEndereco))
-                                        .addComponent(scrollPaneEnderecos, javax.swing.GroupLayout.Alignment.TRAILING)
+                                                                .addComponent(textFieldNumeroEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                        .addGroup(panelEnderecosLayout.createSequentialGroup()
+                                                                .addComponent(labelCidade)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addComponent(textFieldCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addComponent(labelCep)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addComponent(textFieldCep, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                                .addComponent(labelArea)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addComponent(comboArea, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addGroup(panelEnderecosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelEnderecosLayout.createSequentialGroup()
+                                                                .addGap(12, 12, 12)
+                                                                .addComponent(labelComplemento)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addComponent(textFieldComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                                .addComponent(labelBairro)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addComponent(textFieldBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelEnderecosLayout.createSequentialGroup()
+                                                                .addComponent(labelObsEndereco)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addComponent(textFieldObsEnderecos, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(botaoBuscarEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(botaoAdicionarEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(botaoEditarEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(botaoExcluirEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(botaoSalvarEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(botaoCancelarEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                                                .addComponent(botaoLimparCamposEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGroup(panelEnderecosLayout.createSequentialGroup()
                                                 .addGroup(panelEnderecosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                         .addComponent(labelPanelEnderecos)
@@ -578,51 +668,55 @@ public class Cadastro extends javax.swing.JDialog {
         panelEnderecosLayout.setVerticalGroup(
                 panelEnderecosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(panelEnderecosLayout.createSequentialGroup()
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(labelPanelEnderecos)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGap(18, 18, 18)
                                 .addGroup(panelEnderecosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(botaoLimparCamposEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGroup(panelEnderecosLayout.createSequentialGroup()
                                                 .addGroup(panelEnderecosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(botaoAdicionarEndereco)
                                                         .addGroup(panelEnderecosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                                                 .addComponent(labelLogradouro)
                                                                 .addComponent(textFieldLogradouro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                                 .addComponent(labelNumeroEnderco)
                                                                 .addComponent(textFieldNumeroEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                                 .addComponent(labelIdEndereco)
-                                                                .addComponent(textFieldIdEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                        .addComponent(botaoBuscarEndereco))
+                                                                .addComponent(textFieldIdEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addComponent(labelComplemento)
+                                                                .addComponent(textFieldComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addComponent(labelBairro)
+                                                                .addComponent(textFieldBairro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                        .addComponent(botaoEditarEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(botaoBuscarEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(botaoAdicionarEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(botaoSalvarEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(botaoExcluirEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(botaoCancelarEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                 .addGap(18, 18, 18)
                                                 .addGroup(panelEnderecosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                        .addComponent(labelBairro)
-                                                        .addComponent(textFieldBairro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(labelComplemento)
-                                                        .addComponent(textFieldComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                         .addComponent(labelCidade)
-                                                        .addComponent(textFieldCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addGap(29, 29, 29)
-                                                .addGroup(panelEnderecosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                        .addComponent(textFieldCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                         .addComponent(labelCep)
                                                         .addComponent(textFieldCep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                         .addComponent(labelArea)
                                                         .addComponent(comboArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                         .addComponent(labelObsEndereco)
-                                                        .addComponent(textFieldObsEnderecos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addComponent(botaoExcluirEndereco)
-                                        .addComponent(botaoSalvarEndereco))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                        .addComponent(textFieldObsEnderecos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(18, 18, 18)
                                 .addComponent(labelListaEnderecos)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(scrollPaneEnderecos, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(scrollPaneEnderecos, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         panelTelefones.setBackground(new java.awt.Color(20, 20, 25));
+        panelTelefones.setPreferredSize(new java.awt.Dimension(1280, 300));
 
         scrollPaneTelefones.setBorder(null);
+        scrollPaneTelefones.setFocusable(false);
+        scrollPaneTelefones.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
 
         tableTelefones.setBackground(new java.awt.Color(20, 20, 25));
-        tableTelefones.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        tableTelefones.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         tableTelefones.setForeground(new java.awt.Color(235, 235, 235));
         tableTelefones.setModel(new javax.swing.table.DefaultTableModel(
                 new Object [][] {
@@ -638,71 +732,96 @@ public class Cadastro extends javax.swing.JDialog {
         tableTelefones.setGridColor(new java.awt.Color(60, 60, 65));
         scrollPaneTelefones.setViewportView(tableTelefones);
 
-        labelPanelTelefones.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
+        labelPanelTelefones.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         labelPanelTelefones.setForeground(new java.awt.Color(235, 235, 235));
         labelPanelTelefones.setText("TELEFONES");
 
-        labelTelefone.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        labelTelefone.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         labelTelefone.setForeground(new java.awt.Color(255, 200, 87));
         labelTelefone.setText("TELEFONE:");
 
         textFieldTelefone.setBackground(new java.awt.Color(30, 30, 35));
-        textFieldTelefone.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        textFieldTelefone.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         textFieldTelefone.setForeground(new java.awt.Color(235, 235, 235));
+        textFieldTelefone.setToolTipText("Não utilize \"()\" ou \"-\"");
         textFieldTelefone.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(60, 60, 65), 1, true));
         textFieldTelefone.setCaretColor(new java.awt.Color(235, 235, 235));
-        textFieldTelefone.setPreferredSize(new java.awt.Dimension(0, 25));
+        textFieldTelefone.setPreferredSize(new java.awt.Dimension(0, 20));
 
-        labelContato.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        labelContato.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         labelContato.setForeground(new java.awt.Color(255, 200, 87));
         labelContato.setText("CONTATO:");
 
         textFieldContato.setBackground(new java.awt.Color(30, 30, 35));
-        textFieldContato.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        textFieldContato.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         textFieldContato.setForeground(new java.awt.Color(235, 235, 235));
         textFieldContato.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(60, 60, 65), 1, true));
         textFieldContato.setCaretColor(new java.awt.Color(235, 235, 235));
-        textFieldContato.setPreferredSize(new java.awt.Dimension(0, 25));
+        textFieldContato.setPreferredSize(new java.awt.Dimension(0, 20));
         textFieldContato.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textFieldContatoActionPerformed(evt);
             }
         });
 
-        botaoBuscarTelefone.setBackground(new java.awt.Color(40, 40, 45));
+        botaoBuscarTelefone.setBackground(new java.awt.Color(20, 20, 25));
         botaoBuscarTelefone.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconesCrud/lupa.png"))); // NOI18N
         botaoBuscarTelefone.setToolTipText("Buscar Telefones do Cliente");
-        botaoBuscarTelefone.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(60, 60, 65), 2, true));
+        botaoBuscarTelefone.setBorder(null);
+        botaoBuscarTelefone.setPreferredSize(new java.awt.Dimension(24, 24));
 
-        botaoSalvarTelefone.setBackground(new java.awt.Color(40, 40, 45));
+        botaoSalvarTelefone.setBackground(new java.awt.Color(20, 20, 25));
         botaoSalvarTelefone.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconesCrud/diskette.png"))); // NOI18N
         botaoSalvarTelefone.setToolTipText("Salvar Telefone");
-        botaoSalvarTelefone.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(60, 60, 65), 2, true));
+        botaoSalvarTelefone.setBorder(null);
+        botaoSalvarTelefone.setEnabled(false);
+        botaoSalvarTelefone.setPreferredSize(new java.awt.Dimension(24, 24));
 
-        botaoAdicionarTelefone.setBackground(new java.awt.Color(40, 40, 45));
-        botaoAdicionarTelefone.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconesCrud/adicionar.png"))); // NOI18N
+        botaoAdicionarTelefone.setBackground(new java.awt.Color(20, 20, 25));
+        botaoAdicionarTelefone.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconesCrud/plus.png"))); // NOI18N
         botaoAdicionarTelefone.setToolTipText("Adicionar Telefone");
-        botaoAdicionarTelefone.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(60, 60, 65), 2, true));
+        botaoAdicionarTelefone.setBorder(null);
+        botaoAdicionarTelefone.setPreferredSize(new java.awt.Dimension(24, 24));
 
-        botaoExcluirTelefone.setBackground(new java.awt.Color(40, 40, 45));
+        botaoExcluirTelefone.setBackground(new java.awt.Color(20, 20, 25));
         botaoExcluirTelefone.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconesCrud/bin.png"))); // NOI18N
         botaoExcluirTelefone.setToolTipText("Excluir Telefone");
-        botaoExcluirTelefone.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(60, 60, 65), 2, true));
+        botaoExcluirTelefone.setBorder(null);
+        botaoExcluirTelefone.setPreferredSize(new java.awt.Dimension(24, 24));
 
-        labelListaTelefones.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        labelListaTelefones.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         labelListaTelefones.setForeground(new java.awt.Color(235, 235, 235));
-        labelListaTelefones.setText("LISTA TELEFONES");
+        labelListaTelefones.setText("TELEFONES DO CLIENTE");
 
         textFieldIdTelefone.setEditable(false);
         textFieldIdTelefone.setBackground(new java.awt.Color(30, 30, 35));
-        textFieldIdTelefone.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        textFieldIdTelefone.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         textFieldIdTelefone.setForeground(new java.awt.Color(235, 235, 235));
         textFieldIdTelefone.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(60, 60, 65), 1, true));
-        textFieldIdTelefone.setPreferredSize(new java.awt.Dimension(0, 25));
+        textFieldIdTelefone.setPreferredSize(new java.awt.Dimension(0, 20));
 
-        labelIdTelefone.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        labelIdTelefone.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         labelIdTelefone.setForeground(new java.awt.Color(255, 200, 87));
         labelIdTelefone.setText("ID:");
+
+        botaoLimparCamposTelefone.setBackground(new java.awt.Color(20, 20, 25));
+        botaoLimparCamposTelefone.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconesCrud/eraser.png"))); // NOI18N
+        botaoLimparCamposTelefone.setToolTipText("Limpar Campos de Preenchimento");
+        botaoLimparCamposTelefone.setBorder(null);
+        botaoLimparCamposTelefone.setPreferredSize(new java.awt.Dimension(24, 24));
+
+        botaoEditarTelefone.setBackground(new java.awt.Color(20, 20, 25));
+        botaoEditarTelefone.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconesCrud/pencil2.png"))); // NOI18N
+        botaoEditarTelefone.setToolTipText("Editar Telefone");
+        botaoEditarTelefone.setBorder(null);
+        botaoEditarTelefone.setPreferredSize(new java.awt.Dimension(24, 24));
+
+        botaoCancelarTelefone.setBackground(new java.awt.Color(20, 20, 25));
+        botaoCancelarTelefone.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconesCrud/cancel.png"))); // NOI18N
+        botaoCancelarTelefone.setToolTipText("Cancelar");
+        botaoCancelarTelefone.setBorder(null);
+        botaoCancelarTelefone.setEnabled(false);
+        botaoCancelarTelefone.setPreferredSize(new java.awt.Dimension(24, 24));
 
         javax.swing.GroupLayout panelTelefonesLayout = new javax.swing.GroupLayout(panelTelefones);
         panelTelefones.setLayout(panelTelefonesLayout);
@@ -714,97 +833,120 @@ public class Cadastro extends javax.swing.JDialog {
                                         .addComponent(scrollPaneTelefones)
                                         .addGroup(panelTelefonesLayout.createSequentialGroup()
                                                 .addGroup(panelTelefonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(labelPanelTelefones)
-                                                        .addComponent(labelListaTelefones))
-                                                .addGap(0, 0, Short.MAX_VALUE))
-                                        .addGroup(panelTelefonesLayout.createSequentialGroup()
-                                                .addComponent(labelIdTelefone)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(textFieldIdTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(labelTelefone)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(textFieldTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(labelContato)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(textFieldContato, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(botaoBuscarTelefone)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(botaoAdicionarTelefone)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(botaoSalvarTelefone)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(botaoExcluirTelefone)))
+                                                        .addComponent(labelListaTelefones)
+                                                        .addGroup(panelTelefonesLayout.createSequentialGroup()
+                                                                .addGroup(panelTelefonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                        .addComponent(labelPanelTelefones)
+                                                                        .addGroup(panelTelefonesLayout.createSequentialGroup()
+                                                                                .addComponent(labelIdTelefone)
+                                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                                .addComponent(textFieldIdTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                .addGap(18, 18, 18)
+                                                                                .addComponent(labelTelefone)
+                                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                                .addComponent(textFieldTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                .addGap(18, 18, 18)
+                                                                                .addComponent(labelContato)
+                                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                                .addComponent(textFieldContato, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                .addGap(18, 18, 18)
+                                                                                .addComponent(botaoBuscarTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                                                .addComponent(botaoAdicionarTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                                                .addComponent(botaoEditarTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                                                .addComponent(botaoExcluirTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                                                .addComponent(botaoSalvarTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                                                .addComponent(botaoCancelarTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                                .addComponent(botaoLimparCamposTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addGap(0, 0, Short.MAX_VALUE)))
                                 .addContainerGap())
         );
         panelTelefonesLayout.setVerticalGroup(
                 panelTelefonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelTelefonesLayout.createSequentialGroup()
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addContainerGap()
                                 .addComponent(labelPanelTelefones)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(panelTelefonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(textFieldTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(labelContato)
-                                        .addComponent(textFieldContato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(botaoAdicionarTelefone)
-                                        .addComponent(botaoSalvarTelefone)
-                                        .addComponent(botaoExcluirTelefone)
-                                        .addComponent(botaoBuscarTelefone)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(panelTelefonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(panelTelefonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                                 .addComponent(labelIdTelefone)
                                                 .addComponent(textFieldIdTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(labelTelefone)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(labelTelefone))
+                                        .addGroup(panelTelefonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                .addComponent(textFieldTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(labelContato)
+                                                .addComponent(textFieldContato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(botaoBuscarTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(botaoAdicionarTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(botaoSalvarTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(botaoExcluirTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(botaoLimparCamposTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(botaoEditarTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(botaoCancelarTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
                                 .addComponent(labelListaTelefones)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(scrollPaneTelefones, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(scrollPaneTelefones, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout panelBackgroundLayout = new javax.swing.GroupLayout(panelBackground);
         panelBackground.setLayout(panelBackgroundLayout);
         panelBackgroundLayout.setHorizontalGroup(
                 panelBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(paneltop, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(panelClientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(panelEnderecos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(panelTelefones, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBackgroundLayout.createSequentialGroup()
+                                .addGroup(panelBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(paneltop, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                        .addGroup(panelBackgroundLayout.createSequentialGroup()
+                                                .addGap(6, 6, 6)
+                                                .addGroup(panelBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(panelTelefones, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1250, Short.MAX_VALUE)
+                                                        .addComponent(panelEnderecos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                        .addComponent(panelClientes, javax.swing.GroupLayout.DEFAULT_SIZE, 1250, Short.MAX_VALUE))))
+                                .addGap(350, 350, 350))
         );
         panelBackgroundLayout.setVerticalGroup(
                 panelBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(panelBackgroundLayout.createSequentialGroup()
-                                .addComponent(paneltop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(paneltop, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(panelClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(panelClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(panelEnderecos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(panelTelefones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap())
+                                .addComponent(panelTelefones, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(125, 125, 125))
         );
+
+        scrollPaneBackground.setViewportView(panelBackground);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(panelBackground, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(scrollPaneBackground, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(panelBackground, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(scrollPaneBackground, javax.swing.GroupLayout.DEFAULT_SIZE, 838, Short.MAX_VALUE)
+                                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>
 
-
     private void textFieldContatoActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
     }
 
-    private void textFieldObsCLienteActionPerformed(java.awt.event.ActionEvent evt) {
+    private void textFieldIdEnderecoActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
     }
 
@@ -812,13 +954,18 @@ public class Cadastro extends javax.swing.JDialog {
         // TODO add your handling code here:
     }
 
+    private void textFieldObsCLienteActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
+    }
+
     private void botaoVoltarActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
     }
 
-    private void textFieldIdEnderecoActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
+    private void textFieldBairroKeyPressed(java.awt.event.KeyEvent evt) {
+
     }
+
 
     /**
      * @param args the command line arguments
@@ -831,11 +978,19 @@ public class Cadastro extends javax.swing.JDialog {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                UIManager.setLookAndFeel(new FlatDarkLaf());  // Para um tema escuro
-
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(Cadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(Cadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(Cadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(Cadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -860,10 +1015,18 @@ public class Cadastro extends javax.swing.JDialog {
     private javax.swing.JButton botaoBuscarCliente;
     private javax.swing.JButton botaoBuscarEndereco;
     private javax.swing.JButton botaoBuscarTelefone;
+    private javax.swing.JButton botaoCancelar;
+    private javax.swing.JButton botaoCancelarEndereco;
+    private javax.swing.JButton botaoCancelarTelefone;
+    private javax.swing.JButton botaoEditarCliente;
+    private javax.swing.JButton botaoEditarEndereco;
+    private javax.swing.JButton botaoEditarTelefone;
     private javax.swing.JButton botaoExcluirCliente;
     private javax.swing.JButton botaoExcluirEndereco;
     private javax.swing.JButton botaoExcluirTelefone;
     private javax.swing.JButton botaoLimparCampos;
+    private javax.swing.JButton botaoLimparCamposEndereco;
+    private javax.swing.JButton botaoLimparCamposTelefone;
     private javax.swing.JButton botaoNovoCliente;
     private javax.swing.JButton botaoSalvarCliente;
     private javax.swing.JButton botaoSalvarEndereco;
@@ -902,6 +1065,7 @@ public class Cadastro extends javax.swing.JDialog {
     private javax.swing.JPanel panelEnderecos;
     private javax.swing.JPanel panelTelefones;
     private javax.swing.JPanel paneltop;
+    private javax.swing.JScrollPane scrollPaneBackground;
     private javax.swing.JScrollPane scrollPaneClientes;
     private javax.swing.JScrollPane scrollPaneEnderecos;
     private javax.swing.JScrollPane scrollPaneTelefones;
@@ -927,9 +1091,9 @@ public class Cadastro extends javax.swing.JDialog {
 
     public Tipo getComboTipo(){
         String selecionado = (String) comboArea.getSelectedItem();
-        if ("Urbano".equals(selecionado)) {
+        if ("URBANO".equals(selecionado)) {
             return Tipo.URBANO;
-        } else if ("Rural".equals(selecionado)) {
+        } else if ("RURAL".equals(selecionado)) {
             return Tipo.RURAL;
         }
         return null;
@@ -937,9 +1101,9 @@ public class Cadastro extends javax.swing.JDialog {
 
     public StatusCliente getComboStatusCliente(){
         String selecionado = (String) comboStatusCliente.getSelectedItem();
-        if ("Ativo".equals(selecionado)) {
+        if ("ATIVO".equals(selecionado)) {
             return StatusCliente.ATIVO;
-        } else if ("Suspenso".equals(selecionado)) {
+        } else if ("SUSPENSO".equals(selecionado)) {
             return StatusCliente.SUSPENSO;
         }
         return null;
@@ -947,12 +1111,53 @@ public class Cadastro extends javax.swing.JDialog {
 
     public Regime getComboCadPessoa() {
         String selecionado = (String) comboRegime.getSelectedItem();
-        if ("Física".equals(selecionado)) {
+        if ("FÍSICA".equals(selecionado)) {
             return Regime.PESSOA_FISICA;
-        } else if ("Jurídica".equals(selecionado)) {
+        } else if ("JURÍDICA".equals(selecionado)) {
             return Regime.PESSOA_JURIDICA;
         }
         return null;
+    }
+
+    public JButton[] getBotoesSalvarCancelarCliente(){
+        return new JButton[]{
+                botaoSalvarCliente,
+                botaoCancelar
+        };
+    }
+
+    public JButton[] getBotoesSalvarCancelarEndereco(){
+        return new JButton[]{
+                botaoSalvarEndereco,
+                botaoCancelarEndereco
+        };
+    }
+
+    public JButton[] getBotoesSalvarCancelarTelefone(){
+        return new JButton[]{
+                botaoSalvarTelefone,
+                botaoCancelarTelefone
+        };
+    }
+
+    public JButton[] getBotoesModoSalvar(){
+        return new JButton[]{
+                botaoBuscarCliente,
+                botaoEditarCliente,
+                botaoNovoCliente,
+                botaoLimparCampos,
+                botaoExcluirCliente,
+                botaoBuscarEndereco,
+                botaoAdicionarEndereco,
+                botaoEditarEndereco,
+                botaoExcluirEndereco,
+                botaoLimparCamposEndereco,
+                botaoBuscarTelefone,
+                botaoAdicionarTelefone,
+                botaoEditarTelefone,
+                botaoExcluirTelefone,
+                botaoLimparCamposTelefone
+        };
     }
 
     public JTextField[] getClienteJTextFields(){
@@ -1025,6 +1230,30 @@ public class Cadastro extends javax.swing.JDialog {
         return botaoBuscarTelefone;
     }
 
+    public JButton getBotaoCancelar() {
+        return botaoCancelar;
+    }
+
+    public JButton getBotaoCancelarEndereco() {
+        return botaoCancelarEndereco;
+    }
+
+    public JButton getBotaoCancelarTelefone() {
+        return botaoCancelarTelefone;
+    }
+
+    public JButton getBotaoEditarCliente() {
+        return botaoEditarCliente;
+    }
+
+    public JButton getBotaoEditarEndereco() {
+        return botaoEditarEndereco;
+    }
+
+    public JButton getBotaoEditarTelefone() {
+        return botaoEditarTelefone;
+    }
+
     public JButton getBotaoExcluirCliente() {
         return botaoExcluirCliente;
     }
@@ -1039,6 +1268,14 @@ public class Cadastro extends javax.swing.JDialog {
 
     public JButton getBotaoLimparCampos() {
         return botaoLimparCampos;
+    }
+
+    public JButton getBotaoLimparCamposEndereco() {
+        return botaoLimparCamposEndereco;
+    }
+
+    public JButton getBotaoLimparCamposTelefone() {
+        return botaoLimparCamposTelefone;
     }
 
     public JButton getBotaoNovoCliente() {
@@ -1187,6 +1424,10 @@ public class Cadastro extends javax.swing.JDialog {
 
     public JPanel getPaneltop() {
         return paneltop;
+    }
+
+    public JScrollPane getScrollPaneBackground() {
+        return scrollPaneBackground;
     }
 
     public JScrollPane getScrollPaneClientes() {

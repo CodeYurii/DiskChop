@@ -1,9 +1,6 @@
 package com.diskchop.controller;
 
-import com.diskchop.view.Cadastro;
-import com.diskchop.view.CadastroClientes;
-import com.diskchop.view.Estoque;
-import com.diskchop.view.TelaInicialMenu;
+import com.diskchop.view.*;
 
 import javax.swing.*;
 
@@ -46,6 +43,13 @@ public class MainController {
         telaInicialMenu.getBtnAjuda().addActionListener(e -> fecharSubmenuAberto());
         telaInicialMenu.getBtnSair().addActionListener(e -> confirmarSaida());
         telaInicialMenu.getBtnEstoqueBarris().addActionListener(e -> openEstoque());
+        telaInicialMenu.getBtnPedidoRegistrar().addActionListener(e -> {openNovoPedido();});
+    }
+
+    private void openNovoPedido() {
+       NovoPedido novoPedido = new NovoPedido(telaInicialMenu, true);
+       NovoPedidoController controller = new NovoPedidoController(novoPedido);
+       novoPedido.setVisible(true);
     }
 
     private void openCadastroClientes() {
@@ -61,7 +65,7 @@ public class MainController {
 
     private void openEstoque() {
         Estoque estoque = new Estoque(telaInicialMenu, true);
-        //CadastroClientesController controller = new CadastroClientesController(cadastroClientes);
+        EstoqueController controller = new EstoqueController(estoque);
         estoque.setVisible(true);
     }
 

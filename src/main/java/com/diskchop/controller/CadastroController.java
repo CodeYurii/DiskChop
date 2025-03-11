@@ -17,11 +17,9 @@ import org.hibernate.exception.ConstraintViolationException;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.text.DefaultCaret;
 import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.awt.geom.Area;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
@@ -51,21 +49,32 @@ public class CadastroController {
     public void configureActions(){
         view.getBotaoVoltar().addActionListener(e -> {voltarMenu();});
         view.getBotaoLimparCampos().addActionListener(e -> limparCampos());
-
-        view.getBotaoNovoCliente().addActionListener(e -> {salvarNovoCliente();
-            atualizarTabelaClienteUnico(view.getTextFieldCpf().getText());});
+        //BOTOES CLIENTES
+        view.getBotaoNovoCliente().addActionListener(e -> {
+            ligaDesligaBotoesCliente(); limparCampos(); limparTabela(view.getTableClientes());});
+        view.getBotaoCancelar().addActionListener(e -> {
+            ligaDesligaBotoesCliente();});
+        view.getBotaoSalvarCliente().addActionListener(e -> {
+            ligaDesligaBotoesCliente(); salvarNovoCliente(); buscarClienteCpf();});
+        view.getBotaoEditarCliente().addActionListener(e -> {
+            ligaDesligaBotoesCliente();limparTabela(view.getTableClientes());});
         view.getBotaoBuscarCliente ().addActionListener(e -> buscarClienteId());
-        view.getBotaoExcluirCliente().addActionListener(e -> excluirCliente());
-        view.getBotaoSalvarCliente().addActionListener(e -> {editarCliente(); buscarClienteId();});
-
-        view.getBotaoAdicionarEndereco().addActionListener(e -> {salvarEndereco(); buscarClienteId();});
+        view.getBotaoExcluirCliente().addActionListener(e -> {excluirCliente(); limparCampos(); limparTabela(view.getTableClientes());});
+        //BOTOES ENDERECO
+        view.getBotaoAdicionarEndereco().addActionListener(e -> {ligaDesligaBotoesEndereco(); limparCamposEndereco(); limparTabela(view.getTableEnderecos());});
+        view.getBotaoCancelarEndereco().addActionListener(e -> {ligaDesligaBotoesEndereco();});
+        view.getBotaoLimparCamposEndereco().addActionListener(e -> {limparCamposEndereco();});
+        view.getBotaoSalvarEndereco().addActionListener(e -> {ligaDesligaBotoesEndereco(); salvarEndereco(); buscarClienteId();});
+        view.getBotaoEditarEndereco().addActionListener(e -> {ligaDesligaBotoesEndereco(); limparTabela(view.getTableEnderecos());});
+        view.getBotaoExcluirEndereco().addActionListener(e -> {excluirEndereco(); limparCampos(); limparTabela(view.getTableEnderecos());});
        // view.getBotaoBuscarEndereco().addActionListener(e -> buscarEnderecoCLiente());
-        //view.getBotaoSalvarEndereco().addActionListener(e -> {editarEndereco();buscarClienteId();});
-        view.getBotaoExcluirEndereco().addActionListener(e -> excluirEndereco());
-
-        view.getBotaoAdicionarTelefone().addActionListener(e -> {salvarTelefone();});
+        //BOTOES TELEFONE
+        view.getBotaoCancelarTelefone().addActionListener(e ->{ligaDesligaBotoesTelefone();});
+        view.getBotaoLimparCamposTelefone().addActionListener(e -> {limparCamposTelefone();});
+        view.getBotaoAdicionarTelefone().addActionListener(e -> {ligaDesligaBotoesTelefone(); limparCamposTelefone(); limparTabela(view.getTableTelefones());;});
+        view.getBotaoSalvarTelefone().addActionListener(e -> {ligaDesligaBotoesTelefone(); salvarTelefone(); buscarClienteId();});
+        view.getBotaoEditarTelefone().addActionListener(e -> {ligaDesligaBotoesTelefone(); limparTabela(view.getTableTelefones());});
        // view.getBotaoBuscarTelefone().addActionListener(e -> buscarTelefoneCLiente());
-        view.getBotaoSalvarTelefone().addActionListener(e -> {editarTelefone();});
        // view.getBotaoExcluirTelefone().addActionListener(e -> );
 
         view.getTextFieldNome().addKeyListener(new KeyAdapter() {
@@ -88,6 +97,10 @@ public class CadastroController {
     }
 
     private void configurarTela(){
+        view.setSize(1320, 800);
+        view.getPaneltop().setBackground(new Color(20,20,25));
+        //view.setResizable(true);
+        view.setLocationRelativeTo(null);
         view.getTableClientes().setModel(new DefaultTableModel(
                 new Object[][]{}, // Nenhuma linha inicial
                 new String[]{"ID", "NOME", "CPF", "REGIME", "STATUS", "OBS", "DATA_CADASTRO"} // Cabeçalhos das colunas
@@ -101,32 +114,64 @@ public class CadastroController {
                 new Object[][] {},
                 new String[] {"ID", "TELEFONE", "CONTATO", "DATA_CADASTRO"}
         ));
-        view.getScrollPaneClientes().setBorder(BorderFactory.createLineBorder(new Color(60, 60, 65), 1));
-        view.getTableClientes().setBorder(BorderFactory.createLineBorder(new Color(60, 60, 65), 1));
-        view.getScrollPaneEnderecos().setBorder(BorderFactory.createLineBorder(new Color(60, 60, 65), 1));
-        view.getTableEnderecos().setBorder(BorderFactory.createLineBorder(new Color(60, 60, 65), 1));
-        view.getScrollPaneTelefones().setBorder(BorderFactory.createLineBorder(new Color(60, 60, 65), 1));
-        view.getTableTelefones().setBorder(BorderFactory.createLineBorder(new Color(60, 60, 65), 1));
-        view.getScrollPaneClientes().getViewport().setBackground(new Color(30, 30,35));
-        view.getScrollPaneEnderecos().getViewport().setBackground(new Color(30, 30,35));
-        view.getScrollPaneTelefones().getViewport().setBackground(new Color(30, 30,35));
-        view.getTableClientes().setRowHeight(22);
-        view.getTableClientes().getTableHeader().setBackground(new Color(63, 63, 63));
-        view.getTableClientes().getTableHeader().setForeground(Color.WHITE);
-        view.getTableClientes().getTableHeader().setFont(new Font ("Roboto", Font.BOLD, 12));
-        view.getTableEnderecos().setOpaque(true);
-        view.getTableEnderecos().getTableHeader().setBackground(new Color(63, 63, 63));
-        view.getTableEnderecos().getTableHeader().setForeground(Color.WHITE);
-        view.getTableEnderecos().getTableHeader().setFont(new Font ("Roboto", Font.BOLD, 12));
-        view.getTableEnderecos().setRowHeight(22);
-        view.getTableEnderecos().setOpaque(true);
-        view.getTableTelefones().getTableHeader().setBackground(new Color(63, 63, 63));
-        view.getTableTelefones().getTableHeader().setForeground(Color.WHITE);
-        view.getTableTelefones().getTableHeader().setFont(new Font ("Roboto", Font.BOLD, 12));
-        view.getTableTelefones().setRowHeight(22);
     }
 
     /*** funcionalidades ***/
+    private void ligaDesligaBotoesCliente(){
+        ligarBotoesSalvarCancelarCliente();
+        ligarBotoesModoSalvar();
+    }
+
+    private void ligaDesligaBotoesEndereco(){
+        ligarBotoesSalvarCancelarEndereco();
+        ligarBotoesModoSalvar();
+    }
+
+    private void ligaDesligaBotoesTelefone(){
+        ligarBotoesSalvarCancelarTelefone();
+        ligarBotoesModoSalvar();
+    }
+
+    private void ligarBotoesSalvarCancelarCliente(){
+        for (JButton botao : view.getBotoesSalvarCancelarCliente()) {
+            if (botao.isEnabled()) {
+                botao.setEnabled(false);
+            } else {
+                botao.setEnabled(true);
+            }
+        }
+    }
+
+    private void ligarBotoesSalvarCancelarEndereco(){
+        for (JButton botao : view.getBotoesSalvarCancelarEndereco()) {
+            if (botao.isEnabled()) {
+                botao.setEnabled(false);
+            } else {
+                botao.setEnabled(true);
+            }
+        }
+    }
+
+    private void ligarBotoesSalvarCancelarTelefone(){
+        for (JButton botao : view.getBotoesSalvarCancelarTelefone()) {
+            if (botao.isEnabled()) {
+                botao.setEnabled(false);
+            } else {
+                botao.setEnabled(true);
+            }
+        }
+    }
+
+    private void ligarBotoesModoSalvar() {
+        for (JButton botao : view.getBotoesModoSalvar()) {
+            if (botao.isEnabled()) {
+                botao.setEnabled(false);
+            } else {
+                botao.setEnabled(true);
+            }
+        }
+    }
+
     public void voltarMenu(){
         view.dispose();
     }
@@ -183,7 +228,7 @@ public class CadastroController {
         Telefone novoTelefone = new Telefone();
         String telefoneNumero = view.getTextFieldTelefone().getText();
         novoTelefone.setTelefone(telefoneNumero);
-        String contato = view.getTextFieldContato().getText();
+        String contato = view.getTextFieldContato().getText().toUpperCase();
         novoTelefone.setContato(contato);
         if (novoTelefone.getDataCadastroTelefone() == null) {novoTelefone.setDataCadastroTelefone();}
         return novoTelefone;
@@ -203,9 +248,9 @@ public class CadastroController {
         Cliente novoCliente = new Cliente();
         Long idCliente = Long.valueOf(view.getTextFieldId().getText());
         novoCliente.setIdCliente(idCliente);
-        novoCliente.setNome(view.getTextFieldNome().getText());
+        novoCliente.setNome(view.getTextFieldNome().getText().toUpperCase());
         novoCliente.setCpf(view.getTextFieldCpf().getText());
-        novoCliente.setObservacao(view.getTextFieldObsCLiente().getText());
+        novoCliente.setObservacao(view.getTextFieldObsCLiente().getText().toUpperCase());
         novoCliente.setRegime(view.getComboCadPessoa());
         novoCliente.setStatusCliente(view.getComboStatusCliente());
         return novoCliente;
@@ -213,9 +258,9 @@ public class CadastroController {
 
     private Cliente carregarNovoCliente() {
         Cliente carregarCliente = new Cliente();
-        carregarCliente.setNome(view.getTextFieldNome().getText());
+        carregarCliente.setNome(view.getTextFieldNome().getText().toUpperCase());
         carregarCliente.setCpf(view.getTextFieldCpf().getText());
-        carregarCliente.setObservacao(view.getTextFieldObsCLiente().getText());
+        carregarCliente.setObservacao(view.getTextFieldObsCLiente().getText().toUpperCase());
         carregarCliente.setRegime(view.getComboCadPessoa());
         carregarCliente.setStatusCliente(StatusCliente.ATIVO);
         if (carregarCliente.getDataCadastroCliente() == null) {carregarCliente.setDataCadastroCliente();}
@@ -225,21 +270,21 @@ public class CadastroController {
 
     private Endereco carregarNovoEndereco() {
         Endereco novoEndereco = new Endereco();
-        String logradouro = view.getTextFieldLogradouro().getText();
+        String logradouro = view.getTextFieldLogradouro().getText().toUpperCase();
         novoEndereco.setLogradouro(logradouro);
         String numero = view.getTextFieldNumeroEndereco().getText();
         novoEndereco.setNumero(numero);
-        String bairro = view.getTextFieldBairro().getText();
+        String bairro = view.getTextFieldBairro().getText().toUpperCase();
         novoEndereco.setBairro(bairro);
-        String cidade = view.getTextFieldCidade().getText();
+        String cidade = view.getTextFieldCidade().getText().toUpperCase();
         novoEndereco.setCidade(cidade);
         String cep = view.getTextFieldCep().getText();
         novoEndereco.setCep(cep);
-        String complemento = view.getTextFieldComplemento().getText();
+        String complemento = view.getTextFieldComplemento().getText().toUpperCase();
         novoEndereco.setComplemento(complemento);
         Tipo tipo = view.getComboTipo();
         novoEndereco.setTipo(tipo);
-        String obsEnd = view.getTextFieldObsEnderecos().getText();
+        String obsEnd = view.getTextFieldObsEnderecos().getText().toUpperCase();
         novoEndereco.setObservacaoEndereco(obsEnd);
         if (novoEndereco.getDataCadastroEndereco() == null) {novoEndereco.setDataCadastroEndereco();}
         return novoEndereco;
@@ -248,39 +293,39 @@ public class CadastroController {
     private Endereco carregarEnderecoExistente() {
         Endereco novoEndereco = new Endereco();
         novoEndereco.setIdEndereco(Long.valueOf(view.getTextFieldIdEndereco().getText()));
-        novoEndereco.setLogradouro(view.getTextFieldLogradouro().getText());
+        novoEndereco.setLogradouro(view.getTextFieldLogradouro().getText().toUpperCase());
         novoEndereco.setNumero(view.getTextFieldNumeroEndereco().getText());
-        novoEndereco.setBairro(view.getTextFieldBairro().getText());
-        novoEndereco.setCidade(view.getTextFieldCidade().getText());
+        novoEndereco.setBairro(view.getTextFieldBairro().getText().toUpperCase());
+        novoEndereco.setCidade(view.getTextFieldCidade().getText().toUpperCase());
         novoEndereco.setCep(view.getTextFieldCep().getText());
-        novoEndereco.setComplemento(view.getTextFieldComplemento().getText());
+        novoEndereco.setComplemento(view.getTextFieldComplemento().getText().toUpperCase());
         novoEndereco.setTipo(view.getComboTipo());
-        novoEndereco.setObservacaoEndereco(view.getTextFieldObsEnderecos().getText());
+        novoEndereco.setObservacaoEndereco(view.getTextFieldObsEnderecos().getText().toUpperCase());
         if (novoEndereco.getDataCadastroEndereco() == null) {novoEndereco.setDataCadastroEndereco();}
         return novoEndereco;
     }
 
-
-    private void atualizarTabelaClienteUnico(String cpf){
-        Cliente cliente = new Cliente();
-        cliente = clienteDao.buscarClientePorCpf(cpf);
-        view.getTextFieldId().setText(String.valueOf(cliente.getIdCliente()));
-        DefaultTableModel modeloCliente = modeloTabelaCliente();
-        modeloCliente.addRow(carregarTabelaClienteUnico(cliente));
-    }
-
-
     /*** funções Cliente***/
     private void salvarNovoCliente() {
        try {
-           Cliente novoCliente = carregarNovoCliente();
-           validador.validarCliente(novoCliente);
-           if (clienteDao.isCpfCadastrado(novoCliente.getCpf())) {
-               TelaMensagensSistema.mostrarErro(MensagensSistema.CLIENTE_CPF_EXISTENTE);
-               return;
-           }
-           if (clienteDao.salvarCliente(novoCliente)) {
-               TelaMensagensSistema.mostrarInformacao(MensagensSistema.CLIENTE_CADASTRO_SUCESSO);
+           Cliente novoCliente;
+           if(view.getTextFieldId() == null || view.getTextFieldId().getText().equals("")){
+                novoCliente = carregarNovoCliente();
+                validador.validarCliente(novoCliente);
+                if (clienteDao.isCpfCadastrado(novoCliente.getCpf())) {
+                    TelaMensagensSistema.mostrarErro(MensagensSistema.CLIENTE_CPF_EXISTENTE);
+                    return;
+                }
+                if (clienteDao.salvarCliente(novoCliente)) {
+                    TelaMensagensSistema.mostrarInformacao(MensagensSistema.CLIENTE_CADASTRO_SUCESSO);
+                }
+           } else {
+               novoCliente = carregarCliente();
+               validador.validarCliente(novoCliente);
+               System.out.println("1");
+               if (clienteDao.salvarCliente(novoCliente)) {
+                   TelaMensagensSistema.mostrarInformacao("CLIENTE ATUALIZADO COM SUCESSO!");
+               }
            }
        } catch (ClienteInvalidoException e) {
            TelaMensagensSistema.mostrarErro(e.getMessage());
@@ -291,11 +336,22 @@ public class CadastroController {
     private void salvarEndereco() {
         try {
             Endereco novoEndereco;
-            Long idCliente = Long.valueOf(view.getTextFieldId().getText());
-            novoEndereco = carregarNovoEndereco();
-            validador.validarEndereco(novoEndereco);
-            enderecoDao.adicionarEnderecoCliente(idCliente, novoEndereco);
-            TelaMensagensSistema.mostrarInformacao(MensagensSistema.ENDERECO_CADASTRO_SUCESSO);
+            Long idCliente = Long.parseLong(view.getTextFieldId().getText());
+            if(view.getTextFieldId() == null || view.getTextFieldId().getText().equals("")){
+                TelaMensagensSistema.mostrarErro("Selecione um cliente válido");
+                return;
+            }
+            if(view.getTextFieldIdEndereco() == null || view.getTextFieldIdEndereco().getText().equals("")){
+                novoEndereco = carregarNovoEndereco();
+                validador.validarEndereco(novoEndereco);
+                enderecoDao.adicionarEnderecoCliente(idCliente, novoEndereco);
+                TelaMensagensSistema.mostrarInformacao(MensagensSistema.ENDERECO_CADASTRO_SUCESSO);
+            } else {
+                novoEndereco = carregarEnderecoExistente();
+                validador.validarEndereco(novoEndereco);
+                enderecoDao.adicionarEnderecoCliente(idCliente, novoEndereco);
+                TelaMensagensSistema.mostrarInformacao("ENDERECO ATUALIZADO COM SUCESSO!");
+            }
         } catch (EnderecoInvalidoException e) {
             TelaMensagensSistema.mostrarErro(e.getMessage());
         } catch (Exception e) {
@@ -303,34 +359,31 @@ public class CadastroController {
         }
     }
 
-    private void editarCliente(){
-        try{
-            Cliente editarCliente;
-            editarCliente = carregarCliente();
-            validador.validarCliente(editarCliente);
-            clienteDao.atualizarCliente(editarCliente);
-            TelaMensagensSistema.mostrarInformacao(MensagensSistema.CLIENTE_CADASTRO_SUCESSO);
-        } catch (ClienteInvalidoException e) {
+    private void salvarTelefone() {
+        try {
+            Telefone novoTelefone;
+            Long idCliente = Long.valueOf(view.getTextFieldId().getText());
+            if(view.getTextFieldId() == null || view.getTextFieldId().getText().equals("")){
+                TelaMensagensSistema.mostrarErro("Selecione um cliente válido");
+                return;
+            }
+            if(view.getTextFieldIdTelefone() == null || view.getTextFieldIdTelefone().getText().equals("")){
+                novoTelefone = carregarNovoTelefone();
+                validador.validarTelefone(novoTelefone);
+                telefoneDao.adicionarTelefoneCliente(idCliente, novoTelefone);
+                TelaMensagensSistema.mostrarInformacao("TELEFONE CADASTRADO COM SUCESSO");
+            } else {
+                novoTelefone = carregarTelefoneExistente();
+                validador.validarTelefone(novoTelefone);
+                telefoneDao.adicionarTelefoneCliente(idCliente, novoTelefone);
+                TelaMensagensSistema.mostrarInformacao("TELEFONE ATUALIZADO COM SUCESSO!");
+            }
+        } catch (TelefoneInvalidoException e) {
             TelaMensagensSistema.mostrarErro(e.getMessage());
-        } catch (Exception e){
+        } catch (Exception e) {
             ErrorHandler.handle(e);
         }
     }
-    /*
-    private void editarEndereco(){
-        try{
-            Endereco editarEndereco;
-            editarEndereco = carregarEnderecoExistente();
-            Cliente cliente = clienteDao.buscarClientePorId(endereco.getCliente().getIdCliente());
-            validador.validarEndereco(editarEndereco);
-            enderecoDao.atualizarEndereco(cliente.getIdCliente(), editarEndereco.getIdEndereco(), editarEndereco);
-            TelaMensagensSistema.mostrarInformacao(MensagensSistema.ENDERECO_CADASTRO_SUCESSO);
-        } catch (EnderecoInvalidoException e) {
-            TelaMensagensSistema.mostrarErro(e.getMessage());
-        } catch (Exception e){
-            ErrorHandler.handle(e);
-        }
-    }*/
 
     private void excluirCliente(){
         try{
@@ -348,12 +401,29 @@ public class CadastroController {
         }
     }
 
+
+    private void excluirEndereco(){
+        try{
+            if (!TelaMensagensSistema.mostrarConfirmacao("Voce tem certeza?")){
+                return;
+            }
+            Long idEndereco = Long.valueOf(view.getTextFieldIdEndereco().getText());
+            Cliente cliente = clienteDao.buscarClientePorId(Long.valueOf(view.getTextFieldId().getText()));
+            enderecoDao.excluirEndereco(idEndereco);
+            TelaMensagensSistema.mostrarInformacao(MensagensSistema.ENDERECO_EXLUIDO_SUCESSO);
+        } catch (EnderecoInvalidoException e) {
+            TelaMensagensSistema.mostrarErro(e.getMessage());
+        } catch (Exception e){
+            ErrorHandler.handle(e);
+        }
+    }
+
     private void buscarClienteId() {
         limparTabela(view.getTableClientes());
         limparTabela(view.getTableEnderecos());
         limparTabela(view.getTableTelefones());
         if(view.getTextFieldId().getText().trim().isEmpty()){
-            TelaMensagensSistema.mostrarErro("digite um id valido");
+            TelaMensagensSistema.mostrarErro("Digite um id válido!");
             return;
         }
         Long id = Long.valueOf(view.getTextFieldId().getText());
@@ -440,6 +510,7 @@ public class CadastroController {
                 new Object[][] {},
                 new String[] {"ID", "TELEFONE", "CONTATO", "DATA_CADASTRO"}
         );
+        view.getTableTelefones().setModel(modeloTelefone);
         modeloTelefone.setRowCount(0);
         return modeloTelefone;
     }
@@ -494,6 +565,7 @@ public class CadastroController {
         String cpf = view.getTextFieldCpf().getText();
         Cliente cliente;
         cliente = clienteDao.buscarClientePorCpf(cpf);
+        System.out.println(cliente.getDataCadastroCliente());
         DefaultTableModel modeloCliente = modeloTabelaCliente();
         modeloCliente.addRow(carregarTabelaClienteUnico(cliente));
         escreverCamposCliente(cliente);
@@ -543,67 +615,9 @@ public class CadastroController {
 
 
 
-    private void excluirEndereco(){
-        try{
-            if (!TelaMensagensSistema.mostrarConfirmacao("Voce tem certeza?")){
-                return;
-            }
-            Endereco editarEndereco;
-            editarEndereco = carregarNovoEndereco();
-            enderecoDao.excluirEndereco(Long.valueOf(view.getTextFieldIdEndereco().getText()));
-            TelaMensagensSistema.mostrarInformacao(MensagensSistema.ENDERECO_EXLUIDO_SUCESSO);
-        } catch (EnderecoInvalidoException e) {
-            TelaMensagensSistema.mostrarErro(e.getMessage());
-        } catch (Exception e){
-            ErrorHandler.handle(e);
-        }
-    }
 
     /*** funções Telefone ***/
-    private void salvarTelefone() {
-        try {
-            Telefone novoTelefone;
-            Long idCliente = Long.valueOf(view.getTextFieldId().getText());
-            novoTelefone = carregarNovoTelefone();
-            validador.validarTelefone(novoTelefone);
-            telefoneDao.adicionarTelefoneCliente(idCliente, novoTelefone);
-            TelaMensagensSistema.mostrarInformacao(MensagensSistema.TELEFONE_CADASTRO_SUCESSO);
-            Cliente cliente;
-            cliente = clienteDao.buscarClientePorId(idCliente);
-            DefaultTableModel modeloTelefone = modeloTabelaTelefone();
-            List<Telefone> telefones = cliente.getTelefones();
-            escreverTabelaTelefones(telefones, modeloTelefone);
-        } catch (TelefoneInvalidoException e) {
-            TelaMensagensSistema.mostrarErro(e.getMessage());
-        } catch (Exception e) {
-            ErrorHandler.handle(e);
-        }
-    }
-    private void editarTelefone(){
-        try {
-            Telefone editarTelefone;
-            editarTelefone = carregarNovoTelefone();
-            Long idCliente = Long.valueOf(view.getTextFieldId().getText());
-            Cliente cliente = clienteDao.buscarClientePorId(idCliente);
-            editarTelefone.setIdTelefone(Long.valueOf(view.getTextFieldIdTelefone().getText()));
-            validador.validarTelefone(editarTelefone);
-            telefoneDao.atualizarTelefoneCLiente(cliente.getIdCliente(), editarTelefone.getIdTelefone(), editarTelefone);
-            TelaMensagensSistema.mostrarInformacao(MensagensSistema.TELEFONE_CADASTRO_SUCESSO);
-            cliente = clienteDao.buscarClientePorId(idCliente);
-            DefaultTableModel modeloTelefone = modeloTabelaTelefone();
-            List<Telefone> telefones = cliente.getTelefones();
-            escreverTabelaTelefones(telefones, modeloTelefone);
-            if (!cliente.getTelefones().isEmpty()) {
-                escreverCamposTelefone(cliente.getTelefones().getFirst());
-            } else {
-                limparCamposTelefone();
-            }
-        } catch (TelefoneInvalidoException e){
-            TelaMensagensSistema.mostrarErro(e.getMessage());
-        } catch (Exception e) {
-            ErrorHandler.handle(e);
-        }
-    }
+
 
     private void excluirTelefone(){
         try{

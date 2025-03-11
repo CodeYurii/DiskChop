@@ -2,6 +2,8 @@ package com.diskchop.model.dao;
 
 import com.diskchop.model.entity.Cliente;
 import com.diskchop.model.entity.Endereco;
+import com.diskchop.model.util.MensagensSistema;
+import com.diskchop.model.util.TelaMensagensSistema;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
@@ -23,15 +25,18 @@ public class EnderecoDao {
     public void adicionarEnderecoCliente(Long idCliente, Endereco endereco) {
         try {
             em.getTransaction().begin();
-
             Cliente cliente = em.find(Cliente.class, idCliente);
-            if (cliente != null) {
-                endereco.setCliente(cliente);
-                cliente.getEnderecos().add(endereco);
-                em.persist(endereco); // Persistindo o novo endereço
-            } else {
+            if (cliente == null) {
                 throw new RuntimeException("Cliente não encontrado para o ID: " + idCliente);
             }
+            endereco.setCliente(cliente);
+            if(endereco.getIdEndereco() == null){
+                em.persist(endereco);
+            } else {
+                endereco = em.merge(endereco);
+                em.flush();
+            }
+            cliente.getEnderecos().add(endereco);
             em.getTransaction().commit();
             em.clear();
         } catch (Exception e) {
@@ -40,36 +45,6 @@ public class EnderecoDao {
             }
             throw new RuntimeException("Erro ao adicionar endereço ao cliente", e);
         }
-    }
-
-    public void atualizarEndereco(Long idCliente, Endereco endereco) {
-        try{
-            em.getTransaction().begin();
-            Cliente cliente = em.find(Cliente.class, idCliente);
-            if (cliente == null) {
-                throw new IllegalArgumentException("Cliente nao encontrado");
-            }
-            em.merge(cliente);
-            em.getTransaction().commit();
-        } catch (Exception e) {
-            if (em.getTransaction().isActive()) {
-                em.getTransaction().rollback();
-            }
-            throw new RuntimeException("Erro ao atualizar o endereço", e);
-        }
-    }
-
-    public void selecrionarEndereco(Endereco endereco){
-        try{
-            em.getTransaction().begin();
-            Endereco enderecoSelecionado = em.find(Endereco.class, endereco.getIdEndereco());
-            if (enderecoSelecionado != null) {
-                em.merge(enderecoSelecionado);
-                em.getTransaction().commit();
-                em.clear();
-                em.refresh(enderecoSelecionado);
-            }
-        } catch (Exception e) {}
     }
 
     public List<Endereco> buscarEnderecosDoCliente(Long idCliente) {
@@ -81,26 +56,33 @@ public class EnderecoDao {
         return new ArrayList<>();
     }
 
-    public void excluirEndereco(Long id) {
+    public void excluirEndereco(Long enderecoId) {
         try {
-            Endereco endereco = em.find(Endereco.class, id);
-            if (endereco != null) {
-                // Obtendo o cliente dono do endereço
-                Cliente cliente = endereco.getCliente();
+            em.getTransaction().begin();
 
-                if (cliente != null) {
-                    // Removendo o endereço da lista do cliente
-                    cliente.getEnderecos().remove(endereco);
-                    em.merge(cliente); // Atualizando o cliente para refletir a remoção
-                }
-            } else {
-                throw new RuntimeException("Endereço não encontrado para exclusão.");
+            // Encontrar o Endereco pelo ID
+            Endereco endereco = em.find(Endereco.class, enderecoId);
+            if (endereco == null) {
+                throw new RuntimeException("Endereço não encontrado para exclusão. ID: " + enderecoId);
             }
+            Cliente cliente = endereco.getCliente();
+            // Remover o Endereco da lista de enderecos do Cliente
+            cliente.getEnderecos().remove(endereco);
+
+            // Sincronizar a entidade Cliente (essa operação também pode causar a exclusão do Endereco se orphanRemoval estiver ativado)
+            em.merge(cliente);
+            em.flush();
+            em.getTransaction().commit();
+            em.refresh(cliente);
+            em.clear();
         } catch (Exception e) {
             if (em.getTransaction().isActive()) {
                 em.getTransaction().rollback();
             }
-            throw new RuntimeException("Erro ao excluir Endereço", e);
+            e.printStackTrace();
+            throw new RuntimeException("Erro ao excluir Endereço: " + e.getMessage(), e);
         }
     }
+
+
 }

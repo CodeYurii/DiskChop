@@ -36,7 +36,7 @@ public class Cliente {
     @Column(name = "status_cliente", nullable = true)
     private StatusCliente statusCliente;
 
-    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = false)
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
     @OrderBy("dataCadastroEndereco DESC")
     private List<Endereco> enderecos = new ArrayList<>();
 

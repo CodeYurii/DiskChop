@@ -1,0 +1,115 @@
+2025-03-11 02:21:19 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO" already exists; SQL statement:
+create global temporary table HTE_Produto(quantidade integer, rn_ integer not null, statusProduto tinyint, validade date, id bigint, categoria varchar(31) not null, nome varchar(255), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-11 02:21:19 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO0" already exists; SQL statement:
+create global temporary table HTE_Produto0(quantidade integer, rn_ integer not null, statusProduto tinyint, id bigint, categoria varchar(31) not null, nome varchar(255), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-11 02:21:19 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO1" already exists; SQL statement:
+create global temporary table HTE_Produto1(quantidade integer, rn_ integer not null, statusProduto tinyint, id bigint, categoria varchar(31) not null, nome varchar(255), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-11 02:21:19 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO2" already exists; SQL statement:
+create global temporary table HTE_Produto2(quantidade integer, rn_ integer not null, statusProduto tinyint, validade date, id bigint, categoria varchar(31) not null, nome varchar(255), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-11 02:21:19 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO3" already exists; SQL statement:
+create global temporary table HTE_Produto3(quantidade integer, rn_ integer not null, statusProduto tinyint, id bigint, categoria varchar(31) not null, nome varchar(255), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-11 02:21:19 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO4" already exists; SQL statement:
+create global temporary table HTE_Produto4(quantidade integer, rn_ integer not null, statusProduto tinyint, id bigint, categoria varchar(31) not null, nome varchar(255), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-11 02:21:19 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO" already exists; SQL statement:
+create global temporary table HTE_Produto(quantidade integer, rn_ integer not null, statusProduto tinyint, validade date, id bigint, categoria varchar(31) not null, nome varchar(255), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-11 02:21:19 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO0" already exists; SQL statement:
+create global temporary table HTE_Produto0(quantidade integer, rn_ integer not null, statusProduto tinyint, id bigint, categoria varchar(31) not null, nome varchar(255), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-11 02:21:19 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO1" already exists; SQL statement:
+create global temporary table HTE_Produto1(quantidade integer, rn_ integer not null, statusProduto tinyint, id bigint, categoria varchar(31) not null, nome varchar(255), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-11 02:21:19 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO2" already exists; SQL statement:
+create global temporary table HTE_Produto2(quantidade integer, rn_ integer not null, statusProduto tinyint, validade date, id bigint, categoria varchar(31) not null, nome varchar(255), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-11 02:21:19 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO3" already exists; SQL statement:
+create global temporary table HTE_Produto3(quantidade integer, rn_ integer not null, statusProduto tinyint, id bigint, categoria varchar(31) not null, nome varchar(255), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-11 02:21:19 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO4" already exists; SQL statement:
+create global temporary table HTE_Produto4(quantidade integer, rn_ integer not null, statusProduto tinyint, id bigint, categoria varchar(31) not null, nome varchar(255), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-11 05:58:16 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Values of types "ENUM('ALUGADO', 'ATIVO', 'CHEIO', 'INATIVO', 'MANUTENCAO', 'VAZIO', 'VENDIDO')" and "INTEGER" are not comparable; SQL statement:
+ALTER TABLE "PUBLIC"."PRODUTO_COPY_3_0" ADD CONSTRAINT "PRODUTO_COPY_3_0_CONSTRAINT_1" CHECK("STATUSPRODUTO" BETWEEN 0 AND 6) NOCHECK [90110-210]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:651)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:496)
+	at org.h2.message.DbException.get(DbException.java:227)
+	at org.h2.value.TypeInfo.checkComparable(TypeInfo.java:724)
+	at org.h2.expression.condition.BetweenPredicate.optimize(BetweenPredicate.java:74)
+	at org.h2.command.ddl.AlterTableAddConstraint.tryUpdate(AlterTableAddConstraint.java:191)
+	at org.h2.command.ddl.AlterTableAddConstraint.update(AlterTableAddConstraint.java:72)
+	at org.h2.command.ddl.AlterTable.update(AlterTable.java:46)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:174)
+	at org.h2.command.Command.executeUpdate(Command.java:252)
+	at org.h2.command.ddl.AlterTableAlterColumn.execute(AlterTableAlterColumn.java:645)
+	at org.h2.command.ddl.AlterTableAlterColumn.cloneTableStructure(AlterTableAlterColumn.java:567)
+	at org.h2.command.ddl.AlterTableAlterColumn.copyData(AlterTableAlterColumn.java:339)
+	at org.h2.command.ddl.AlterTableAlterColumn.update(AlterTableAlterColumn.java:227)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:174)
+	at org.h2.command.Command.executeUpdate(Command.java:252)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:252)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:223)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:80)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlString(AbstractSchemaMigrator.java:576)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlStrings(AbstractSchemaMigrator.java:516)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.migrateTable(AbstractSchemaMigrator.java:334)
+	at org.hibernate.tool.schema.internal.GroupedSchemaMigratorImpl.performTablesMigration(GroupedSchemaMigratorImpl.java:84)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.performMigration(AbstractSchemaMigrator.java:233)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.doMigration(AbstractSchemaMigrator.java:112)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:280)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.lambda$process$5(SchemaManagementToolCoordinator.java:144)
+	at java.base/java.util.HashMap.forEach(HashMap.java:1429)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:141)
+	at org.hibernate.boot.internal.SessionFactoryObserverForSchemaExport.sessionFactoryCreated(SessionFactoryObserverForSchemaExport.java:37)
+	at org.hibernate.internal.SessionFactoryObserverChain.sessionFactoryCreated(SessionFactoryObserverChain.java:35)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:324)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:463)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1506)
+	at org.hibernate.jpa.HibernatePersistenceProvider.createEntityManagerFactory(HibernatePersistenceProvider.java:55)
+	at jakarta.persistence.Persistence.createEntityManagerFactory(Persistence.java:90)
+	at jakarta.persistence.Persistence.createEntityManagerFactory(Persistence.java:66)
+	at com.diskchop.model.dao.ProdutoDao.<init>(ProdutoDao.java:15)
+	at com.diskchop.controller.EstoqueController.<init>(EstoqueController.java:22)
+	at com.diskchop.controller.MainController.openEstoque(MainController.java:68)
+	at com.diskchop.controller.MainController.lambda$configureActions$8(MainController.java:45)
+	at java.desktop/javax.swing.AbstractButton.fireActionPerformed(AbstractButton.java:1972)
+	at java.desktop/javax.swing.AbstractButton$Handler.actionPerformed(AbstractButton.java:2314)
+	at java.desktop/javax.swing.DefaultButtonModel.fireActionPerformed(DefaultButtonModel.java:407)
+	at java.desktop/javax.swing.DefaultButtonModel.setPressed(DefaultButtonModel.java:262)
+	at java.desktop/javax.swing.plaf.basic.BasicButtonListener.mouseReleased(BasicButtonListener.java:279)
+	at java.desktop/java.awt.Component.processMouseEvent(Component.java:6621)
+	at java.desktop/javax.swing.JComponent.processMouseEvent(JComponent.java:3398)
+	at java.desktop/java.awt.Component.processEvent(Component.java:6386)
+	at java.desktop/java.awt.Container.processEvent(Container.java:2266)
+	at java.desktop/java.awt.Component.dispatchEventImpl(Component.java:4996)
+	at java.desktop/java.awt.Container.dispatchEventImpl(Container.java:2324)
+	at java.desktop/java.awt.Component.dispatchEvent(Component.java:4828)
+	at java.desktop/java.awt.LightweightDispatcher.retargetMouseEvent(Container.java:4948)
+	at java.desktop/java.awt.LightweightDispatcher.processMouseEvent(Container.java:4575)
+	at java.desktop/java.awt.LightweightDispatcher.dispatchEvent(Container.java:4516)
+	at java.desktop/java.awt.Container.dispatchEventImpl(Container.java:2310)
+	at java.desktop/java.awt.Window.dispatchEventImpl(Window.java:2780)
+	at java.desktop/java.awt.Component.dispatchEvent(Component.java:4828)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:775)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:720)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:714)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:87)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:98)
+	at java.desktop/java.awt.EventQueue$5.run(EventQueue.java:747)
+	at java.desktop/java.awt.EventQueue$5.run(EventQueue.java:745)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:87)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:744)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)

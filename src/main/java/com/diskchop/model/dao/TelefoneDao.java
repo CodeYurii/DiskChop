@@ -23,13 +23,19 @@ public class TelefoneDao {
         try {
             em.getTransaction().begin();
             Cliente cliente = em.find(Cliente.class, idCliente);
-            if (cliente != null) {
-                cliente.getTelefones().add(telefone);
-                telefone.setCliente(cliente);
+            if (cliente == null) {
+                throw new RuntimeException("Cliente não encontrado para o ID: " + idCliente);
+            }
 
-                em.merge(cliente);
+            telefone.setCliente(cliente);
+            if(telefone.getIdTelefone() == null){
+                em.persist(telefone);
+            } else {
+                telefone = em.merge(telefone);
+                em.flush();
             }
             em.getTransaction().commit();
+            em.clear();
         } catch (Exception e) {
             if (em.getTransaction().isActive()) {
                 em.getTransaction().rollback();
