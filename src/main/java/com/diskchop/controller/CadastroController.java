@@ -322,7 +322,6 @@ public class CadastroController {
            } else {
                novoCliente = carregarCliente();
                validador.validarCliente(novoCliente);
-               System.out.println("1");
                if (clienteDao.salvarCliente(novoCliente)) {
                    TelaMensagensSistema.mostrarInformacao("CLIENTE ATUALIZADO COM SUCESSO!");
                }

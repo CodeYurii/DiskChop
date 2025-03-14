@@ -1,16 +1,12 @@
 package com.diskchop.model.entity;
 
-import jakarta.persistence.DiscriminatorValue;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
+import jakarta.persistence.*;
 import lombok.Data;
 
 import java.util.Date;
 
 @Entity
 @Data
-@DiscriminatorValue("BARRIL")
 public class Barril extends Produto{
 
     @Temporal(TemporalType.DATE)

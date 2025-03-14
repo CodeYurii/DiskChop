@@ -234,7 +234,7 @@ public class Estoque extends javax.swing.JDialog {
         labelCategoriaProduto.setForeground(new java.awt.Color(255, 200, 87));
         labelCategoriaProduto.setPreferredSize(new java.awt.Dimension(66, 24));
 
-        comboProdutoCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "MAQUINA", "BARRIL", "CILINDRO", "MESAS", "DIVERSOS" }));
+        comboProdutoCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "MAQUINA", "BARRIL", "CILINDRO", "MESA", "DIVERSO" }));
         comboProdutoCategoria.setBackground(new java.awt.Color(40, 40, 40));
         comboProdutoCategoria.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(60, 60, 60)));
         comboProdutoCategoria.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
@@ -273,7 +273,7 @@ public class Estoque extends javax.swing.JDialog {
         labelStatus.setForeground(new java.awt.Color(255, 200, 87));
         labelStatus.setPreferredSize(new java.awt.Dimension(46, 24));
 
-        comboStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ATIVO", "INATIVO", "MANUTENÇÃO", "CHEIO", "VAZIO", "ALUGADO", "VENDIDO" }));
+        comboStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ATIVO", "INATIVO", "MANUTENCAO", "CHEIO", "VAZIO", "ALUGADO", "VENDIDO" }));
         comboStatus.setBackground(new java.awt.Color(40, 40, 40));
         comboStatus.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(60, 60, 60)));
         comboStatus.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
@@ -525,6 +525,18 @@ public class Estoque extends javax.swing.JDialog {
     private javax.swing.JTextField textFieldProduto;
     private javax.swing.JTextField textFieldQuantidade;
     // End of variables declaration
+
+
+    public String getComboCategoriaProduto() {
+        return (String) comboProdutoCategoria.getSelectedItem();
+    }
+    public String getComboCategoriaBusca() {
+        return (String) comboCategoria.getSelectedItem();
+    }
+    public String getComboStatusProduto() {
+        return (String) comboStatus.getSelectedItem();
+    }
+
 
     public JButton[] getBotoes(){
         return new JButton[]{ botaoBuscar,

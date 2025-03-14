@@ -6,7 +6,6 @@ import lombok.Data;
 
 @Entity
 @Data
-@DiscriminatorValue("MAQUINA")
 public class Maquina extends Produto{
     public Maquina(){}
 

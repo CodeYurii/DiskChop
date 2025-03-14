@@ -6,7 +6,6 @@ import lombok.Data;
 @Entity
 @Data
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE) // Estratégia para herança no JPA
-@DiscriminatorColumn(name = "categoria", discriminatorType = DiscriminatorType.STRING)
 public abstract class Produto {
 
     @Id
@@ -17,6 +16,9 @@ public abstract class Produto {
     private Integer quantidade;
     private Double preco;
     @Enumerated(EnumType.STRING)
+    private CategoriaProduto categoria;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "statusProduto")
     private StatusProduto statusProduto;
 
     public Produto(){}

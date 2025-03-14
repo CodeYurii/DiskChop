@@ -7,7 +7,7 @@ import lombok.Data;
 
 @Entity
 @Data
-@DiscriminatorValue("MESA")
+
 public class Mesa extends Produto{
     public Mesa(){}
 

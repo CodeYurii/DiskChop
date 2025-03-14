@@ -8,6 +8,7 @@
         <class>com.diskchop.model.entity.Cliente</class>
         <class>com.diskchop.model.entity.Endereco</class>
         <class>com.diskchop.model.entity.Telefone</class>
+        <class>com.diskchop.model.entity.Produto</class>
         <!-- Adicione todas as suas classes de entidade aqui -->
 
         <properties>
