@@ -65,7 +65,6 @@ public class EstoqueController {
     private Produto carregarDadosParaCampos(int linhaSelecionada) {
         ProdutoTableModel modelo = (ProdutoTableModel) view.getTabelaProdutos().getModel();
         produtoSelecionado = modelo.getProdutoAt(linhaSelecionada);
-
         view.getTextFieldProduto().setText(produtoSelecionado.getNome());
         view.getTextFieldQuantidade().setText(String.valueOf(produtoSelecionado.getQuantidade()));
         view.getTextFieldPreco().setText(String.valueOf(produtoSelecionado.getPreco()));

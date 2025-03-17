@@ -433,3 +433,291 @@ create global temporary table HTE_Produto3(quantidade integer, rn_ integer not n
 2025-03-14 04:51:36 jdbc[4]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO4" already exists; SQL statement:
 create global temporary table HTE_Produto4(quantidade integer, rn_ integer not null, id bigint, preco float(53), DTYPE varchar(31) not null, nome varchar(255), categoria enum ('BARRIL','CILINDRO','DIVERSO','MAQUINA','MESA'), statusProduto enum ('ALUGADO','ATIVO','CHEIO','INATIVO','MANUTENCAO','VAZIO','VENDIDO'), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-14 05:12:11 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO" already exists; SQL statement:
+create global temporary table HTE_Produto(quantidade integer, rn_ integer not null, validade date, id bigint, preco float(53), DTYPE varchar(31) not null, nome varchar(255), categoria enum ('BARRIL','CILINDRO','DIVERSO','MAQUINA','MESA'), statusProduto enum ('ALUGADO','ATIVO','CHEIO','INATIVO','MANUTENCAO','VAZIO','VENDIDO'), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-14 05:12:11 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO0" already exists; SQL statement:
+create global temporary table HTE_Produto0(quantidade integer, rn_ integer not null, id bigint, preco float(53), DTYPE varchar(31) not null, nome varchar(255), categoria enum ('BARRIL','CILINDRO','DIVERSO','MAQUINA','MESA'), statusProduto enum ('ALUGADO','ATIVO','CHEIO','INATIVO','MANUTENCAO','VAZIO','VENDIDO'), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-14 05:12:11 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO1" already exists; SQL statement:
+create global temporary table HTE_Produto1(quantidade integer, rn_ integer not null, id bigint, preco float(53), DTYPE varchar(31) not null, nome varchar(255), categoria enum ('BARRIL','CILINDRO','DIVERSO','MAQUINA','MESA'), statusProduto enum ('ALUGADO','ATIVO','CHEIO','INATIVO','MANUTENCAO','VAZIO','VENDIDO'), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-14 05:12:11 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO2" already exists; SQL statement:
+create global temporary table HTE_Produto2(quantidade integer, rn_ integer not null, validade date, id bigint, preco float(53), DTYPE varchar(31) not null, nome varchar(255), categoria enum ('BARRIL','CILINDRO','DIVERSO','MAQUINA','MESA'), statusProduto enum ('ALUGADO','ATIVO','CHEIO','INATIVO','MANUTENCAO','VAZIO','VENDIDO'), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-14 05:12:11 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO3" already exists; SQL statement:
+create global temporary table HTE_Produto3(quantidade integer, rn_ integer not null, id bigint, preco float(53), DTYPE varchar(31) not null, nome varchar(255), categoria enum ('BARRIL','CILINDRO','DIVERSO','MAQUINA','MESA'), statusProduto enum ('ALUGADO','ATIVO','CHEIO','INATIVO','MANUTENCAO','VAZIO','VENDIDO'), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-14 05:12:11 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO4" already exists; SQL statement:
+create global temporary table HTE_Produto4(quantidade integer, rn_ integer not null, id bigint, preco float(53), DTYPE varchar(31) not null, nome varchar(255), categoria enum ('BARRIL','CILINDRO','DIVERSO','MAQUINA','MESA'), statusProduto enum ('ALUGADO','ATIVO','CHEIO','INATIVO','MANUTENCAO','VAZIO','VENDIDO'), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-14 05:12:12 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO" already exists; SQL statement:
+create global temporary table HTE_Produto(quantidade integer, rn_ integer not null, validade date, id bigint, preco float(53), DTYPE varchar(31) not null, nome varchar(255), categoria enum ('BARRIL','CILINDRO','DIVERSO','MAQUINA','MESA'), statusProduto enum ('ALUGADO','ATIVO','CHEIO','INATIVO','MANUTENCAO','VAZIO','VENDIDO'), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-14 05:12:12 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO0" already exists; SQL statement:
+create global temporary table HTE_Produto0(quantidade integer, rn_ integer not null, id bigint, preco float(53), DTYPE varchar(31) not null, nome varchar(255), categoria enum ('BARRIL','CILINDRO','DIVERSO','MAQUINA','MESA'), statusProduto enum ('ALUGADO','ATIVO','CHEIO','INATIVO','MANUTENCAO','VAZIO','VENDIDO'), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-14 05:12:12 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO1" already exists; SQL statement:
+create global temporary table HTE_Produto1(quantidade integer, rn_ integer not null, id bigint, preco float(53), DTYPE varchar(31) not null, nome varchar(255), categoria enum ('BARRIL','CILINDRO','DIVERSO','MAQUINA','MESA'), statusProduto enum ('ALUGADO','ATIVO','CHEIO','INATIVO','MANUTENCAO','VAZIO','VENDIDO'), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-14 05:12:12 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO2" already exists; SQL statement:
+create global temporary table HTE_Produto2(quantidade integer, rn_ integer not null, validade date, id bigint, preco float(53), DTYPE varchar(31) not null, nome varchar(255), categoria enum ('BARRIL','CILINDRO','DIVERSO','MAQUINA','MESA'), statusProduto enum ('ALUGADO','ATIVO','CHEIO','INATIVO','MANUTENCAO','VAZIO','VENDIDO'), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-14 05:12:12 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO3" already exists; SQL statement:
+create global temporary table HTE_Produto3(quantidade integer, rn_ integer not null, id bigint, preco float(53), DTYPE varchar(31) not null, nome varchar(255), categoria enum ('BARRIL','CILINDRO','DIVERSO','MAQUINA','MESA'), statusProduto enum ('ALUGADO','ATIVO','CHEIO','INATIVO','MANUTENCAO','VAZIO','VENDIDO'), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-14 05:12:12 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO4" already exists; SQL statement:
+create global temporary table HTE_Produto4(quantidade integer, rn_ integer not null, id bigint, preco float(53), DTYPE varchar(31) not null, nome varchar(255), categoria enum ('BARRIL','CILINDRO','DIVERSO','MAQUINA','MESA'), statusProduto enum ('ALUGADO','ATIVO','CHEIO','INATIVO','MANUTENCAO','VAZIO','VENDIDO'), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-14 05:12:36 jdbc[6]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO" already exists; SQL statement:
+create global temporary table HTE_Produto(quantidade integer, rn_ integer not null, validade date, id bigint, preco float(53), DTYPE varchar(31) not null, nome varchar(255), categoria enum ('BARRIL','CILINDRO','DIVERSO','MAQUINA','MESA'), statusProduto enum ('ALUGADO','ATIVO','CHEIO','INATIVO','MANUTENCAO','VAZIO','VENDIDO'), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-14 05:12:36 jdbc[6]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO0" already exists; SQL statement:
+create global temporary table HTE_Produto0(quantidade integer, rn_ integer not null, id bigint, preco float(53), DTYPE varchar(31) not null, nome varchar(255), categoria enum ('BARRIL','CILINDRO','DIVERSO','MAQUINA','MESA'), statusProduto enum ('ALUGADO','ATIVO','CHEIO','INATIVO','MANUTENCAO','VAZIO','VENDIDO'), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-14 05:12:36 jdbc[6]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO1" already exists; SQL statement:
+create global temporary table HTE_Produto1(quantidade integer, rn_ integer not null, id bigint, preco float(53), DTYPE varchar(31) not null, nome varchar(255), categoria enum ('BARRIL','CILINDRO','DIVERSO','MAQUINA','MESA'), statusProduto enum ('ALUGADO','ATIVO','CHEIO','INATIVO','MANUTENCAO','VAZIO','VENDIDO'), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-14 05:12:36 jdbc[6]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO2" already exists; SQL statement:
+create global temporary table HTE_Produto2(quantidade integer, rn_ integer not null, validade date, id bigint, preco float(53), DTYPE varchar(31) not null, nome varchar(255), categoria enum ('BARRIL','CILINDRO','DIVERSO','MAQUINA','MESA'), statusProduto enum ('ALUGADO','ATIVO','CHEIO','INATIVO','MANUTENCAO','VAZIO','VENDIDO'), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-14 05:12:36 jdbc[6]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO3" already exists; SQL statement:
+create global temporary table HTE_Produto3(quantidade integer, rn_ integer not null, id bigint, preco float(53), DTYPE varchar(31) not null, nome varchar(255), categoria enum ('BARRIL','CILINDRO','DIVERSO','MAQUINA','MESA'), statusProduto enum ('ALUGADO','ATIVO','CHEIO','INATIVO','MANUTENCAO','VAZIO','VENDIDO'), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-14 05:12:36 jdbc[6]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO4" already exists; SQL statement:
+create global temporary table HTE_Produto4(quantidade integer, rn_ integer not null, id bigint, preco float(53), DTYPE varchar(31) not null, nome varchar(255), categoria enum ('BARRIL','CILINDRO','DIVERSO','MAQUINA','MESA'), statusProduto enum ('ALUGADO','ATIVO','CHEIO','INATIVO','MANUTENCAO','VAZIO','VENDIDO'), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-14 05:12:42 jdbc[7]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO" already exists; SQL statement:
+create global temporary table HTE_Produto(quantidade integer, rn_ integer not null, validade date, id bigint, preco float(53), DTYPE varchar(31) not null, nome varchar(255), categoria enum ('BARRIL','CILINDRO','DIVERSO','MAQUINA','MESA'), statusProduto enum ('ALUGADO','ATIVO','CHEIO','INATIVO','MANUTENCAO','VAZIO','VENDIDO'), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-14 05:12:42 jdbc[7]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO0" already exists; SQL statement:
+create global temporary table HTE_Produto0(quantidade integer, rn_ integer not null, id bigint, preco float(53), DTYPE varchar(31) not null, nome varchar(255), categoria enum ('BARRIL','CILINDRO','DIVERSO','MAQUINA','MESA'), statusProduto enum ('ALUGADO','ATIVO','CHEIO','INATIVO','MANUTENCAO','VAZIO','VENDIDO'), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-14 05:12:42 jdbc[7]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO1" already exists; SQL statement:
+create global temporary table HTE_Produto1(quantidade integer, rn_ integer not null, id bigint, preco float(53), DTYPE varchar(31) not null, nome varchar(255), categoria enum ('BARRIL','CILINDRO','DIVERSO','MAQUINA','MESA'), statusProduto enum ('ALUGADO','ATIVO','CHEIO','INATIVO','MANUTENCAO','VAZIO','VENDIDO'), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-14 05:12:42 jdbc[7]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO2" already exists; SQL statement:
+create global temporary table HTE_Produto2(quantidade integer, rn_ integer not null, validade date, id bigint, preco float(53), DTYPE varchar(31) not null, nome varchar(255), categoria enum ('BARRIL','CILINDRO','DIVERSO','MAQUINA','MESA'), statusProduto enum ('ALUGADO','ATIVO','CHEIO','INATIVO','MANUTENCAO','VAZIO','VENDIDO'), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-14 05:12:42 jdbc[7]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO3" already exists; SQL statement:
+create global temporary table HTE_Produto3(quantidade integer, rn_ integer not null, id bigint, preco float(53), DTYPE varchar(31) not null, nome varchar(255), categoria enum ('BARRIL','CILINDRO','DIVERSO','MAQUINA','MESA'), statusProduto enum ('ALUGADO','ATIVO','CHEIO','INATIVO','MANUTENCAO','VAZIO','VENDIDO'), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-14 05:12:42 jdbc[7]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO4" already exists; SQL statement:
+create global temporary table HTE_Produto4(quantidade integer, rn_ integer not null, id bigint, preco float(53), DTYPE varchar(31) not null, nome varchar(255), categoria enum ('BARRIL','CILINDRO','DIVERSO','MAQUINA','MESA'), statusProduto enum ('ALUGADO','ATIVO','CHEIO','INATIVO','MANUTENCAO','VAZIO','VENDIDO'), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-14 05:12:42 jdbc[8]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO" already exists; SQL statement:
+create global temporary table HTE_Produto(quantidade integer, rn_ integer not null, validade date, id bigint, preco float(53), DTYPE varchar(31) not null, nome varchar(255), categoria enum ('BARRIL','CILINDRO','DIVERSO','MAQUINA','MESA'), statusProduto enum ('ALUGADO','ATIVO','CHEIO','INATIVO','MANUTENCAO','VAZIO','VENDIDO'), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-14 05:12:42 jdbc[8]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO0" already exists; SQL statement:
+create global temporary table HTE_Produto0(quantidade integer, rn_ integer not null, id bigint, preco float(53), DTYPE varchar(31) not null, nome varchar(255), categoria enum ('BARRIL','CILINDRO','DIVERSO','MAQUINA','MESA'), statusProduto enum ('ALUGADO','ATIVO','CHEIO','INATIVO','MANUTENCAO','VAZIO','VENDIDO'), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-14 05:12:42 jdbc[8]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO1" already exists; SQL statement:
+create global temporary table HTE_Produto1(quantidade integer, rn_ integer not null, id bigint, preco float(53), DTYPE varchar(31) not null, nome varchar(255), categoria enum ('BARRIL','CILINDRO','DIVERSO','MAQUINA','MESA'), statusProduto enum ('ALUGADO','ATIVO','CHEIO','INATIVO','MANUTENCAO','VAZIO','VENDIDO'), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-14 05:12:42 jdbc[8]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO2" already exists; SQL statement:
+create global temporary table HTE_Produto2(quantidade integer, rn_ integer not null, validade date, id bigint, preco float(53), DTYPE varchar(31) not null, nome varchar(255), categoria enum ('BARRIL','CILINDRO','DIVERSO','MAQUINA','MESA'), statusProduto enum ('ALUGADO','ATIVO','CHEIO','INATIVO','MANUTENCAO','VAZIO','VENDIDO'), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-14 05:12:42 jdbc[8]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO3" already exists; SQL statement:
+create global temporary table HTE_Produto3(quantidade integer, rn_ integer not null, id bigint, preco float(53), DTYPE varchar(31) not null, nome varchar(255), categoria enum ('BARRIL','CILINDRO','DIVERSO','MAQUINA','MESA'), statusProduto enum ('ALUGADO','ATIVO','CHEIO','INATIVO','MANUTENCAO','VAZIO','VENDIDO'), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-14 05:12:42 jdbc[8]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO4" already exists; SQL statement:
+create global temporary table HTE_Produto4(quantidade integer, rn_ integer not null, id bigint, preco float(53), DTYPE varchar(31) not null, nome varchar(255), categoria enum ('BARRIL','CILINDRO','DIVERSO','MAQUINA','MESA'), statusProduto enum ('ALUGADO','ATIVO','CHEIO','INATIVO','MANUTENCAO','VAZIO','VENDIDO'), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-14 05:12:42 jdbc[9]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO" already exists; SQL statement:
+create global temporary table HTE_Produto(quantidade integer, rn_ integer not null, validade date, id bigint, preco float(53), DTYPE varchar(31) not null, nome varchar(255), categoria enum ('BARRIL','CILINDRO','DIVERSO','MAQUINA','MESA'), statusProduto enum ('ALUGADO','ATIVO','CHEIO','INATIVO','MANUTENCAO','VAZIO','VENDIDO'), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-14 05:12:42 jdbc[9]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO0" already exists; SQL statement:
+create global temporary table HTE_Produto0(quantidade integer, rn_ integer not null, id bigint, preco float(53), DTYPE varchar(31) not null, nome varchar(255), categoria enum ('BARRIL','CILINDRO','DIVERSO','MAQUINA','MESA'), statusProduto enum ('ALUGADO','ATIVO','CHEIO','INATIVO','MANUTENCAO','VAZIO','VENDIDO'), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-14 05:12:42 jdbc[9]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO1" already exists; SQL statement:
+create global temporary table HTE_Produto1(quantidade integer, rn_ integer not null, id bigint, preco float(53), DTYPE varchar(31) not null, nome varchar(255), categoria enum ('BARRIL','CILINDRO','DIVERSO','MAQUINA','MESA'), statusProduto enum ('ALUGADO','ATIVO','CHEIO','INATIVO','MANUTENCAO','VAZIO','VENDIDO'), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-14 05:12:42 jdbc[9]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO2" already exists; SQL statement:
+create global temporary table HTE_Produto2(quantidade integer, rn_ integer not null, validade date, id bigint, preco float(53), DTYPE varchar(31) not null, nome varchar(255), categoria enum ('BARRIL','CILINDRO','DIVERSO','MAQUINA','MESA'), statusProduto enum ('ALUGADO','ATIVO','CHEIO','INATIVO','MANUTENCAO','VAZIO','VENDIDO'), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-14 05:12:42 jdbc[9]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO3" already exists; SQL statement:
+create global temporary table HTE_Produto3(quantidade integer, rn_ integer not null, id bigint, preco float(53), DTYPE varchar(31) not null, nome varchar(255), categoria enum ('BARRIL','CILINDRO','DIVERSO','MAQUINA','MESA'), statusProduto enum ('ALUGADO','ATIVO','CHEIO','INATIVO','MANUTENCAO','VAZIO','VENDIDO'), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-14 05:12:42 jdbc[9]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO4" already exists; SQL statement:
+create global temporary table HTE_Produto4(quantidade integer, rn_ integer not null, id bigint, preco float(53), DTYPE varchar(31) not null, nome varchar(255), categoria enum ('BARRIL','CILINDRO','DIVERSO','MAQUINA','MESA'), statusProduto enum ('ALUGADO','ATIVO','CHEIO','INATIVO','MANUTENCAO','VAZIO','VENDIDO'), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-14 05:12:46 jdbc[10]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO" already exists; SQL statement:
+create global temporary table HTE_Produto(quantidade integer, rn_ integer not null, validade date, id bigint, preco float(53), DTYPE varchar(31) not null, nome varchar(255), categoria enum ('BARRIL','CILINDRO','DIVERSO','MAQUINA','MESA'), statusProduto enum ('ALUGADO','ATIVO','CHEIO','INATIVO','MANUTENCAO','VAZIO','VENDIDO'), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-14 05:12:46 jdbc[10]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO0" already exists; SQL statement:
+create global temporary table HTE_Produto0(quantidade integer, rn_ integer not null, id bigint, preco float(53), DTYPE varchar(31) not null, nome varchar(255), categoria enum ('BARRIL','CILINDRO','DIVERSO','MAQUINA','MESA'), statusProduto enum ('ALUGADO','ATIVO','CHEIO','INATIVO','MANUTENCAO','VAZIO','VENDIDO'), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-14 05:12:46 jdbc[10]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO1" already exists; SQL statement:
+create global temporary table HTE_Produto1(quantidade integer, rn_ integer not null, id bigint, preco float(53), DTYPE varchar(31) not null, nome varchar(255), categoria enum ('BARRIL','CILINDRO','DIVERSO','MAQUINA','MESA'), statusProduto enum ('ALUGADO','ATIVO','CHEIO','INATIVO','MANUTENCAO','VAZIO','VENDIDO'), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-14 05:12:46 jdbc[10]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO2" already exists; SQL statement:
+create global temporary table HTE_Produto2(quantidade integer, rn_ integer not null, validade date, id bigint, preco float(53), DTYPE varchar(31) not null, nome varchar(255), categoria enum ('BARRIL','CILINDRO','DIVERSO','MAQUINA','MESA'), statusProduto enum ('ALUGADO','ATIVO','CHEIO','INATIVO','MANUTENCAO','VAZIO','VENDIDO'), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-14 05:12:46 jdbc[10]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO3" already exists; SQL statement:
+create global temporary table HTE_Produto3(quantidade integer, rn_ integer not null, id bigint, preco float(53), DTYPE varchar(31) not null, nome varchar(255), categoria enum ('BARRIL','CILINDRO','DIVERSO','MAQUINA','MESA'), statusProduto enum ('ALUGADO','ATIVO','CHEIO','INATIVO','MANUTENCAO','VAZIO','VENDIDO'), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-14 05:12:46 jdbc[10]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO4" already exists; SQL statement:
+create global temporary table HTE_Produto4(quantidade integer, rn_ integer not null, id bigint, preco float(53), DTYPE varchar(31) not null, nome varchar(255), categoria enum ('BARRIL','CILINDRO','DIVERSO','MAQUINA','MESA'), statusProduto enum ('ALUGADO','ATIVO','CHEIO','INATIVO','MANUTENCAO','VAZIO','VENDIDO'), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-14 05:12:54 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO" already exists; SQL statement:
+create global temporary table HTE_Produto(quantidade integer, rn_ integer not null, validade date, id bigint, preco float(53), DTYPE varchar(31) not null, nome varchar(255), categoria enum ('BARRIL','CILINDRO','DIVERSO','MAQUINA','MESA'), statusProduto enum ('ALUGADO','ATIVO','CHEIO','INATIVO','MANUTENCAO','VAZIO','VENDIDO'), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-14 05:12:54 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO0" already exists; SQL statement:
+create global temporary table HTE_Produto0(quantidade integer, rn_ integer not null, id bigint, preco float(53), DTYPE varchar(31) not null, nome varchar(255), categoria enum ('BARRIL','CILINDRO','DIVERSO','MAQUINA','MESA'), statusProduto enum ('ALUGADO','ATIVO','CHEIO','INATIVO','MANUTENCAO','VAZIO','VENDIDO'), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-14 05:12:54 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO1" already exists; SQL statement:
+create global temporary table HTE_Produto1(quantidade integer, rn_ integer not null, id bigint, preco float(53), DTYPE varchar(31) not null, nome varchar(255), categoria enum ('BARRIL','CILINDRO','DIVERSO','MAQUINA','MESA'), statusProduto enum ('ALUGADO','ATIVO','CHEIO','INATIVO','MANUTENCAO','VAZIO','VENDIDO'), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-14 05:12:54 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO2" already exists; SQL statement:
+create global temporary table HTE_Produto2(quantidade integer, rn_ integer not null, validade date, id bigint, preco float(53), DTYPE varchar(31) not null, nome varchar(255), categoria enum ('BARRIL','CILINDRO','DIVERSO','MAQUINA','MESA'), statusProduto enum ('ALUGADO','ATIVO','CHEIO','INATIVO','MANUTENCAO','VAZIO','VENDIDO'), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-14 05:12:54 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO3" already exists; SQL statement:
+create global temporary table HTE_Produto3(quantidade integer, rn_ integer not null, id bigint, preco float(53), DTYPE varchar(31) not null, nome varchar(255), categoria enum ('BARRIL','CILINDRO','DIVERSO','MAQUINA','MESA'), statusProduto enum ('ALUGADO','ATIVO','CHEIO','INATIVO','MANUTENCAO','VAZIO','VENDIDO'), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-14 05:12:54 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO4" already exists; SQL statement:
+create global temporary table HTE_Produto4(quantidade integer, rn_ integer not null, id bigint, preco float(53), DTYPE varchar(31) not null, nome varchar(255), categoria enum ('BARRIL','CILINDRO','DIVERSO','MAQUINA','MESA'), statusProduto enum ('ALUGADO','ATIVO','CHEIO','INATIVO','MANUTENCAO','VAZIO','VENDIDO'), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-14 05:12:54 jdbc[12]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO" already exists; SQL statement:
+create global temporary table HTE_Produto(quantidade integer, rn_ integer not null, validade date, id bigint, preco float(53), DTYPE varchar(31) not null, nome varchar(255), categoria enum ('BARRIL','CILINDRO','DIVERSO','MAQUINA','MESA'), statusProduto enum ('ALUGADO','ATIVO','CHEIO','INATIVO','MANUTENCAO','VAZIO','VENDIDO'), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-14 05:12:54 jdbc[12]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO0" already exists; SQL statement:
+create global temporary table HTE_Produto0(quantidade integer, rn_ integer not null, id bigint, preco float(53), DTYPE varchar(31) not null, nome varchar(255), categoria enum ('BARRIL','CILINDRO','DIVERSO','MAQUINA','MESA'), statusProduto enum ('ALUGADO','ATIVO','CHEIO','INATIVO','MANUTENCAO','VAZIO','VENDIDO'), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-14 05:12:54 jdbc[12]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO1" already exists; SQL statement:
+create global temporary table HTE_Produto1(quantidade integer, rn_ integer not null, id bigint, preco float(53), DTYPE varchar(31) not null, nome varchar(255), categoria enum ('BARRIL','CILINDRO','DIVERSO','MAQUINA','MESA'), statusProduto enum ('ALUGADO','ATIVO','CHEIO','INATIVO','MANUTENCAO','VAZIO','VENDIDO'), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-14 05:12:54 jdbc[12]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO2" already exists; SQL statement:
+create global temporary table HTE_Produto2(quantidade integer, rn_ integer not null, validade date, id bigint, preco float(53), DTYPE varchar(31) not null, nome varchar(255), categoria enum ('BARRIL','CILINDRO','DIVERSO','MAQUINA','MESA'), statusProduto enum ('ALUGADO','ATIVO','CHEIO','INATIVO','MANUTENCAO','VAZIO','VENDIDO'), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-14 05:12:54 jdbc[12]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO3" already exists; SQL statement:
+create global temporary table HTE_Produto3(quantidade integer, rn_ integer not null, id bigint, preco float(53), DTYPE varchar(31) not null, nome varchar(255), categoria enum ('BARRIL','CILINDRO','DIVERSO','MAQUINA','MESA'), statusProduto enum ('ALUGADO','ATIVO','CHEIO','INATIVO','MANUTENCAO','VAZIO','VENDIDO'), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-14 05:12:54 jdbc[12]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO4" already exists; SQL statement:
+create global temporary table HTE_Produto4(quantidade integer, rn_ integer not null, id bigint, preco float(53), DTYPE varchar(31) not null, nome varchar(255), categoria enum ('BARRIL','CILINDRO','DIVERSO','MAQUINA','MESA'), statusProduto enum ('ALUGADO','ATIVO','CHEIO','INATIVO','MANUTENCAO','VAZIO','VENDIDO'), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-14 05:12:54 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO" already exists; SQL statement:
+create global temporary table HTE_Produto(quantidade integer, rn_ integer not null, validade date, id bigint, preco float(53), DTYPE varchar(31) not null, nome varchar(255), categoria enum ('BARRIL','CILINDRO','DIVERSO','MAQUINA','MESA'), statusProduto enum ('ALUGADO','ATIVO','CHEIO','INATIVO','MANUTENCAO','VAZIO','VENDIDO'), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-14 05:12:54 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO0" already exists; SQL statement:
+create global temporary table HTE_Produto0(quantidade integer, rn_ integer not null, id bigint, preco float(53), DTYPE varchar(31) not null, nome varchar(255), categoria enum ('BARRIL','CILINDRO','DIVERSO','MAQUINA','MESA'), statusProduto enum ('ALUGADO','ATIVO','CHEIO','INATIVO','MANUTENCAO','VAZIO','VENDIDO'), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-14 05:12:54 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO1" already exists; SQL statement:
+create global temporary table HTE_Produto1(quantidade integer, rn_ integer not null, id bigint, preco float(53), DTYPE varchar(31) not null, nome varchar(255), categoria enum ('BARRIL','CILINDRO','DIVERSO','MAQUINA','MESA'), statusProduto enum ('ALUGADO','ATIVO','CHEIO','INATIVO','MANUTENCAO','VAZIO','VENDIDO'), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-14 05:12:54 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO2" already exists; SQL statement:
+create global temporary table HTE_Produto2(quantidade integer, rn_ integer not null, validade date, id bigint, preco float(53), DTYPE varchar(31) not null, nome varchar(255), categoria enum ('BARRIL','CILINDRO','DIVERSO','MAQUINA','MESA'), statusProduto enum ('ALUGADO','ATIVO','CHEIO','INATIVO','MANUTENCAO','VAZIO','VENDIDO'), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-14 05:12:54 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO3" already exists; SQL statement:
+create global temporary table HTE_Produto3(quantidade integer, rn_ integer not null, id bigint, preco float(53), DTYPE varchar(31) not null, nome varchar(255), categoria enum ('BARRIL','CILINDRO','DIVERSO','MAQUINA','MESA'), statusProduto enum ('ALUGADO','ATIVO','CHEIO','INATIVO','MANUTENCAO','VAZIO','VENDIDO'), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-14 05:12:54 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO4" already exists; SQL statement:
+create global temporary table HTE_Produto4(quantidade integer, rn_ integer not null, id bigint, preco float(53), DTYPE varchar(31) not null, nome varchar(255), categoria enum ('BARRIL','CILINDRO','DIVERSO','MAQUINA','MESA'), statusProduto enum ('ALUGADO','ATIVO','CHEIO','INATIVO','MANUTENCAO','VAZIO','VENDIDO'), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-14 18:33:05 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO" already exists; SQL statement:
+create global temporary table HTE_Produto(quantidade integer, rn_ integer not null, validade date, id bigint, preco float(53), DTYPE varchar(31) not null, nome varchar(255), categoria enum ('BARRIL','CILINDRO','DIVERSO','MAQUINA','MESA'), statusProduto enum ('ALUGADO','ATIVO','CHEIO','INATIVO','MANUTENCAO','VAZIO','VENDIDO'), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-14 18:33:05 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO0" already exists; SQL statement:
+create global temporary table HTE_Produto0(quantidade integer, rn_ integer not null, id bigint, preco float(53), DTYPE varchar(31) not null, nome varchar(255), categoria enum ('BARRIL','CILINDRO','DIVERSO','MAQUINA','MESA'), statusProduto enum ('ALUGADO','ATIVO','CHEIO','INATIVO','MANUTENCAO','VAZIO','VENDIDO'), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-14 18:33:05 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO1" already exists; SQL statement:
+create global temporary table HTE_Produto1(quantidade integer, rn_ integer not null, id bigint, preco float(53), DTYPE varchar(31) not null, nome varchar(255), categoria enum ('BARRIL','CILINDRO','DIVERSO','MAQUINA','MESA'), statusProduto enum ('ALUGADO','ATIVO','CHEIO','INATIVO','MANUTENCAO','VAZIO','VENDIDO'), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-14 18:33:05 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO2" already exists; SQL statement:
+create global temporary table HTE_Produto2(quantidade integer, rn_ integer not null, validade date, id bigint, preco float(53), DTYPE varchar(31) not null, nome varchar(255), categoria enum ('BARRIL','CILINDRO','DIVERSO','MAQUINA','MESA'), statusProduto enum ('ALUGADO','ATIVO','CHEIO','INATIVO','MANUTENCAO','VAZIO','VENDIDO'), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-14 18:33:05 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO3" already exists; SQL statement:
+create global temporary table HTE_Produto3(quantidade integer, rn_ integer not null, id bigint, preco float(53), DTYPE varchar(31) not null, nome varchar(255), categoria enum ('BARRIL','CILINDRO','DIVERSO','MAQUINA','MESA'), statusProduto enum ('ALUGADO','ATIVO','CHEIO','INATIVO','MANUTENCAO','VAZIO','VENDIDO'), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-14 18:33:05 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO4" already exists; SQL statement:
+create global temporary table HTE_Produto4(quantidade integer, rn_ integer not null, id bigint, preco float(53), DTYPE varchar(31) not null, nome varchar(255), categoria enum ('BARRIL','CILINDRO','DIVERSO','MAQUINA','MESA'), statusProduto enum ('ALUGADO','ATIVO','CHEIO','INATIVO','MANUTENCAO','VAZIO','VENDIDO'), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-14 18:33:05 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO" already exists; SQL statement:
+create global temporary table HTE_Produto(quantidade integer, rn_ integer not null, validade date, id bigint, preco float(53), DTYPE varchar(31) not null, nome varchar(255), categoria enum ('BARRIL','CILINDRO','DIVERSO','MAQUINA','MESA'), statusProduto enum ('ALUGADO','ATIVO','CHEIO','INATIVO','MANUTENCAO','VAZIO','VENDIDO'), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-14 18:33:05 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO0" already exists; SQL statement:
+create global temporary table HTE_Produto0(quantidade integer, rn_ integer not null, id bigint, preco float(53), DTYPE varchar(31) not null, nome varchar(255), categoria enum ('BARRIL','CILINDRO','DIVERSO','MAQUINA','MESA'), statusProduto enum ('ALUGADO','ATIVO','CHEIO','INATIVO','MANUTENCAO','VAZIO','VENDIDO'), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-14 18:33:05 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO1" already exists; SQL statement:
+create global temporary table HTE_Produto1(quantidade integer, rn_ integer not null, id bigint, preco float(53), DTYPE varchar(31) not null, nome varchar(255), categoria enum ('BARRIL','CILINDRO','DIVERSO','MAQUINA','MESA'), statusProduto enum ('ALUGADO','ATIVO','CHEIO','INATIVO','MANUTENCAO','VAZIO','VENDIDO'), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-14 18:33:05 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO2" already exists; SQL statement:
+create global temporary table HTE_Produto2(quantidade integer, rn_ integer not null, validade date, id bigint, preco float(53), DTYPE varchar(31) not null, nome varchar(255), categoria enum ('BARRIL','CILINDRO','DIVERSO','MAQUINA','MESA'), statusProduto enum ('ALUGADO','ATIVO','CHEIO','INATIVO','MANUTENCAO','VAZIO','VENDIDO'), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-14 18:33:05 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO3" already exists; SQL statement:
+create global temporary table HTE_Produto3(quantidade integer, rn_ integer not null, id bigint, preco float(53), DTYPE varchar(31) not null, nome varchar(255), categoria enum ('BARRIL','CILINDRO','DIVERSO','MAQUINA','MESA'), statusProduto enum ('ALUGADO','ATIVO','CHEIO','INATIVO','MANUTENCAO','VAZIO','VENDIDO'), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-14 18:33:05 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO4" already exists; SQL statement:
+create global temporary table HTE_Produto4(quantidade integer, rn_ integer not null, id bigint, preco float(53), DTYPE varchar(31) not null, nome varchar(255), categoria enum ('BARRIL','CILINDRO','DIVERSO','MAQUINA','MESA'), statusProduto enum ('ALUGADO','ATIVO','CHEIO','INATIVO','MANUTENCAO','VAZIO','VENDIDO'), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-14 18:33:05 jdbc[6]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO" already exists; SQL statement:
+create global temporary table HTE_Produto(quantidade integer, rn_ integer not null, validade date, id bigint, preco float(53), DTYPE varchar(31) not null, nome varchar(255), categoria enum ('BARRIL','CILINDRO','DIVERSO','MAQUINA','MESA'), statusProduto enum ('ALUGADO','ATIVO','CHEIO','INATIVO','MANUTENCAO','VAZIO','VENDIDO'), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-14 18:33:05 jdbc[6]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO0" already exists; SQL statement:
+create global temporary table HTE_Produto0(quantidade integer, rn_ integer not null, id bigint, preco float(53), DTYPE varchar(31) not null, nome varchar(255), categoria enum ('BARRIL','CILINDRO','DIVERSO','MAQUINA','MESA'), statusProduto enum ('ALUGADO','ATIVO','CHEIO','INATIVO','MANUTENCAO','VAZIO','VENDIDO'), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-14 18:33:05 jdbc[6]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO1" already exists; SQL statement:
+create global temporary table HTE_Produto1(quantidade integer, rn_ integer not null, id bigint, preco float(53), DTYPE varchar(31) not null, nome varchar(255), categoria enum ('BARRIL','CILINDRO','DIVERSO','MAQUINA','MESA'), statusProduto enum ('ALUGADO','ATIVO','CHEIO','INATIVO','MANUTENCAO','VAZIO','VENDIDO'), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-14 18:33:05 jdbc[6]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO2" already exists; SQL statement:
+create global temporary table HTE_Produto2(quantidade integer, rn_ integer not null, validade date, id bigint, preco float(53), DTYPE varchar(31) not null, nome varchar(255), categoria enum ('BARRIL','CILINDRO','DIVERSO','MAQUINA','MESA'), statusProduto enum ('ALUGADO','ATIVO','CHEIO','INATIVO','MANUTENCAO','VAZIO','VENDIDO'), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-14 18:33:05 jdbc[6]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO3" already exists; SQL statement:
+create global temporary table HTE_Produto3(quantidade integer, rn_ integer not null, id bigint, preco float(53), DTYPE varchar(31) not null, nome varchar(255), categoria enum ('BARRIL','CILINDRO','DIVERSO','MAQUINA','MESA'), statusProduto enum ('ALUGADO','ATIVO','CHEIO','INATIVO','MANUTENCAO','VAZIO','VENDIDO'), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-14 18:33:05 jdbc[6]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO4" already exists; SQL statement:
+create global temporary table HTE_Produto4(quantidade integer, rn_ integer not null, id bigint, preco float(53), DTYPE varchar(31) not null, nome varchar(255), categoria enum ('BARRIL','CILINDRO','DIVERSO','MAQUINA','MESA'), statusProduto enum ('ALUGADO','ATIVO','CHEIO','INATIVO','MANUTENCAO','VAZIO','VENDIDO'), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-15 19:11:11 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO" already exists; SQL statement:
+create global temporary table HTE_Produto(quantidade integer, rn_ integer not null, validade date, id bigint, preco float(53), DTYPE varchar(31) not null, nome varchar(255), categoria enum ('BARRIL','CILINDRO','DIVERSO','MAQUINA','MESA'), statusProduto enum ('ALUGADO','ATIVO','CHEIO','INATIVO','MANUTENCAO','VAZIO','VENDIDO'), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-15 19:11:11 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO0" already exists; SQL statement:
+create global temporary table HTE_Produto0(quantidade integer, rn_ integer not null, id bigint, preco float(53), DTYPE varchar(31) not null, nome varchar(255), categoria enum ('BARRIL','CILINDRO','DIVERSO','MAQUINA','MESA'), statusProduto enum ('ALUGADO','ATIVO','CHEIO','INATIVO','MANUTENCAO','VAZIO','VENDIDO'), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-15 19:11:11 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO1" already exists; SQL statement:
+create global temporary table HTE_Produto1(quantidade integer, rn_ integer not null, id bigint, preco float(53), DTYPE varchar(31) not null, nome varchar(255), categoria enum ('BARRIL','CILINDRO','DIVERSO','MAQUINA','MESA'), statusProduto enum ('ALUGADO','ATIVO','CHEIO','INATIVO','MANUTENCAO','VAZIO','VENDIDO'), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-15 19:11:11 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO2" already exists; SQL statement:
+create global temporary table HTE_Produto2(quantidade integer, rn_ integer not null, validade date, id bigint, preco float(53), DTYPE varchar(31) not null, nome varchar(255), categoria enum ('BARRIL','CILINDRO','DIVERSO','MAQUINA','MESA'), statusProduto enum ('ALUGADO','ATIVO','CHEIO','INATIVO','MANUTENCAO','VAZIO','VENDIDO'), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-15 19:11:11 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO3" already exists; SQL statement:
+create global temporary table HTE_Produto3(quantidade integer, rn_ integer not null, id bigint, preco float(53), DTYPE varchar(31) not null, nome varchar(255), categoria enum ('BARRIL','CILINDRO','DIVERSO','MAQUINA','MESA'), statusProduto enum ('ALUGADO','ATIVO','CHEIO','INATIVO','MANUTENCAO','VAZIO','VENDIDO'), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-15 19:11:11 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO4" already exists; SQL statement:
+create global temporary table HTE_Produto4(quantidade integer, rn_ integer not null, id bigint, preco float(53), DTYPE varchar(31) not null, nome varchar(255), categoria enum ('BARRIL','CILINDRO','DIVERSO','MAQUINA','MESA'), statusProduto enum ('ALUGADO','ATIVO','CHEIO','INATIVO','MANUTENCAO','VAZIO','VENDIDO'), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-15 19:11:11 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO" already exists; SQL statement:
+create global temporary table HTE_Produto(quantidade integer, rn_ integer not null, validade date, id bigint, preco float(53), DTYPE varchar(31) not null, nome varchar(255), categoria enum ('BARRIL','CILINDRO','DIVERSO','MAQUINA','MESA'), statusProduto enum ('ALUGADO','ATIVO','CHEIO','INATIVO','MANUTENCAO','VAZIO','VENDIDO'), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-15 19:11:11 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO0" already exists; SQL statement:
+create global temporary table HTE_Produto0(quantidade integer, rn_ integer not null, id bigint, preco float(53), DTYPE varchar(31) not null, nome varchar(255), categoria enum ('BARRIL','CILINDRO','DIVERSO','MAQUINA','MESA'), statusProduto enum ('ALUGADO','ATIVO','CHEIO','INATIVO','MANUTENCAO','VAZIO','VENDIDO'), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-15 19:11:11 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO1" already exists; SQL statement:
+create global temporary table HTE_Produto1(quantidade integer, rn_ integer not null, id bigint, preco float(53), DTYPE varchar(31) not null, nome varchar(255), categoria enum ('BARRIL','CILINDRO','DIVERSO','MAQUINA','MESA'), statusProduto enum ('ALUGADO','ATIVO','CHEIO','INATIVO','MANUTENCAO','VAZIO','VENDIDO'), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-15 19:11:11 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO2" already exists; SQL statement:
+create global temporary table HTE_Produto2(quantidade integer, rn_ integer not null, validade date, id bigint, preco float(53), DTYPE varchar(31) not null, nome varchar(255), categoria enum ('BARRIL','CILINDRO','DIVERSO','MAQUINA','MESA'), statusProduto enum ('ALUGADO','ATIVO','CHEIO','INATIVO','MANUTENCAO','VAZIO','VENDIDO'), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-15 19:11:11 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO3" already exists; SQL statement:
+create global temporary table HTE_Produto3(quantidade integer, rn_ integer not null, id bigint, preco float(53), DTYPE varchar(31) not null, nome varchar(255), categoria enum ('BARRIL','CILINDRO','DIVERSO','MAQUINA','MESA'), statusProduto enum ('ALUGADO','ATIVO','CHEIO','INATIVO','MANUTENCAO','VAZIO','VENDIDO'), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-15 19:11:11 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO4" already exists; SQL statement:
+create global temporary table HTE_Produto4(quantidade integer, rn_ integer not null, id bigint, preco float(53), DTYPE varchar(31) not null, nome varchar(255), categoria enum ('BARRIL','CILINDRO','DIVERSO','MAQUINA','MESA'), statusProduto enum ('ALUGADO','ATIVO','CHEIO','INATIVO','MANUTENCAO','VAZIO','VENDIDO'), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-15 19:19:44 jdbc[6]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO" already exists; SQL statement:
+create global temporary table HTE_Produto(quantidade integer, rn_ integer not null, validade date, id bigint, preco float(53), DTYPE varchar(31) not null, nome varchar(255), categoria enum ('BARRIL','CILINDRO','DIVERSO','MAQUINA','MESA'), statusProduto enum ('ALUGADO','ATIVO','CHEIO','INATIVO','MANUTENCAO','VAZIO','VENDIDO'), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-15 19:19:44 jdbc[6]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO0" already exists; SQL statement:
+create global temporary table HTE_Produto0(quantidade integer, rn_ integer not null, id bigint, preco float(53), DTYPE varchar(31) not null, nome varchar(255), categoria enum ('BARRIL','CILINDRO','DIVERSO','MAQUINA','MESA'), statusProduto enum ('ALUGADO','ATIVO','CHEIO','INATIVO','MANUTENCAO','VAZIO','VENDIDO'), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-15 19:19:44 jdbc[6]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO1" already exists; SQL statement:
+create global temporary table HTE_Produto1(quantidade integer, rn_ integer not null, id bigint, preco float(53), DTYPE varchar(31) not null, nome varchar(255), categoria enum ('BARRIL','CILINDRO','DIVERSO','MAQUINA','MESA'), statusProduto enum ('ALUGADO','ATIVO','CHEIO','INATIVO','MANUTENCAO','VAZIO','VENDIDO'), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-15 19:19:44 jdbc[6]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO2" already exists; SQL statement:
+create global temporary table HTE_Produto2(quantidade integer, rn_ integer not null, validade date, id bigint, preco float(53), DTYPE varchar(31) not null, nome varchar(255), categoria enum ('BARRIL','CILINDRO','DIVERSO','MAQUINA','MESA'), statusProduto enum ('ALUGADO','ATIVO','CHEIO','INATIVO','MANUTENCAO','VAZIO','VENDIDO'), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-15 19:19:44 jdbc[6]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO3" already exists; SQL statement:
+create global temporary table HTE_Produto3(quantidade integer, rn_ integer not null, id bigint, preco float(53), DTYPE varchar(31) not null, nome varchar(255), categoria enum ('BARRIL','CILINDRO','DIVERSO','MAQUINA','MESA'), statusProduto enum ('ALUGADO','ATIVO','CHEIO','INATIVO','MANUTENCAO','VAZIO','VENDIDO'), primary key (rn_)) TRANSACTIONAL [42101-210]
+2025-03-15 19:19:44 jdbc[6]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PRODUTO4" already exists; SQL statement:
+create global temporary table HTE_Produto4(quantidade integer, rn_ integer not null, id bigint, preco float(53), DTYPE varchar(31) not null, nome varchar(255), categoria enum ('BARRIL','CILINDRO','DIVERSO','MAQUINA','MESA'), statusProduto enum ('ALUGADO','ATIVO','CHEIO','INATIVO','MANUTENCAO','VAZIO','VENDIDO'), primary key (rn_)) TRANSACTIONAL [42101-210]
